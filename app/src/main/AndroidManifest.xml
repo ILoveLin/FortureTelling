@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.company.forturetelling">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+
+    <application
+        android:name=".base.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_app"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/AppSplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+        <service
+            android:name="com.yun.common.utils.updateutils.UpdateIntentService"
+            android:exported="false" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.company.forturetelling.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.activity.GuideActivity" />
+        <activity android:name=".ui.activity.pay.SelectPayActivity" />
+        <activity android:name=".ui.activity.information.InforSettingActivity" />
+        <activity android:name=".ui.activity.sixfunction.getname.DetailsCommonActivity" />
+        <activity android:name=".ui.activity.LifeDetailsActivity" />
+        <activity android:name=".ui.activity.FortuneDetailsActivity" />
+        <activity android:name=".ui.activity.NewsActivity" />
+        <activity android:name=".ui.activity.sixfunction.getname.GetNameActivity" />
+        <activity android:name=".ui.activity.information.LoginActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.information.PasswordActivity" />
+        <activity android:name=".ui.activity.sixfunction.getname.GetNameResultActivity" />
+        <activity android:name=".ui.activity.sixfunction.eightnumber.EightNumberActivity" />
+        <activity android:name=".ui.activity.sixfunction.namedetails.NameDetailsActivity" />
+        <activity android:name=".ui.activity.sixfunction.marriagetest.MarriageTestActivity" />
+        <activity android:name=".ui.activity.sixfunction.fortune.FortuneActivity" />
+        <activity android:name=".ui.activity.sixfunction.synthesize.SynthesizeActivity" />
+        <activity android:name=".ui.activity.result.ResultCommonActivity" />
+        <activity android:name=".ui.activity.result.ResultMarragetestActivity" />
+        <activity android:name=".ui.activity.result.ResultNameDetalisActivity" />
+
+        
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+
+        </activity>
+
+
+    </application>
+
+</manifest>

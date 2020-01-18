@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relate_mine_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f4f4"
+    android:orientation="vertical">
+
+    <!--纯滚动模式-->
+    <!--app:srlEnablePureScrollMode="true"-->
+    <!--刷新和加载更多设置-->
+    <!--app:srlEnableAutoLoadMore="false"-->
+    <!--app:srlEnableLoadMore="true"-->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnablePureScrollMode="true">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="FixedBehind"
+            app:srlDrawableArrowSize="20dp"
+            app:srlDrawableMarginRight="20dp"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo"
+            app:srlDrawableProgressSize="20dp"
+            app:srlEnableLastTime="true"
+            app:srlFinishDuration="500"
+            app:srlTextSizeTime="10dp"
+            app:srlTextSizeTitle="16sp"
+            app:srlTextTimeMarginTop="2dp">
+
+
+        </com.scwang.smartrefresh.layout.header.ClassicsHeader>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--android:background="@drawable/shape_fortune_infor_detalis"-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:layout_marginTop="@dimen/padding_20"
+                android:layout_marginRight="@dimen/padding_10"
+                android:orientation="vertical">
+                <!--个人信息-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/padding_20"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:layout_marginRight="@dimen/padding_20"
+                        android:layout_marginBottom="@dimen/padding_20"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_details_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="张三"
+                            android:textSize="@dimen/padding_20" />
+
+                        <TextView
+                            android:id="@+id/tv_details_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1991年12月28日 8点"
+                            android:textSize="@dimen/padding_18" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--今日运势-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_day" />
+
+
+                    <TextView
+                        android:paddingLeft="@dimen/padding_10"
+                        android:id="@+id/tv_details_today"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+
+                <!--本周运势-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_week" />
+
+                    <TextView
+                        android:paddingLeft="@dimen/padding_10"
+
+                        android:id="@+id/tv_details_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+                <!--本月运势-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_mouth" />
+
+                    <TextView
+                        android:paddingLeft="@dimen/padding_10"
+
+                        android:id="@+id/tv_details_month"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+                <!--今年运势-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_year" />
+
+                    <TextView
+                        android:paddingLeft="@dimen/padding_10"
+
+                        android:id="@+id/tv_details_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/white"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</RelativeLayout>

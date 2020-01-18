@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relate_mine_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f4f4"
+    android:orientation="vertical">
+
+    <!--纯滚动模式-->
+    <!--app:srlEnablePureScrollMode="true"-->
+    <!--刷新和加载更多设置-->
+    <!--app:srlEnableAutoLoadMore="false"-->
+    <!--app:srlEnableLoadMore="true"-->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnablePureScrollMode="true">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="FixedBehind"
+            app:srlDrawableArrowSize="20dp"
+            app:srlDrawableMarginRight="20dp"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo"
+            app:srlDrawableProgressSize="20dp"
+            app:srlEnableLastTime="true"
+            app:srlFinishDuration="500"
+            app:srlTextSizeTime="10dp"
+            app:srlTextSizeTitle="16sp"
+            app:srlTextTimeMarginTop="2dp">
+
+
+        </com.scwang.smartrefresh.layout.header.ClassicsHeader>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_80">
+                    <!--未登陆状态-->
+                    <LinearLayout
+
+                        android:id="@+id/linear_current_info_unlogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding_80"
+                        android:orientation="horizontal">
+
+                        <com.company.forturetelling.view.CircleImageView
+                            android:id="@+id/current_pic_unlogin"
+                            android:layout_width="@dimen/padding_50"
+                            android:layout_height="@dimen/padding_50"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_20"
+                            android:src="@mipmap/icon_fortune_touxiang">
+
+                        </com.company.forturetelling.view.CircleImageView>
+
+                        <TextView
+                            android:id="@+id/tv_current_name_unlogin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_20"
+                            android:text="立即登入,更多体验"
+                            android:textColor="@color/color_2a2a2a"
+                            android:textSize="@dimen/padding_18" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:drawableRight="@mipmap/ico_go_black"
+                            android:drawablePadding="@dimen/padding_10"
+                            android:paddingLeft="@dimen/padding_20"
+                            android:paddingRight="@dimen/padding_21"
+                            android:text=""
+
+                            android:textSize="@dimen/padding_12" />
+
+
+                    </LinearLayout
+>
+                    <!--登陆状态-->
+                    <LinearLayout
+
+                        android:id="@+id/linear_current_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding_80"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <com.company.forturetelling.view.CircleImageView
+                            android:id="@+id/current_pic"
+                            android:layout_width="@dimen/padding_50"
+                            android:layout_height="@dimen/padding_50"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_20"
+                            android:src="@mipmap/icon_fortune_touxiang">
+
+                        </com.company.forturetelling.view.CircleImageView>
+
+                        <TextView
+                            android:id="@+id/tv_current_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/padding_20"
+                            android:text="我叫童政通"
+                            android:textColor="@color/color_2a2a2a"
+                            android:textSize="@dimen/padding_18" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:drawableRight="@mipmap/ico_go_black"
+                            android:drawablePadding="@dimen/padding_10"
+                            android:paddingLeft="@dimen/padding_20"
+                            android:paddingRight="@dimen/padding_21"
+                            android:text=""
+
+                            android:textSize="@dimen/padding_12" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_10"
+                    android:background="@color/color_f4f4f4" />
+
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_clan_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="清除缓存"
+                    app:bar_rightColor="@color/viewfinder_mask"
+                    app:bar_rightIcon="@mipmap/ico_go_black"
+                    app:bar_rightText="0.3M" />
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="版本更新"
+                    app:bar_rightColor="@color/viewfinder_mask"
+                    app:bar_rightIcon="@mipmap/ico_go_black" />
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="关于我们"
+                    app:bar_rightColor="@color/viewfinder_mask"
+                    app:bar_rightIcon="@mipmap/ico_go_black"
+                    app:bar_rightText="" />
+
+            </LinearLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/white"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</RelativeLayout>

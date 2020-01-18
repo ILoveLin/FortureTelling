@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/padding_20"
+        android:text="星运运势"
+        android:textColor="@color/color_3f3f3f"
+        android:textSize="@dimen/padding_22" />
+
+    <View
+        style="@style/LineStyleD9D9D9"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginRight="@dimen/padding_20" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_marginRight="@dimen/padding_20"
+        android:layout_marginBottom="@dimen/padding_20"
+        android:orientation="horizontal">
+
+        <!--星座-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.shehuan.niv.NiceImageView
+                android:id="@+id/tv03_current_start_pic"
+                android:layout_width="@dimen/padding_80"
+                android:layout_height="@dimen/padding_80"
+                android:src="@mipmap/icon_baiyang"
+                app:border_color="#FF7F24"
+                app:border_width="0dp"
+                app:is_circle="true" />
+
+            <TextView
+
+                android:id="@+id/tv03_current_start"
+                android:layout_width="@dimen/padding_80"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/padding_10"
+                android:gravity="center_horizontal"
+                android:text="白羊座"
+                android:textColor="@color/color_bfc0c0"
+                android:textSize="@dimen/padding_18" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_20"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="童政通"
+                android:textColor="@color/color_737373"
+                android:textSize="@dimen/padding_20"
+                android:visibility="gone" />
+
+            <!--五角星评价-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_2"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Fortune_Part02_last_satart_name_Tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总体运势" />
+
+                <com.company.forturetelling.view.RatingBar
+                    android:id="@+id/tv03_ratingbar01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/padding_20"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:clickable="false"
+                    android:gravity="center_horizontal"
+                    app:clickable="false"
+                    app:starCount="5"
+                    app:starEmpty="@mipmap/start_grey"
+                    app:starFill="@mipmap/start_all"
+                    app:starHalf="@mipmap/start_hanf"
+                    app:starImageSize="@dimen/padding_18"
+                    app:starPadding="10dp"
+                    app:starStep="3"
+                    app:stepSize="Half" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_2"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Fortune_Part02_last_satart_name_Tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="爱情运势" />
+
+                <com.company.forturetelling.view.RatingBar
+                    android:id="@+id/tv03_ratingbar02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/padding_20"
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:gravity="center_horizontal"
+                    app:clickable="false"
+                    app:starCount="5"
+                    app:starEmpty="@mipmap/start_grey"
+                    app:starFill="@mipmap/start_all"
+                    app:starHalf="@mipmap/start_hanf"
+                    app:starImageSize="@dimen/padding_18"
+                    app:starPadding="10dp"
+                    app:starStep="2"
+                    app:stepSize="Half" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Fortune_Part02_last_satart_name_Tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工作状况" />
+
+                <com.company.forturetelling.view.RatingBar
+                    android:id="@+id/tv03_ratingbar03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/padding_20"
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:gravity="center_horizontal"
+                    app:clickable="false"
+                    app:starCount="5"
+                    app:starEmpty="@mipmap/start_grey"
+                    app:starFill="@mipmap/start_all"
+                    app:starHalf="@mipmap/start_hanf"
+                    app:starImageSize="@dimen/padding_18"
+                    app:starPadding="10dp"
+                    app:starStep="2"
+                    app:stepSize="Half" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_2"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Fortune_Part02_last_satart_name_Tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="理财指数" />
+
+                <com.company.forturetelling.view.RatingBar
+                    android:id="@+id/tv03_ratingbar04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/padding_20"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:gravity="center_horizontal"
+                    app:clickable="false"
+                    app:starCount="5"
+                    app:starEmpty="@mipmap/start_grey"
+                    app:starFill="@mipmap/start_all"
+                    app:starHalf="@mipmap/start_hanf"
+                    app:starImageSize="@dimen/padding_18"
+                    app:starPadding="10dp"
+                    app:starStep="5"
+                    app:stepSize="Half" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

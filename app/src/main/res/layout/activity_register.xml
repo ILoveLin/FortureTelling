@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/register_relative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <com.company.forturetelling.view.CircleImageView
+        android:id="@+id/register_roundiv"
+        android:layout_width="@dimen/padding_70"
+        android:layout_height="@dimen/padding_70"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginTop="@dimen/padding_30"
+        android:layout_marginRight="@dimen/padding_20"
+        android:src="@mipmap/icon_fortune_touxiang" />
+
+
+    <com.company.forturetelling.utils.ClearEditText
+
+        android:id="@+id/register_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_roundiv"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginTop="@dimen/padding_30"
+        android:layout_marginRight="@dimen/padding_20"
+        android:layout_marginBottom="@dimen/padding_10"
+        android:background="@color/white_85"
+        android:drawablePadding="8dp"
+        android:hint="请输入11位手机号码"
+        android:inputType="number"
+        android:maxLength="32"
+        android:paddingLeft="@dimen/padding_10"
+        android:text=""
+        android:textColor="@color/color_3f3f3f"
+        android:textColorHint="@color/color_3f3f3f"
+        android:textSize="@dimen/padding_16" />
+
+    <View
+        android:id="@+id/view"
+        style="@style/LineStyleE5E5E5"
+        android:layout_below="@+id/register_username"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginRight="@dimen/padding_10" />
+
+
+    <com.company.forturetelling.utils.ClearEditText
+        android:id="@+id/register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_marginRight="@dimen/padding_20"
+        android:background="@color/white_85"
+        android:drawablePadding="8dp"
+        android:hint="请输入密码"
+        android:maxLength="32"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingBottom="@dimen/padding_10"
+        android:text=""
+        android:textColor="@color/color_3f3f3f"
+        android:textColorHint="@color/color_3f3f3f"
+        android:textSize="@dimen/padding_16" />
+
+    <View
+        android:id="@+id/view02"
+        style="@style/LineStyleE5E5E5"
+        android:layout_below="@+id/register_password"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginRight="@dimen/padding_10" />
+
+
+    <LinearLayout
+        android:id="@+id/linear_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view02"
+        android:orientation="vertical">
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_setting_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_10"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/color_3f3f3f"
+            app:bar_leftText="我的生日"
+            app:bar_rightColor="@color/color_666666"
+            app:bar_rightHint="请输入" />
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_setting_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_10"
+            android:background="@drawable/shape_mine_bar"
+            android:clickable="true"
+            app:bar_leftColor="@color/color_3f3f3f"
+            app:bar_leftText="我的地址"
+            app:bar_rightColor="@color/color_666666"
+            app:bar_rightHint="请输入" />
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_setting_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_10"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/color_3f3f3f"
+            app:bar_leftText="我的性别"
+            app:bar_rightColor="@color/color_666666"
+            app:bar_rightHint="请输入" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_register"
+        style="@style/textBtnStyle"
+        android:layout_below="@id/linear_register"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="@dimen/padding_10"
+        android:text="注册" />
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_register"
+        android:layout_marginLeft="@dimen/padding_14"
+        android:paddingTop="@dimen/padding_10"
+        android:text="注册即表示同意"
+
+        />
+
+    <TextView
+        android:id="@+id/phone_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_register"
+        android:layout_toRightOf="@+id/test"
+        android:paddingTop="@dimen/padding_10"
+        android:text="《注册协议》"
+        android:textColor="@color/colorPrimary"
+
+        />
+</RelativeLayout>
+

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    app:tr_pureScrollMode_on="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginTop="@dimen/padding_20"
+        android:layout_marginRight="@dimen/padding_10"
+        android:background="@drawable/shape_bg_out_6tab"
+        android:orientation="vertical">
+        <!--姓名-->
+        <LinearLayout
+
+            android:id="@+id/linear_name"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_45"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginTop="@dimen/padding_20"
+            android:layout_marginRight="@dimen/padding_10"
+            android:background="@drawable/shape_bg_6tab"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:text="您的姓名"
+                android:textSize="@dimen/padding_18" />
+
+            <View
+                android:layout_width="@dimen/padding_1"
+                android:layout_height="@dimen/padding_40"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/padding_5" />
+
+            <com.company.forturetelling.utils.ClearEditText
+                android:id="@+id/edittext_person"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/padding_45"
+                android:layout_marginLeft="@dimen/padding_20"
+                android:layout_marginRight="@dimen/padding_20"
+                android:layout_weight="1"
+                android:background="@color/color_caa778"
+                android:hint="请输入关键字"
+                android:text=""
+                android:textColor="@color/color_e3e3e4"
+                android:textColorHint="@color/color_e3e3e4" />
+
+        </LinearLayout>
+        <!--性别选择-->
+        <LinearLayout
+            android:id="@+id/linear_born_sex"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_45"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginTop="@dimen/padding_20"
+            android:layout_marginRight="@dimen/padding_10"
+            android:layout_marginBottom="@dimen/padding_20"
+            android:background="@drawable/shape_bg_6tab"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:text="您的性别"
+                android:textSize="@dimen/padding_18" />
+
+            <View
+                android:layout_width="@dimen/padding_1"
+                android:layout_height="@dimen/padding_40"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/padding_5" />
+
+            <com.company.forturetelling.view.SexBox
+                android:id="@+id/sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <!--生日选择-->
+        <LinearLayout
+            android:id="@+id/linear_born_data"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_45"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_10"
+            android:layout_marginBottom="@dimen/padding_20"
+            android:background="@drawable/shape_bg_6tab"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:text="出生日期"
+                android:textSize="@dimen/padding_18" />
+
+            <View
+                android:layout_width="@dimen/padding_1"
+                android:layout_height="@dimen/padding_40"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/padding_5" />
+
+            <TextView
+                android:id="@+id/tv_born_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_20"
+                android:hint="请选择出生日期"
+                android:textColor="@color/color_e3e3e4"
+                android:textSize="@dimen/padding_18"
+
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/padding_20"
+            android:src="@mipmap/icon_text" />
+    </LinearLayout>
+
+</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+

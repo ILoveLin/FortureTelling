@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/linear_fortune_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.shehuan.niv.NiceImageView
+                android:id="@+id/tv01_pic"
+                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/padding_80"
+                android:layout_height="@dimen/padding_80"
+                android:layout_marginLeft="@dimen/padding_15"
+                android:src="@mipmap/icon_fortune_touxiang"
+                app:border_color="#FF7F24"
+                app:border_width="0dp"
+                app:is_circle="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv01_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="张三"
+                        android:textColor="@color/color_2a2a2a"
+                        android:textSize="@dimen/padding_19"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv01_name_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/padding_20"
+                        android:background="@drawable/shape_bg_tip"
+                        android:paddingLeft="@dimen/padding_2"
+                        android:paddingTop="@dimen/padding_1"
+                        android:paddingRight="@dimen/padding_2"
+                        android:paddingBottom="@dimen/padding_1"
+                        android:text="喜用神土"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/padding_18"
+
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv01_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_5"
+                    android:text="阳历:1999年2月25日 8点"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/padding_18" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="命主特点"
+                        android:textColor="@color/color_666666"
+                        android:textSize="@dimen/padding_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10">
+
+                            <TextView
+                                android:id="@+id/tv01_point01"
+                                android:layout_marginLeft="@dimen/padding_30"
+                                style="@style/Fortune_Part01_Text_Tips"
+                                android:text="开朗直爽" />
+
+                            <View
+                                android:layout_width="@dimen/padding_0"
+                                android:layout_height="@dimen/padding_1"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_marginRight="@dimen/padding_30"
+                                android:id="@+id/tv01_point02"
+
+                                style="@style/Fortune_Part01_Text_Tips"
+                                android:layout_marginLeft="@dimen/padding_8"
+                                android:text="慷慨大方" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
+                            android:layout_marginTop="@dimen/padding_6">
+
+                            <TextView
+                                android:layout_marginLeft="@dimen/padding_30"
+                                android:id="@+id/tv01_point03"
+                                style="@style/Fortune_Part01_Text_Tips"
+                                android:text="开朗直爽" />
+                            <View
+                                android:layout_width="@dimen/padding_0"
+                                android:layout_height="@dimen/padding_1"
+                                android:layout_weight="1" />
+                            <TextView
+                                android:layout_marginRight="@dimen/padding_30"
+                                android:id="@+id/tv01_point04"
+                                style="@style/Fortune_Part01_Text_Tips"
+                                android:layout_marginLeft="@dimen/padding_8"
+                                android:text="慷慨大方" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+
+            android:id="@+id/view_line"
+            style="@style/LineStyleD9D9D9"
+
+            android:layout_marginLeft="@dimen/padding_20"
+            android:layout_marginTop="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_20" />
+
+
+    </LinearLayout>
+
+    <!--命盘分析-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_fortune_part"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_marginBottom="@dimen/padding_10"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_part1_logo"
+            android:layout_width="23dp"
+            android:layout_height="@dimen/padding_17"
+            android:background="@drawable/icon_fortune_tip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_toRightOf="@+id/tv_part1_logo"
+            android:text="命盘分析"
+            android:textColor="@color/color_b883df"
+            android:textSize="@dimen/padding_20" />
+    </LinearLayout>
+
+
+</RelativeLayout>

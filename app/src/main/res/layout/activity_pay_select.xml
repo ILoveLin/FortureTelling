@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginTop="@dimen/padding_10"
+        android:id="@+id/shop_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_10"
+        android:text="商品名称:"
+        android:textColor="@color/black90"
+        android:textSize="@dimen/padding_20" />
+
+    <TextView
+        android:layout_marginTop="@dimen/padding_10"
+        android:id="@+id/shop_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_name"
+        android:paddingLeft="@dimen/padding_10"
+        android:text="订单编号:"
+        android:textColor="@color/black90"
+        android:textSize="@dimen/padding_20" />
+
+    <TextView
+        android:id="@+id/tv_pay_now"
+        android:layout_below="@+id/shop_num"
+        android:layout_width="@dimen/padding_150"
+        android:layout_height="@dimen/padding_40"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/padding_50"
+        android:background="@drawable/selector_button_pay"
+        android:gravity="center"
+        android:text="支付"
+        android:textColor="@color/red"
+        android:textSize="@dimen/padding_22" />
+</RelativeLayout>

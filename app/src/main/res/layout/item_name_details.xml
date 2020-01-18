@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:background="@drawable/shape_bg_addname_name"
+        android:gravity="center"
+        android:id="@+id/linear_name_details_all"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_60"
+        android:layout_marginLeft="@dimen/padding_20"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_marginRight="@dimen/padding_20"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_namedetails_tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="童"
+            android:textSize="@dimen/padding_22" />
+
+
+        <TextView
+            android:id="@+id/tv_namedetails_tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="张三"
+            android:textSize="@dimen/padding_22" />
+    </LinearLayout>
+
+    <View
+        android:visibility="gone"
+        style="@style/LineStyleD9D9D9"
+        android:layout_below="@+id/linear_all_new"
+        android:layout_marginTop="@dimen/padding_8" />
+</RelativeLayout>

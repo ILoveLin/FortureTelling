@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relate_mine_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f4f4"
+    android:orientation="vertical">
+
+    <!--纯滚动模式-->
+    <!--app:srlEnablePureScrollMode="true"-->
+    <!--刷新和加载更多设置-->
+    <!--app:srlEnableAutoLoadMore="false"-->
+    <!--app:srlEnableLoadMore="true"-->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnablePureScrollMode="true">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="FixedBehind"
+            app:srlDrawableArrowSize="20dp"
+            app:srlDrawableMarginRight="20dp"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo"
+            app:srlDrawableProgressSize="20dp"
+            app:srlEnableLastTime="true"
+            app:srlFinishDuration="500"
+            app:srlTextSizeTime="10dp"
+            app:srlTextSizeTitle="16sp"
+            app:srlTextTimeMarginTop="2dp">
+
+
+        </com.scwang.smartrefresh.layout.header.ClassicsHeader>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+            <!--android:background="@drawable/shape_fortune_infor_detalis"-->
+
+            <!--android:layout_marginLeft="@dimen/padding_10"-->
+            <!--android:layout_marginTop="@dimen/padding_20"-->
+            <!--android:layout_marginRight="@dimen/padding_10"-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/im_header_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/icon_gb_six_name"
+
+                    />
+
+                <!--个人信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:orientation="vertical">
+                    <!--名字-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding_40"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="性别:"
+                                android:textColor="@color/black80"
+                                android:textSize="@dimen/padding_18" />
+
+                            <TextView
+                                android:id="@+id/tv_info_sex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/padding_10"
+                                android:text="男"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/padding_18" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="生肖:"
+                                android:textColor="@color/black80"
+                                android:textSize="@dimen/padding_18" />
+
+                            <TextView
+                                android:id="@+id/tv_info_zodiac"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/padding_10"
+                                android:text="羊"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/padding_18" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--生辰-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="生辰:"
+                            android:textColor="@color/black80"
+                            android:textSize="@dimen/padding_18" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_info_bron"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/padding_10"
+                                android:text="2015-02-02-22-20"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/padding_18" />
+
+                            <TextView
+                                android:id="@+id/tv_info_brithday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/padding_10"
+                                android:text="2015-02-02-22-20"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/padding_18" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                    <!--您的五行八字资料-->
+
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:id="@+id/linear_recycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="您的五行八字资料"
+                            android:textColor="@color/black80"
+                            android:textSize="@dimen/padding_18" />
+
+                        <android.support.v7.widget.RecyclerView
+                            android:visibility="visible"
+                            android:id="@+id/six_head_recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
+                            android:layout_marginTop="@dimen/padding_20"
+                            android:layout_marginRight="@dimen/padding_10"
+                            android:paddingBottom="@dimen/padding_20">
+
+
+                        </android.support.v7.widget.RecyclerView>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <!--今日运势01-->
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_01" />
+
+
+                    <TextView
+                        android:id="@+id/tv_details_01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+
+                <!--本周运势02-->
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_02" />
+
+                    <TextView
+                        android:id="@+id/tv_details_02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+                <!--本月运势03-->
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_03" />
+
+                    <TextView
+                        android:id="@+id/tv_details_03"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+                <!--今年运势04-->
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_04" />
+
+                    <TextView
+                        android:id="@+id/tv_details_04"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+                <!--今年运势05-->
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:layout_marginBottom="@dimen/padding_20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_05" />
+
+                    <TextView
+                        android:id="@+id/tv_details_05"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:background="@color/white"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:textSize="@dimen/padding_22" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/white"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</RelativeLayout>

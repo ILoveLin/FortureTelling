@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relate_mine_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f4f4"
+    android:orientation="vertical">
+
+    <!--纯滚动模式-->
+    <!--app:srlEnablePureScrollMode="true"-->
+    <!--刷新和加载更多设置-->
+    <!--app:srlEnableAutoLoadMore="false"-->
+    <!--app:srlEnableLoadMore="true"-->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnablePureScrollMode="true">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="FixedBehind"
+            app:srlDrawableArrowSize="20dp"
+            app:srlDrawableMarginRight="20dp"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo"
+            app:srlDrawableProgressSize="20dp"
+            app:srlEnableLastTime="true"
+            app:srlFinishDuration="500"
+            app:srlTextSizeTime="10dp"
+            app:srlTextSizeTitle="16sp"
+            app:srlTextTimeMarginTop="2dp">
+
+
+        </com.scwang.smartrefresh.layout.header.ClassicsHeader>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--android:background="@drawable/shape_fortune_infor_detalis"-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:layout_marginTop="@dimen/padding_20"
+                android:layout_marginRight="@dimen/padding_10"
+                android:orientation="vertical">
+                <!--个人信息-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/padding_20"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:layout_marginRight="@dimen/padding_20"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_current_name_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="张三"
+                            android:textSize="@dimen/padding_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1991年12月28日 8点"
+                            android:textSize="@dimen/padding_18" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_10">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:paddingLeft="@dimen/padding_60"
+                            android:paddingRight="@dimen/padding_60"
+                            android:src="@mipmap/icon_shengxiao" />
+
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="@dimen/padding_1"
+                            android:layout_height="@dimen/padding_1"
+                            android:layout_centerInParent="true" />
+
+
+                        <TextView
+                            android:id="@+id/tv_title_01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_60"
+                            android:layout_marginRight="@dimen/padding_90"
+                            android:layout_toLeftOf="@+id/view"
+                            android:background="@drawable/shape_details_01"
+                            android:paddingLeft="@dimen/padding_5"
+                            android:paddingTop="@dimen/padding_7"
+                            android:paddingRight="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_7"
+                            android:text="开朗直爽 "
+                            android:textColor="@color/color_d19d38"
+                            android:textSize="@dimen/padding_18" />
+
+                        <TextView
+                            android:id="@+id/tv_title_02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_90"
+                            android:layout_marginTop="@dimen/padding_60"
+                            android:layout_toRightOf="@+id/view"
+                            android:background="@drawable/shape_details_02"
+                            android:paddingLeft="@dimen/padding_5"
+                            android:paddingTop="@dimen/padding_7"
+                            android:paddingRight="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_7"
+                            android:text="慷慨大方 "
+                            android:textColor="@color/color_5ca8e3"
+                            android:textSize="@dimen/padding_18" />
+
+                        <TextView
+                            android:id="@+id/tv_title_03"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_title_01"
+                            android:layout_marginTop="@dimen/padding_120"
+                            android:layout_marginRight="@dimen/padding_90"
+                            android:layout_toLeftOf="@+id/view"
+                            android:background="@drawable/shape_details_03"
+                            android:paddingLeft="@dimen/padding_5"
+                            android:paddingTop="@dimen/padding_7"
+                            android:paddingRight="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_7"
+                            android:text="待人亲切 "
+                            android:textColor="@color/color_817ad4"
+                            android:textSize="@dimen/padding_18" />
+
+                        <TextView
+                            android:id="@+id/tv_title_04"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_title_02"
+                            android:layout_marginLeft="@dimen/padding_90"
+                            android:layout_marginTop="@dimen/padding_120"
+                            android:layout_toRightOf="@+id/view"
+                            android:background="@drawable/shape_details_04"
+                            android:paddingLeft="@dimen/padding_5"
+                            android:paddingTop="@dimen/padding_7"
+                            android:paddingRight="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_7"
+                            android:text="慷慨大方 "
+                            android:textColor="@color/color_88a032"
+                            android:textSize="@dimen/padding_18" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!--爱情分析-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_love" />
+
+
+                    <TextView
+                        android:id="@+id/tv_contont01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:textSize="@dimen/padding_25" />
+                </LinearLayout>
+
+                <!--财富分析-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_rich" />
+
+                    <TextView
+                        android:id="@+id/tv_contont02"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:textSize="@dimen/padding_25" />
+                </LinearLayout>
+                <!--事业分析-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_20"
+                    android:layout_marginBottom="@dimen/padding_20"
+                    android:background="@drawable/shape_fortune_infor_detalis"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/include_details_title_buness" />
+
+                    <TextView
+                        android:id="@+id/tv_contont03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
+                        android:textSize="@dimen/padding_25" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/white"
+            app:srlDrawableProgress="@mipmap/icon_refresh_logo" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</RelativeLayout>

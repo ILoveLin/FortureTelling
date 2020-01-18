@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/padding_45">
+
+    <TextView
+        android:id="@+id/tv_love01"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:text="今日运势"
+        android:textColor="@color/color_3f3f3f"
+        android:textSize="@dimen/padding_18" />
+
+
+    <ImageView
+        android:id="@+id/iv_left_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/padding_10"
+        android:layout_toLeftOf="@+id/tv_love01"
+        android:src="@mipmap/icon_details_love" />
+
+    <ImageView
+        android:id="@+id/iv_left_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/padding_10"
+        android:layout_toLeftOf="@+id/iv_left_01"
+        android:src="@mipmap/icon_details_love" />
+
+    <ImageView
+        android:id="@+id/iv_left_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/padding_10"
+        android:layout_toLeftOf="@+id/iv_left_02"
+        android:src="@mipmap/icon_details_love" />
+
+
+    <ImageView
+        android:id="@+id/iv_right_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_toRightOf="@+id/tv_love01"
+        android:src="@mipmap/icon_details_love" />
+
+    <ImageView
+        android:id="@+id/iv_right_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_toRightOf="@+id/iv_right_01"
+        android:src="@mipmap/icon_details_love" />
+
+    <ImageView
+        android:id="@+id/iv_right_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_toRightOf="@+id/iv_right_02"
+        android:src="@mipmap/icon_details_love" />
+
+
+    <View
+        android:id="@+id/view_line"
+        style="@style/LineStyleD9D9D9"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginRight="@dimen/padding_10" />
+</RelativeLayout>
