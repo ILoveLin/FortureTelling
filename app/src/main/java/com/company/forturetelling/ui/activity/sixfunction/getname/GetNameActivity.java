@@ -10,7 +10,11 @@ import android.widget.Toast;
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.calculate.AddNameBean;
+import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
+import com.company.forturetelling.ui.activity.sixfunction.eightnumber.EightNumberActivity;
 import com.company.forturetelling.utils.ClearEditText;
 import com.company.forturetelling.view.calendar.ChineseCalendar;
 import com.company.forturetelling.view.calendar.DialogGLC;
@@ -18,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.yun.common.utils.KeyBoardUtils;
+import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -132,12 +137,25 @@ public class GetNameActivity extends BaseActivity {
                         }.getType();
                         AddNameBean mAddBean = gson.fromJson(response, type);
                         if (mAddBean.getStatus().equals("0")) {
-                            String orderNo = mAddBean.getData().getOrderNo();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("orderNo", orderNo);
-                            bundle.putString("addName", addName);
-                            openActivity(GetNameResultActivity.class, bundle);
 
+
+                            String orderNo = mAddBean.getData().getOrderNo();
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("orderNo", orderNo);
+//                            bundle.putString("addName", addName);
+//                            openActivity(GetNameResultActivity.class, bundle);
+                            String userid = (String) SharePreferenceUtil.get(GetNameActivity.this, Constants.USERID, "");
+                            if ("".equals(userid)) {
+                                openActivity(LoginActivity.class);
+                            } else {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("oid", orderNo);
+                                bundle.putString("title", title);
+                                //TODO  获取到订单号 跳转到支付界面
+//        openActivity(  ResultCommonActivity.class, bundle);
+                                openActivity(SelectPayActivity.class, bundle);
+//        this.finish();
+                            }
                         } else {
                             showError();
                         }

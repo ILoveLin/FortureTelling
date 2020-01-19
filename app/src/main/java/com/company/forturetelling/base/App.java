@@ -48,8 +48,11 @@ public class App extends Application {
         //微信支付
         final IWXAPI msgApi = WXAPIFactory.createWXAPI(getApplicationContext(), null);
         // 将该app注册到微信   AppID:步骤二申请到的AppID
-//        msgApi.registerApp("wx4b9e09ae470dc4ce");
+        // msgApi.registerApp("wx4b9e09ae470dc4ce");
         msgApi.registerApp(Constants.APP_ID_WECHART);
+
+
+        //Okhttp请求头
         //请求工具的拦截器  ,可以设置证书,设置可访问所有的https网站,参考https://www.jianshu.com/p/64cc92c52650
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()

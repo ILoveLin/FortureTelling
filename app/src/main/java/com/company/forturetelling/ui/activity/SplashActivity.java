@@ -109,7 +109,7 @@ public class SplashActivity extends BaseActivity {
                 Intent intent = new Intent();
                 intent.setClass(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
 //            }
 
         }

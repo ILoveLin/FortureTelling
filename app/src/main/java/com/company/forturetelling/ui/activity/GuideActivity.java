@@ -90,7 +90,7 @@ public class GuideActivity extends BaseActivity {
 //                    finish();
 //                } else {
                     startActivity(new Intent(GuideActivity.this, MainActivity.class));
-                    finish();
+//                    finish();
 //                }
 
 

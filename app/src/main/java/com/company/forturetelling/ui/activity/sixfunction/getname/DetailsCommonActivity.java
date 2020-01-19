@@ -24,7 +24,7 @@ import butterknife.OnClick;
 /**
  * Created by Lovelin on 2019/12/9
  * <p>
- * Describe:6个tab的详情界面
+ * Describe:5个tab的结果详情界面
  */
 public class DetailsCommonActivity extends BaseActivity {
 

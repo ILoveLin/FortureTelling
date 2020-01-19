@@ -11,10 +11,12 @@ import com.company.forturetelling.bean.bus.SixTabResultEvent;
 import com.company.forturetelling.bean.sixtab.EightNumBean01;
 import com.company.forturetelling.bean.sixtab.EightNumBean02;
 import com.company.forturetelling.bean.sixtab.EightNumBean03;
+import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.sixfunction.getname.GetNameActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -40,7 +42,6 @@ public class EightNumberPresenter {
         this.mContext = mContext;
         this.mView = mView;
         mGson = new Gson();
-
     }
 
     public void sendNo1Request(String datadate, String username, String gender, String h) {
@@ -116,15 +117,15 @@ public class EightNumberPresenter {
                     @Override
                     public void onResponse(String response, int id) {
                         Log.e("mImageUri", "=========sendNo===02======" + response);
-
                         Type type = new TypeToken<EightNumBean02>() {
                         }.getType();
                         EightNumBean02 mBean02 = mGson.fromJson(response, type);
 
-
                         if ("0".equals(mBean02.getStatus())) {
                             //TODO  获取到订单号 跳转到支付界面
                             Bundle bundle = new Bundle();
+                            Log.e("mImageUri", "=========sendNo===03==3====" + response);
+
                             bundle.putString("oid",mBean02.getData().getOid());
                             bundle.putString("title","八字精批");
                             mView.showContentView();

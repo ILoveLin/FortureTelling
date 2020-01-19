@@ -2,11 +2,14 @@ package com.company.forturetelling.ui.activity.sixfunction.eightnumber;
 
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
+import com.company.forturetelling.global.Constants;
+import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
 import com.company.forturetelling.ui.activity.sixfunction.eightnumber.presenter.EightNumberPresenter;
@@ -16,6 +19,7 @@ import com.company.forturetelling.view.calendar.ChineseCalendar;
 import com.company.forturetelling.view.calendar.DialogGLC;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.yun.common.utils.KeyBoardUtils;
+import com.yun.common.utils.SharePreferenceUtil;
 
 import java.util.Calendar;
 
@@ -80,13 +84,21 @@ public class EightNumberActivity extends BaseActivity implements EightNumberView
 
     @Override
     public void updateFinish(String oid, String title) {
-        Bundle bundle = new Bundle();
-        bundle.putString("oid", oid);
-        bundle.putString("title", title);
-        //TODO  获取到订单号 跳转到支付界面
+        String userid = (String) SharePreferenceUtil.get(EightNumberActivity.this, Constants.USERID, "");
+        Log.e("mImageUri", "=========sendNo===02==updateFinish==userid==" + userid);
+
+        if ("".equals(userid)) {
+            openActivity(LoginActivity.class);
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putString("oid", oid);
+            bundle.putString("title", title);
+            //TODO  获取到订单号 跳转到支付界面
 //        openActivity(  ResultCommonActivity.class, bundle);
-        openActivity(  SelectPayActivity.class, bundle);
+            openActivity(SelectPayActivity.class, bundle);
 //        this.finish();
+        }
+
     }
 
     private void checkData() {

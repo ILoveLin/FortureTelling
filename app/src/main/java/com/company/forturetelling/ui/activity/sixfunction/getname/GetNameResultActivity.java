@@ -33,7 +33,7 @@ import okhttp3.Call;
 /**
  * Created by Lovelin on 2019/12/18
  * <p>
- * Describe:
+ * Describe:取名单独的结果界面
  */
 public class GetNameResultActivity extends BaseActivity {
     @BindView(R.id.tv_namedetails_name)
