@@ -9,7 +9,7 @@
         style="@style/Font15Style666666"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/padding_12"
-        android:text="您还没有保存方案哦!" />
+        android:text="暂无数据!!" />
 
     <ImageView
         android:id="@+id/page_empty_iv"

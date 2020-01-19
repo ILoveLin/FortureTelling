@@ -263,7 +263,6 @@ public class SelectPayActivity extends BaseActivity {
                         }.getType();
                         AliPayInforBean mAliPayInforBean = gson.fromJson(resultInfo, type);
                         String out_trade_no = mAliPayInforBean.getAlipay_trade_app_pay_response().getOut_trade_no();
-
                         checkoutSecondAliPay(out_trade_no);
 
                     } else {

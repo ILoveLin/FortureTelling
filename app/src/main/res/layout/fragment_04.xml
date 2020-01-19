@@ -97,8 +97,7 @@
                             android:textSize="@dimen/padding_12" />
 
 
-                    </LinearLayout
->
+                    </LinearLayout>
                     <!--登陆状态-->
                     <LinearLayout
 
@@ -157,7 +156,6 @@
                     android:layout_height="@dimen/padding_10"
                     android:background="@color/color_f4f4f4" />
 
-
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_clan_data"
                     android:layout_width="match_parent"
@@ -166,8 +164,17 @@
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="清除缓存"
                     app:bar_rightColor="@color/viewfinder_mask"
-                    app:bar_rightIcon="@mipmap/ico_go_black"
                     app:bar_rightText="0.3M" />
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_payed_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="我的订单"
+                    app:bar_rightColor="@color/viewfinder_mask"
+                    app:bar_rightText="" />
 
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_update"
@@ -177,7 +184,7 @@
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="版本更新"
                     app:bar_rightColor="@color/viewfinder_mask"
-                    app:bar_rightIcon="@mipmap/ico_go_black" />
+                  />
 
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_about_us"
@@ -187,7 +194,7 @@
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="关于我们"
                     app:bar_rightColor="@color/viewfinder_mask"
-                    app:bar_rightIcon="@mipmap/ico_go_black"
+
                     app:bar_rightText="" />
 
             </LinearLayout>

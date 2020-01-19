@@ -77,6 +77,7 @@
         <activity android:name=".ui.activity.result.ResultCommonActivity" />
         <activity android:name=".ui.activity.result.ResultMarragetestActivity" />
         <activity android:name=".ui.activity.result.ResultNameDetalisActivity" />
+        <activity android:name=".ui.activity.pay.order.OrderActivity" />
 
         
         <activity

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linear_all_new"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_10"
+    android:background="@drawable/shape_order"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_10"
+        android:orientation="vertical">
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/black80"
+            app:bar_leftText="测试名称"
+            app:bar_rightColor="@color/black80"
+            app:bar_rightText="在线付费_取名" />
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_my_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/black80"
+            app:bar_leftText="姓名"
+            app:bar_rightColor="@color/black80"
+            app:bar_rightText="巨思_50" />
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_order_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/black80"
+            app:bar_leftText="订单号"
+            app:bar_rightColor="@color/black80"
+            app:bar_rightText="202001181415159169213280" />
+
+        <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_order_statue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/black80"
+            app:bar_leftText="状态"
+            app:bar_rightColor="@color/black80"
+            app:bar_rightText="已支付" />
+    </LinearLayout>
+
+</LinearLayout>

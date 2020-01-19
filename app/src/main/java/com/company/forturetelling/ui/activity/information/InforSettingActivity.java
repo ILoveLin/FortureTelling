@@ -205,6 +205,7 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                             if (inforBean.getStatus().equals("0")) {
                                 InforBean.DataBean.InfoBean info = inforBean.getData().getInfo();
                                 tvCurrentName.setText("" + info.getName());
+                                bar_setting_maname.setRightText("" + info.getName());
                                 GlideUtils.LogadCustomCircleImage(InforSettingActivity.this, HttpConstants.Common + info.getHeadimg(), currentPic);
                                 barSettingBirthday.setRightText("" + info.getBirthday());
                                 bar_setting_address.setRightText("" + info.getProvince() + "省 " + info.getCity() + "市");
@@ -288,7 +289,7 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
 
                     @Override
                     public void onConfirm(BaseDialog dialog, String content) {
-                        showToast("确定了：" + content);
+//                        showToast("确定了：" + content);
 
                         sendInputNameRequest(content);
 

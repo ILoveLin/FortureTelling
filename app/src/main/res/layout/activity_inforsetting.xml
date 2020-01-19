@@ -107,7 +107,6 @@
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的账号"
-                    android:paddingRight="@dimen/padding_20"
                     app:bar_rightColor="@color/color_666666"
                     app:bar_rightText="1991-02-28" />
                 <com.company.forturetelling.view.SettingBar
@@ -117,9 +116,8 @@
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的昵称"
-                    android:paddingRight="@dimen/padding_20"
                     app:bar_rightColor="@color/color_666666"
-                    app:bar_rightText="1991-02-28" />
+                    app:bar_rightText="巨思" />
 
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_setting_birthday"
@@ -129,7 +127,6 @@
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的生日"
                     app:bar_rightColor="@color/color_666666"
-                    app:bar_rightIcon="@mipmap/ico_go_black"
                     app:bar_rightText="1991-02-28" />
 
                 <com.company.forturetelling.view.SettingBar
@@ -141,7 +138,6 @@
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的地址"
                     app:bar_rightColor="@color/color_666666"
-                    app:bar_rightIcon="@mipmap/ico_go_black"
                     app:bar_rightText="江西省 上饶市" />
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_setting_sex"
@@ -151,7 +147,6 @@
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的性别"
                     app:bar_rightColor="@color/color_666666"
-                    app:bar_rightIcon="@mipmap/ico_go_black"
                     app:bar_rightText="男" />
 
                 <com.company.forturetelling.view.SettingBar
@@ -162,7 +157,6 @@
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="修改密码"
                     app:bar_rightColor="@color/color_666666"
-                    app:bar_rightIcon="@mipmap/ico_go_black"
                     app:bar_rightText="" />
 
                 <View

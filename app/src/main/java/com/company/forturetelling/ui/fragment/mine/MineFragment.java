@@ -26,6 +26,7 @@ import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.NewsActivity;
 import com.company.forturetelling.ui.activity.information.InforSettingActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
 import com.company.forturetelling.utils.CacheUtil;
 import com.company.forturetelling.view.CircleImageView;
@@ -78,6 +79,8 @@ public class MineFragment extends BaseFragment implements MineView {
     SettingBar barUpdate;
     @BindView(R.id.bar_about_us)
     SettingBar barAboutUs;
+    @BindView(R.id.bar_payed_order)
+    SettingBar bar_payed_order;
     @BindView(R.id.smartRefresh)
     SmartRefreshLayout smartRefresh;
     @BindView(R.id.tv_current_name_unlogin)
@@ -154,6 +157,9 @@ public class MineFragment extends BaseFragment implements MineView {
                             InforBean inforBean = gson.fromJson(response, type);
 
                             if (inforBean.getStatus().equals("0")) {
+//                                Log.e("mImageUri", "=========sendNo===昵称=="+response);
+//                                Log.e("mImageUri", "=========sendNo===昵称==" + inforBean.getData().getInfo().getName());
+
                                 tvCurrentName.setText("" + inforBean.getData().getInfo().getName());
                                 GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + inforBean.getData().getInfo().getHeadimg(), currentPic);
 
@@ -185,7 +191,7 @@ public class MineFragment extends BaseFragment implements MineView {
     }
 
 
-    @OnClick({R.id.linear_current_info_unlogin, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
+    @OnClick({R.id.linear_current_info_unlogin,R.id.bar_payed_order, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
     public void multipleOnclick(View view) {
         switch (view.getId()) {
             case R.id.linear_current_info: //个人设置
@@ -197,9 +203,11 @@ public class MineFragment extends BaseFragment implements MineView {
             case R.id.bar_clan_data: //清理缓存
                 showPop();
                 break;
+            case R.id.bar_payed_order: //我的订单
+                openActivity(OrderActivity.class);
+                break;
             case R.id.bar_update:  //版本更新
                 requestUpdateVersion();
-
                 break;
             case R.id.bar_about_us: //关于我们
 //                http://jxsccm.com/

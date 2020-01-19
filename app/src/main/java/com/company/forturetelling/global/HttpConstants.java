@@ -59,4 +59,8 @@ public class HttpConstants {
     public static final String ALIPay = Common + "/api/aop/index";                //post
     public static final String ALIPay_Second = Common + "/api/aop/infostatus";
 
+
+    //我的订单
+    public static final String Order = Common + "/api/quming/lists";
+
 }

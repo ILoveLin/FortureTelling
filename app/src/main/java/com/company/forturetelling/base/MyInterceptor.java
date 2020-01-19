@@ -31,7 +31,7 @@ public class MyInterceptor implements Interceptor {
         String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
 //        Log.e("Net", "data==1==Interceptor===" + device);
 //        Log.e("Net", "data==1==Interceptor===" + token);
-        Log.e("Net", "data==1==Interceptor===" + userid);
+//        Log.e("mImageUri", "=========sendNo===调试头==" + userid);
 
         Request request = chain.request().newBuilder()
 //                .addHeader("device", "android")
