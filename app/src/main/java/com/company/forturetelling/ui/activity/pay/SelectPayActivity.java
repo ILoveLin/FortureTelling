@@ -62,6 +62,7 @@ public class SelectPayActivity extends BaseActivity {
     private PayBean payBean;
     private String notify_url;
     private Gson gson;
+    private String total_fee;
 
     @Override
     public int getContentViewId() {
@@ -157,12 +158,16 @@ public class SelectPayActivity extends BaseActivity {
     private PayBean payWXBean;
     private String orderInfo;
 
+
     public void GetParamsFromBackground(int payType) {
         switch (payType) {
+            //金额 （分） 比如 1 = 1分 10 = 1毛 100=1元
             case 0:         //微信
                 OkHttpUtils.post()
                         .url(HttpConstants.WXPay)
-                        .addParams("", "")
+                        .addParams("body", title)
+                        .addParams("out_trade_no", oid)
+                        .addParams("total_fee", "1")
                         .build()
                         .execute(new StringCallback() {
 
@@ -195,14 +200,16 @@ public class SelectPayActivity extends BaseActivity {
 //                                WXParamsBean wxParamsBean = new WXParamsBean();
 
 
-
                             }
                         });
                 break;
             case 1:         //支付宝
+                //价格 比如 0.01 = 1分 0.1 = 1毛 1 = 1元
                 OkHttpUtils.get()
                         .url(HttpConstants.ALIPay)
-                        .addParams("", "")
+                        .addParams("body", title)
+                        .addParams("out_trade_no", oid)
+                        .addParams("total_fee", "0.01")
                         .build()
                         .execute(new StringCallback() {
                             @Override
@@ -419,6 +426,7 @@ public class SelectPayActivity extends BaseActivity {
         setTitleName("订单界面");
         title = getIntent().getStringExtra("title");
         oid = getIntent().getStringExtra("oid");
+        total_fee = getIntent().getStringExtra("total_fee");
         shop_name.setText("商品名称:" + title);
         shop_num.setText("订单编号:" + oid);
         gson = new Gson();

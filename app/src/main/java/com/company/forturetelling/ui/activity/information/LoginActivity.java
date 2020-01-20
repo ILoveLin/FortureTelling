@@ -134,6 +134,7 @@ public class LoginActivity extends BaseActivity {
 //                            SharePreferenceUtil.put(LoginActivity.this, Constants.Is_Logined, true);
 //                            SharePreferenceUtil.put(LoginActivity.this, Constants.Logined, true);
 //                            SharePreferenceUtil.put(LoginActivity.this, Constants.USERID, mBean.getData().getUserid() + "");
+                            showContent();
                             String userid = mBean.getData().getUserid() + "";
 //                            String token = mBean.getData().getToken() + "";
                             SharePreferenceUtil.put(LoginActivity.this, Constants.USERID, userid + "");

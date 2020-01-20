@@ -55,7 +55,10 @@ public class HttpConstants {
     public static final String NameDetails02 = Common + "/sm2/index.php?ac=xmfx33";                //post
     public static final String NameDetails03 = Common + "/sm2/index.php?ac=xmfx33xq";                //post
 //    http://testbazi.zgszfy.com/api/aop/index
+    //支付
     public static final String WXPay = Common + "/api/Wxpay/wx_pay";                //post
+    public static final String WXPay_Second = Common + "/api/Wxpay/wx_notify";                //post
+
     public static final String ALIPay = Common + "/api/aop/index";                //post
     public static final String ALIPay_Second = Common + "/api/aop/infostatus";
 

@@ -84,20 +84,14 @@ public class EightNumberActivity extends BaseActivity implements EightNumberView
 
     @Override
     public void updateFinish(String oid, String title) {
-        String userid = (String) SharePreferenceUtil.get(EightNumberActivity.this, Constants.USERID, "");
-        Log.e("mImageUri", "=========sendNo===02==updateFinish==userid==" + userid);
 
-        if ("".equals(userid)) {
-            openActivity(LoginActivity.class);
-        } else {
+            String total_fee = 1000+"";
             Bundle bundle = new Bundle();
             bundle.putString("oid", oid);
             bundle.putString("title", title);
+            bundle.putString("total_fee", total_fee);
             //TODO  获取到订单号 跳转到支付界面
-//        openActivity(  ResultCommonActivity.class, bundle);
             openActivity(SelectPayActivity.class, bundle);
-//        this.finish();
-        }
 
     }
 

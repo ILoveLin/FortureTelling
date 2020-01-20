@@ -38,11 +38,11 @@
                 style="@style/TabMain"
                 android:drawableTop="@drawable/selector_tab_homepage"
                 android:text="@string/main_tab_homepage" />
-  <!--<TextView-->
-                <!--android:id="@+id/tv_tab_drug_query"-->
-                <!--style="@style/TabMain"-->
-                <!--android:drawableTop="@drawable/selector_tab_regional"-->
-                <!--android:text="@string/main_tab_drug_search" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/tv_tab_drug_query"-->
+            <!--style="@style/TabMain"-->
+            <!--android:drawableTop="@drawable/selector_tab_regional"-->
+            <!--android:text="@string/main_tab_drug_search" />-->
 
             <LinearLayout
                 android:layout_width="@dimen/padding_10"

@@ -75,18 +75,11 @@ public class FortuneActivity extends BaseActivity implements FortuneView {
 
     @Override
     public void updateFinish(String oid,String title) {
-        String userid = (String) SharePreferenceUtil.get(FortuneActivity.this, Constants.USERID, "");
-        if ("".equals(userid)) {
-            openActivity(LoginActivity.class);
-        } else {
             Bundle bundle = new Bundle();
             bundle.putString("oid", oid);
             bundle.putString("title", title);
             //TODO  获取到订单号 跳转到支付界面
-//        openActivity(  ResultCommonActivity.class, bundle);
             openActivity(SelectPayActivity.class, bundle);
-//        this.finish();
-        }
     }
 
     @OnClick({R.id.selector_sex_three_boy, R.id.selector_sex_three_girl, R.id.iv_three_submit,

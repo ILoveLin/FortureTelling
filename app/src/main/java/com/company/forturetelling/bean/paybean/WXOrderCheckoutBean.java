@@ -49,6 +49,24 @@ public class WXOrderCheckoutBean {
 
         private String return_code;
         private String return_msg;
+        private String body;
+        private String out_trade_no;
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
+        }
+
+        public String getOut_trade_no() {
+            return out_trade_no;
+        }
+
+        public void setOut_trade_no(String out_trade_no) {
+            this.out_trade_no = out_trade_no;
+        }
 
         public String getReturn_code() {
             return return_code;

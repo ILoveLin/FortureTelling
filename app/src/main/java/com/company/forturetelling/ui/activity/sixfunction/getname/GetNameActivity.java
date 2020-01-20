@@ -1,5 +1,6 @@
 package com.company.forturetelling.ui.activity.sixfunction.getname;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.util.Log;
@@ -111,57 +112,54 @@ public class GetNameActivity extends BaseActivity {
 
 
     private void sendOrderRequest() {
-//        showLoading();
-        OkHttpUtils.get()
-                .url(HttpConstants.AddName)
-                .addParams("cszt", StatueBorn + "")  // 出生状态
-                .addParams("name", addName + "")  // 姓氏
-                .addParams("zibei", addNameZibei + "")  // 字辈
-                .addParams("gender", StatueSex + "")  // 性别 1 男 0女
-                .addParams("b_input", 0 + "")  //  默认公历
-                .addParams("xing", addName + "")  //姓氏 (和name一样的意思)
-                .addParams("ver", "")  //
-                .addParams("date", bornData + "")  //时间 比如: 2019-12-9-0-0
-                .addParams("phone", mPhoneParams + "")  //
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        showError();
-                    }
+        String userid = (String) SharePreferenceUtil.get(this, Constants.USERID, "");
+        if ("".equals(userid)) {
+            showToast("请先登入~~  ");
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        } else {
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e("mImageUri", "addName====error=onResponse=====" + response);
-                        Type type = new TypeToken<AddNameBean>() {
-                        }.getType();
-                        AddNameBean mAddBean = gson.fromJson(response, type);
-                        if (mAddBean.getStatus().equals("0")) {
+            showLoading();
+            OkHttpUtils.get()
+                    .url(HttpConstants.AddName)
+                    .addParams("cszt", StatueBorn + "")  // 出生状态
+                    .addParams("name", addName + "")  // 姓氏
+                    .addParams("zibei", addNameZibei + "")  // 字辈
+                    .addParams("gender", StatueSex + "")  // 性别 1 男 0女
+                    .addParams("b_input", 0 + "")  //  默认公历
+                    .addParams("xing", addName + "")  //姓氏 (和name一样的意思)
+                    .addParams("ver", "")  //
+                    .addParams("date", bornData + "")  //时间 比如: 2019-12-9-0-0
+                    .addParams("phone", mPhoneParams + "")  //
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            showError();
+                        }
 
-
-                            String orderNo = mAddBean.getData().getOrderNo();
-//                            Bundle bundle = new Bundle();
-//                            bundle.putString("orderNo", orderNo);
-//                            bundle.putString("addName", addName);
-//                            openActivity(GetNameResultActivity.class, bundle);
-                            String userid = (String) SharePreferenceUtil.get(GetNameActivity.this, Constants.USERID, "");
-                            if ("".equals(userid)) {
-                                openActivity(LoginActivity.class);
-                            } else {
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Log.e("mImageUri", "addName====error=onResponse=====" + response);
+                            Type type = new TypeToken<AddNameBean>() {
+                            }.getType();
+                            AddNameBean mAddBean = gson.fromJson(response, type);
+                            if (mAddBean.getStatus().equals("0")) {
+                                String orderNo = mAddBean.getData().getOrderNo();
                                 Bundle bundle = new Bundle();
                                 bundle.putString("oid", orderNo);
                                 bundle.putString("title", title);
                                 //TODO  获取到订单号 跳转到支付界面
-//        openActivity(  ResultCommonActivity.class, bundle);
                                 openActivity(SelectPayActivity.class, bundle);
-//        this.finish();
+                            } else {
+                                showError();
                             }
-                        } else {
-                            showError();
-                        }
 
-                    }
-                });
+                        }
+                    });
+
+        }
+//
 
     }
 

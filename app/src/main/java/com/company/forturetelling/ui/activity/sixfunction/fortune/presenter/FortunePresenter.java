@@ -1,13 +1,17 @@
 package com.company.forturetelling.ui.activity.sixfunction.fortune.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.company.forturetelling.bean.sixtab.EightNumBean01;
 import com.company.forturetelling.bean.sixtab.EightNumBean02;
+import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -33,41 +37,48 @@ public class FortunePresenter {
     }
 
     public void sendNo1Request(String datadate, String username, String gender, String h) {
-        mView.showLoadingView();
-        OkHttpUtils.get()
-                .url(HttpConstants.EightNumber01)
-                .addParams("datadate", datadate)
-                .addParams("username", username)
-                .addParams("gender", gender)
-                .addParams("h", h)
+        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
+        if ("".equals(userid)) {
+            mView.showToast("请先登入~~  ");
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            mContext.startActivity(intent);
+        } else {
+            mView.showLoadingView();
+            OkHttpUtils.get()
+                    .url(HttpConstants.EightNumber01)
+                    .addParams("datadate", datadate)
+                    .addParams("username", username)
+                    .addParams("gender", gender)
+                    .addParams("h", h)
 //                .addParams("datadate", "2012-12-4")
 //                .addParams("username", "童毛")
 //                .addParams("gender", "0")
 //                .addParams("h", "15")
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        mView.showErrorView();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e("mImageUri", "=========sendNo===fortune01======" + response);
-
-                        Type type = new TypeToken<EightNumBean01>() {
-                        }.getType();
-                        EightNumBean01 mBean01 = mGson.fromJson(response, type);
-
-                        if ("0".equals(mBean01.getStatus())) {
-                            sendNo2Request(mBean01.getData());
-
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            mView.showErrorView();
                         }
 
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Log.e("mImageUri", "=========sendNo===fortune01======" + response);
 
-                    }
-                });
+                            Type type = new TypeToken<EightNumBean01>() {
+                            }.getType();
+                            EightNumBean01 mBean01 = mGson.fromJson(response, type);
 
+                            if ("0".equals(mBean01.getStatus())) {
+                                sendNo2Request(mBean01.getData());
+
+                            }
+
+
+                        }
+                    });
+
+        }
 
     }
 

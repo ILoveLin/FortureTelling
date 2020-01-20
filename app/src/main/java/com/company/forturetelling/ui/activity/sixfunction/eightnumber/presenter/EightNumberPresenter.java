@@ -13,6 +13,7 @@ import com.company.forturetelling.bean.sixtab.EightNumBean02;
 import com.company.forturetelling.bean.sixtab.EightNumBean03;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.sixfunction.getname.GetNameActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -42,44 +43,52 @@ public class EightNumberPresenter {
         this.mContext = mContext;
         this.mView = mView;
         mGson = new Gson();
+
     }
 
     public void sendNo1Request(String datadate, String username, String gender, String h) {
-        mView.showLoadingView();
-        OkHttpUtils.get()
-                .url(HttpConstants.EightNumber01)
-                .addParams("datadate", datadate)
-                .addParams("username", username)
-                .addParams("gender", gender)
-                .addParams("h", h)
+        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
+        if ("".equals(userid)) {
+            mView.showToast("请先登入~~  ");
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            mContext.startActivity(intent);
+        }else{
+            mView.showLoadingView();
+            OkHttpUtils.get()
+                    .url(HttpConstants.EightNumber01)
+                    .addParams("datadate", datadate)
+                    .addParams("username", username)
+                    .addParams("gender", gender)
+                    .addParams("h", h)
 //                .addParams("datadate", "2012-12-4")
 //                .addParams("username", "童毛")
 //                .addParams("gender", "0")
 //                .addParams("h", "15")
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        mView.showErrorView();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e("mImageUri", "=========sendNo===01======" + response);
-
-                        Type type = new TypeToken<EightNumBean01>() {
-                        }.getType();
-                        EightNumBean01 mBean01 = mGson.fromJson(response, type);
-
-                        if ("0".equals(mBean01.getStatus())) {
-                            sendNo2Request(mBean01.getData());
-
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            mView.showErrorView();
                         }
 
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Log.e("mImageUri", "=========sendNo===01======" + response);
 
-                    }
-                });
-//
+                            Type type = new TypeToken<EightNumBean01>() {
+                            }.getType();
+                            EightNumBean01 mBean01 = mGson.fromJson(response, type);
+
+                            if ("0".equals(mBean01.getStatus())) {
+                                sendNo2Request(mBean01.getData());
+
+                            }
+
+
+                        }
+                    });
+
+        }
 
     }
 
@@ -126,8 +135,8 @@ public class EightNumberPresenter {
                             Bundle bundle = new Bundle();
                             Log.e("mImageUri", "=========sendNo===03==3====" + response);
 
-                            bundle.putString("oid",mBean02.getData().getOid());
-                            bundle.putString("title","八字精批");
+                            bundle.putString("oid", mBean02.getData().getOid());
+                            bundle.putString("title", "八字精批");
                             mView.showContentView();
                             mView.updateFinish(mBean02.getData().getOid(), "八字精批");
 
