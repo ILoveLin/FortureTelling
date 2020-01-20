@@ -67,4 +67,10 @@ public class Constants {
     public static final String ACTION_NAME_PAYMENT_ERROR= "payment_error";//支付失败
     public static final String KEY_OBJ_PAYMENT_WECHAT = "payment_wechat";
 
+
+
+    //微信二次校验的  out_trade_no
+    public static final String WECHAT_SECOND_ORDERID= "payment_wechat";//微信支付回调
+
+
 }

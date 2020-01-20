@@ -88,11 +88,14 @@ public class SynthesizeActivity extends BaseActivity implements SynthesizeView {
     @Override
     public void updateFinish(String oid, String title) {
 
-            Bundle bundle = new Bundle();
-            bundle.putString("oid", oid);
-            bundle.putString("title", title);
-            //TODO  获取到订单号 跳转到支付界面
-            openActivity(SelectPayActivity.class, bundle);
+        Bundle bundle = new Bundle();
+        bundle.putString("oid", oid);
+        bundle.putString("title", title);
+        //TODO  获取到订单号 跳转到支付界面
+        bundle.putString("text_surname", "");  //姓
+        bundle.putString("text_name", "");     //名
+        bundle.putString("text_all_name", tvThreeInputName.getText().toString().trim() + ""); //姓名
+        openActivity(SelectPayActivity.class, bundle);
     }
 
     @OnClick({R.id.selector_sex_three_boy, R.id.selector_sex_three_girl, R.id.iv_three_submit,

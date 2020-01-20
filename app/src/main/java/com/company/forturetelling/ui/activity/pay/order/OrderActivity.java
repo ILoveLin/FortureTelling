@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.OrderBean;
-import com.company.forturetelling.ui.activity.NewsActivity;
 import com.company.forturetelling.ui.activity.pay.order.adapter.OrderAdapter;
 import com.company.forturetelling.ui.activity.pay.order.presenter.OrderPresenter;
 import com.company.forturetelling.ui.activity.pay.order.presenter.OrderView;
@@ -86,12 +86,24 @@ public class OrderActivity extends BaseActivity implements OrderView {
 
         mAdapter.setClickCallBack(new OrderAdapter.ItemClickCallBack() {
             @Override
-            public void onItemClick(OrderBean.DataBean.ListBean bean) {
+            public void onItemClick(OrderBean.DataBean.ListBean bean, int position) {
                 String order_no = bean.getOrder_no();
                 String title = bean.getTitle();
                 Bundle bundle = new Bundle();
+                Log.e("PayUtils----ALI-Second", "response==ALIPay=order==Second==" + order_no);
+                Log.e("PayUtils----ALI-Second", "response==ALIPay=order==Second==" + title);
+
+
                 bundle.putString("oid", order_no);
+                bundle.putString("position", position+"");
                 bundle.putString("title", title);
+
+                //添加三个参数
+                bundle.putString("text_surname", "");  //姓
+                bundle.putString("text_name", "");     //名
+                bundle.putString("text_all_name", ""); //姓名
+
+
                 openActivity(ResultCommonActivity.class, bundle);
             }
         });

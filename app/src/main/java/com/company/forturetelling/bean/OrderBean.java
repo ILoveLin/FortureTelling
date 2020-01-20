@@ -102,6 +102,33 @@ public class OrderBean {
             private String create_date;
             private String type;
             private String name;
+            private String text_surname;
+            private String text_name;
+            private String text_all_name;
+
+            public String getText_surname() {
+                return text_surname;
+            }
+
+            public void setText_surname(String text_surname) {
+                this.text_surname = text_surname;
+            }
+
+            public String getText_name() {
+                return text_name;
+            }
+
+            public void setText_name(String text_name) {
+                this.text_name = text_name;
+            }
+
+            public String getText_all_name() {
+                return text_all_name;
+            }
+
+            public void setText_all_name(String text_all_name) {
+                this.text_all_name = text_all_name;
+            }
 
             public String getName() {
                 return name;

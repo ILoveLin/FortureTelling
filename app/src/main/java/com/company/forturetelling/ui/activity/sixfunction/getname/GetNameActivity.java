@@ -144,11 +144,16 @@ public class GetNameActivity extends BaseActivity {
                             Type type = new TypeToken<AddNameBean>() {
                             }.getType();
                             AddNameBean mAddBean = gson.fromJson(response, type);
+                            showContent();
+
                             if (mAddBean.getStatus().equals("0")) {
                                 String orderNo = mAddBean.getData().getOrderNo();
                                 Bundle bundle = new Bundle();
                                 bundle.putString("oid", orderNo);
                                 bundle.putString("title", title);
+                                bundle.putString("text_surname", "");  //姓
+                                bundle.putString("text_name", "");     //名
+                                bundle.putString("text_all_name", tvAddnameName.getText().toString().trim() + ""); //姓名
                                 //TODO  获取到订单号 跳转到支付界面
                                 openActivity(SelectPayActivity.class, bundle);
                             } else {

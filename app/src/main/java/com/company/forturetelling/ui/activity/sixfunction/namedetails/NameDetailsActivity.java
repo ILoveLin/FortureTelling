@@ -31,7 +31,7 @@ import butterknife.OnClick;
 /**
  * Created by Lovelin on 2019/12/19
  * <p>
- * Describe:八字精批
+ * Describe:姓名详批
  */
 public class NameDetailsActivity extends BaseActivity implements NameDetailsView {
     @BindView(R.id.tv_addname_name01)
@@ -95,11 +95,14 @@ public class NameDetailsActivity extends BaseActivity implements NameDetailsView
     @Override
     public void updateFinish(String oid, String title) {
 
-            Bundle bundle = new Bundle();
-            bundle.putString("oid", oid);
-            bundle.putString("title", title);
-            //TODO  获取到订单号 跳转到支付界面
-            openActivity(SelectPayActivity.class, bundle);
+        Bundle bundle = new Bundle();
+        bundle.putString("oid", oid);
+        bundle.putString("title", title);
+        //TODO  获取到订单号 跳转到支付界面
+        bundle.putString("text_surname", tv_addname_name01.getText().toString().trim() + "");  //姓
+        bundle.putString("text_name", tv_addname_name02.getText().toString().trim() + "");     //名
+        bundle.putString("text_all_name", tv_addname_name01.getText().toString().trim() + "" + tv_addname_name02.getText().toString().trim() + ""); //姓名
+        openActivity(SelectPayActivity.class, bundle);
     }
 
     private void checkData() {

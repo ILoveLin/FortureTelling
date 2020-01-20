@@ -90,6 +90,7 @@ public class ResultCommonActivity extends BaseActivity {
     private SixTabResultEvent.RichBean richBean;
     private SixTabResultEvent.HealthBean healthBean;
     private String title;
+    private String position;
 
     @Override
     public int getContentViewId() {
@@ -103,20 +104,26 @@ public class ResultCommonActivity extends BaseActivity {
     }
 
     private void responseListener() {
+        Log.e("mImageUri", "=========sendNo===03======" + oid);
+
         switch (title) {
-            case "八字精批":
+            case "八字精批"://八字精批
                 sendRequest(HttpConstants.EightNumber03);
                 im_header_pic.setImageResource(R.mipmap.icon_gb_six_bazijinpi);
                 break;
-            case "婚姻测算":
+            case "姓名详批"://姓名详批
+                sendRequest(HttpConstants.NameDetails03);
+                im_header_pic.setImageResource(R.mipmap.icon_gb_six_name);
+                break;
+            case "婚姻测算"://婚姻测算
                 sendRequest(HttpConstants.MarriageTest03);
                 im_header_pic.setImageResource(R.mipmap.icon_gb_six_text);
                 break;
-            case "今年运势":
+            case "今年运势"://今年运势
                 sendRequest(HttpConstants.Fortune03);
                 im_header_pic.setImageResource(R.mipmap.icon_gb_six_fortune);
                 break;
-            case "综合分析":
+            case "综合分析"://综合分析
                 sendRequest(HttpConstants.Synthesize03);
                 im_header_pic.setImageResource(R.mipmap.icon_gb_six_zonghe);
                 break;
@@ -127,6 +134,8 @@ public class ResultCommonActivity extends BaseActivity {
     }
 
     private void sendRequest(String url) {
+        Log.e("mImageUri", "=========sendNo===03======" + oid);
+
         OkHttpUtils.post()
                 .url(url)
                 .addParams("oid", oid + "")
@@ -140,14 +149,30 @@ public class ResultCommonActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         Log.e("mImageUri", "=========sendNo===03======" + response);
+                        switch (title) {
+                            case "八字精批"://八字精批
+                                getSetSeamData(response);
+                                break;
+                            case "姓名详批"://姓名详批   不同的Bean
+//                                Type type = new TypeToken<EightNumBean03>() {
+//                                }.getType();
+//                                EightNumBean03 mBean03 = mGson.fromJson(response, type);
+//                                if ("0".equals(mBean03.getStatus())) {
+//                                    mListData = getListData(mBean03);
+//                                    getSetSomeData(mBean03);
+//                                }
+                                break;
+                            case "婚姻测算"://婚姻测算   不同的Bean
 
-                        Type type = new TypeToken<EightNumBean03>() {
-                        }.getType();
-                        EightNumBean03 mBean03 = mGson.fromJson(response, type);
-                        if ("0".equals(mBean03.getStatus())) {
-                            mListData = getListData(mBean03);
-                            getSetSomeData(mBean03);
+                                
+                                break;
+                            case "今年运势"://今年运势
+                                getSetSeamData(response);
 
+                                break;
+                            case "综合分析"://综合分析
+                                getSetSeamData(response);
+                                break;
 
                         }
 
@@ -156,12 +181,25 @@ public class ResultCommonActivity extends BaseActivity {
                 });
     }
 
+    private void getSetSeamData(String response) {
+        Type type = new TypeToken<EightNumBean03>() {
+        }.getType();
+        EightNumBean03 mBean03 = mGson.fromJson(response, type);
+        if ("0".equals(mBean03.getStatus())) {
+            mListData = getListData(mBean03);
+            getSetSomeData(mBean03);
+        }
+    }
+
 
     private void initView() {
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.VISIBLE);
         oid = getIntent().getStringExtra("oid");
         title = getIntent().getStringExtra("title");
+        position = getIntent().getStringExtra("position");
+        Log.e("mImageUri", "=========sendNo=wx==common==oid====" + oid);
+        Log.e("mImageUri", "=========sendNo=wx==common==title====" + title);
         setTitleName(title + "");
         setPageStateView();
     }

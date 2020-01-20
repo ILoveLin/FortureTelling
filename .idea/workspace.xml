@@ -6,31 +6,28 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="===sendNo==" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b124e4-a140-48dc-9cea-c14777764eae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/EventOrderMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/OrderBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/OrderBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXOrderCheckoutBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXOrderCheckoutBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/HttpConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/HttpConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/information/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/information/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/SelectPayActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/SelectPayActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/adapter/OrderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/adapter/OrderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/result/ResultCommonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/result/ResultCommonActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/EightNumberActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/EightNumberActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/presenter/EightNumberPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/presenter/EightNumberPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/FortuneActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/FortuneActivity.java" afterDir="false" />
@@ -43,7 +40,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/SynthesizeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/SynthesizeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/presenter/SynthesizePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/presenter/SynthesizePresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/wxapi/WXPayEntryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/wxapi/WXPayEntryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_order.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +61,65 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="106" column="41" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/result/ResultCommonActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="163" column="4" selection-start-line="163" selection-start-column="4" selection-end-line="163" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/sixtab/MarrageResultBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/NameDetailsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/presenter/NameDetailsPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1174">
+              <caret line="147" column="48" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/HttpConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="547">
+              <caret line="55" column="44" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,8 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RequestOptions</find>
-      <find>mConfirmView</find>
       <find>AppCompatEditText</find>
       <find>mCancelView</find>
       <find>tvCurrentName</find>
@@ -95,8 +148,20 @@
       <find>onResp</find>
       <find>update</find>
       <find>open</find>
-      <find>updateFinish</find>
       <find>main_tab_homepage</find>
+      <find>EventBus</find>
+      <find>out_trade_no</find>
+      <find>KnowledgeFragment</find>
+      <find>payWXBean</find>
+      <find>partnerid</find>
+      <find>oid</find>
+      <find>tv_three_input_name</find>
+      <find>tvThreeInputName</find>
+      <find>tv_addname_name01</find>
+      <find>tv_addname_name</find>
+      <find>tvAddnameName</find>
+      <find>text_all_name</find>
+      <find>updateFinish</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -126,7 +191,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/OrderActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/presenter/OrderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/OrderBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/presenter/OrderPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -134,36 +198,39 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_04.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_inforsetting.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/page_empty.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_order.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/HttpConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/EventOrderMessage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXOrderCheckoutBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/SelectPayActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/wxapi/WXPayEntryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/information/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/presenter/EightNumberPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/wxapi/WXPayEntryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/EightNumberActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/SelectPayActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/FortuneActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/MarriageTestActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/SynthesizeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXOrderCheckoutBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/OrderBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/adapter/OrderAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/presenter/EightNumberPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/presenter/FortunePresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/getname/GetNameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/presenter/MarriageTestPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/MarriageTestActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/presenter/NameDetailsPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/NameDetailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/SynthesizeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/presenter/SynthesizePresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/NameDetailsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/presenter/NameDetailsPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/result/ResultCommonActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="17" />
-    <option name="y" value="11" />
+    <option name="x" value="183" />
     <option name="width" value="1834" />
-    <option name="height" value="1040" />
+    <option name="height" value="1012" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -227,7 +294,18 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="forturetelling" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FortureTelling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FortureTelling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="forturetelling" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+              <item name="sixtab" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FortureTelling" type="b2602c69:ProjectViewProjectNode" />
@@ -273,7 +351,7 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="activity" type="462c0819:PsiDirectoryNode" />
               <item name="sixfunction" type="462c0819:PsiDirectoryNode" />
-              <item name="eightnumber" type="462c0819:PsiDirectoryNode" />
+              <item name="namedetails" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FortureTelling" type="b2602c69:ProjectViewProjectNode" />
@@ -284,37 +362,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="forturetelling" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
-              <item name="sixfunction" type="462c0819:PsiDirectoryNode" />
-              <item name="eightnumber" type="462c0819:PsiDirectoryNode" />
-              <item name="presenter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FortureTelling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FortureTelling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="forturetelling" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
-              <item name="sixfunction" type="462c0819:PsiDirectoryNode" />
-              <item name="synthesize" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FortureTelling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FortureTelling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="forturetelling" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
-              <item name="sixfunction" type="462c0819:PsiDirectoryNode" />
-              <item name="synthesize" type="462c0819:PsiDirectoryNode" />
-              <item name="presenter" type="462c0819:PsiDirectoryNode" />
+              <item name="fragment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FortureTelling" type="b2602c69:ProjectViewProjectNode" />
@@ -341,6 +389,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="F:/Sdk" />
     <property name="device.picker.selection" value="420c90d6e0bf3447" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../YibaoTong/YiBaoTong" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1579330898671" />
@@ -446,9 +495,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23347548" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24413647" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -457,7 +507,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.038043477" />
+      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.29782608" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32934782" />
       <window_info anchor="bottom" id="Terminal" order="4" />
@@ -474,290 +524,11 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java</url>
-          <line>72</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="32" column="20" lean-forward="true" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/view/SettingBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="160" column="22" selection-start-line="160" selection-start-column="22" selection-end-line="160" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/OrderBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="98" column="33" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="33" />
-          <folding>
-            <element signature="e#548#549#0" expanded="true" />
-            <element signature="e#577#578#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-            <element signature="e#883#884#0" expanded="true" />
-            <element signature="e#915#916#0" expanded="true" />
-            <element signature="e#1362#1363#0" expanded="true" />
-            <element signature="e#1398#1399#0" expanded="true" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1486#1487#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1566#1567#0" expanded="true" />
-            <element signature="e#1620#1621#0" expanded="true" />
-            <element signature="e#1670#1671#0" expanded="true" />
-            <element signature="e#1713#1714#0" expanded="true" />
-            <element signature="e#1748#1749#0" expanded="true" />
-            <element signature="e#1800#1801#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#2762#2763#0" expanded="true" />
-            <element signature="e#2805#2806#0" expanded="true" />
-            <element signature="e#2853#2854#0" expanded="true" />
-            <element signature="e#2901#2902#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/fragment/knowledge/adapter/KnowledgeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/fragment/knowledge/KnowledgeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="130" column="5" selection-start-line="103" selection-end-line="130" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="65" column="61" lean-forward="true" selection-start-line="65" selection-start-column="61" selection-end-line="65" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_04.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/information/InforSettingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="262" column="43" selection-start-line="262" selection-start-column="43" selection-end-line="262" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inforsetting.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="109" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/presenter/OrderPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/presenter/OrderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/view/pagestate/PageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="142" column="70" selection-start-line="142" selection-start-column="70" selection-end-line="142" selection-end-column="70" />
-          <folding>
-            <element signature="e#4674#4675#0" expanded="true" />
-            <element signature="e#4724#4725#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/page_empty.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/adapter/OrderAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="109" column="74" selection-start-line="109" selection-start-column="74" selection-end-line="109" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-          <folding>
-            <element signature="e#312#331#0" expanded="true" />
-            <element signature="e#419#438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_order.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding>
-            <element signature="e#170#188#0" expanded="true" />
-            <element signature="e#306#324#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXParamsBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/fragment/mine/MineFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="111" column="2" selection-start-line="111" selection-start-column="2" selection-end-line="119" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/HttpConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/AliPaySecondResultBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/EventOrderMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#410#411#0" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://F:/Sdk/sources/android-28/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="708" column="13" selection-start-line="708" selection-start-column="13" selection-end-line="708" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXOrderCheckoutBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
-          <folding>
-            <element signature="e#1033#1034#0" expanded="true" />
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1112#1113#0" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1238#1239#0" expanded="true" />
-            <element signature="e#1298#1299#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/PayBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/AliPayOrderBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
           <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/SelectPayActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="333" column="70" selection-start-line="333" selection-start-column="70" selection-end-line="333" selection-end-column="70" />
-          <folding>
-            <element signature="method#pay#0;class#SelectPayActivity#0" />
-            <element signature="class#14063:14561" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/wxapi/WXPayEntryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="152" column="30" lean-forward="true" selection-start-line="152" selection-start-column="30" selection-end-line="152" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -790,94 +561,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/information/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="139" column="88" lean-forward="true" selection-start-line="139" selection-start-column="72" selection-end-line="139" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/GuideActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1221">
           <caret line="91" column="65" selection-start-line="91" selection-start-column="65" selection-end-line="91" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/presenter/EightNumberPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="140" column="46" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/EightNumberActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/FortuneActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/presenter/FortunePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/getname/GetNameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/MarriageTestActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="99" column="28" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/presenter/MarriageTestPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="123" column="46" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/presenter/NameDetailsPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1099">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/NameDetailsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/SynthesizeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/presenter/SynthesizePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -888,13 +575,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/base/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -908,13 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -936,6 +609,336 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/fragment/mine/MineFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="206" column="38" selection-start-line="206" selection-start-column="38" selection-end-line="206" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/information/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="786">
+          <caret line="139" column="88" selection-start-line="139" selection-start-column="72" selection-end-line="139" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/AliPaySecondResultBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXParamsBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/getname/GetNameResultActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/getname/DetailsCommonActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1162">
+          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/include_input_three.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="34" column="52" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sixfuntion_eight.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_gb_six_text.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_result_common.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/SynthesizeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_get_name.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="136" column="60" selection-start-line="136" selection-start-column="45" selection-end-line="136" selection-end-column="60" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/paybean/WXOrderCheckoutBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#687#688#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#1284#1285#0" expanded="true" />
+            <element signature="e#1317#1318#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#1429#1430#0" expanded="true" />
+            <element signature="e#1465#1466#0" expanded="true" />
+            <element signature="e#1511#1512#0" expanded="true" />
+            <element signature="e#1553#1554#0" expanded="true" />
+            <element signature="e#1596#1597#0" expanded="true" />
+            <element signature="e#1639#1640#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1755#1756#0" expanded="true" />
+            <element signature="e#1790#1791#0" expanded="true" />
+            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="e#1869#1870#0" expanded="true" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1951#1952#0" expanded="true" />
+            <element signature="e#1993#1994#0" expanded="true" />
+            <element signature="e#2051#2052#0" expanded="true" />
+            <element signature="e#2105#2106#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#2187#2188#0" expanded="true" />
+            <element signature="e#2243#2244#0" expanded="true" />
+            <element signature="e#2295#2296#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/wxapi/WXPayEntryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="141" column="66" selection-start-line="141" selection-start-column="66" selection-end-line="141" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/base/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="486" column="16" selection-start-line="486" selection-start-column="16" selection-end-line="486" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/MarriageTestActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/SelectPayActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570">
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/OrderBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="108" column="45" selection-start-line="108" selection-start-column="45" selection-end-line="108" selection-end-column="45" />
+          <folding>
+            <element signature="e#2793#2794#0" expanded="true" />
+            <element signature="e#2857#2858#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+            <element signature="e#2965#2966#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
+            <element signature="e#3071#3072#0" expanded="true" />
+            <element signature="e#3129#3130#0" expanded="true" />
+            <element signature="e#3177#3178#0" expanded="true" />
+            <element signature="e#3229#3230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/adapter/OrderAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/EightNumberActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/FortuneActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="68" column="36" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/fortune/presenter/FortunePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/getname/GetNameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="146" column="42" selection-start-line="146" selection-start-column="42" selection-end-line="146" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/marriagetest/presenter/MarriageTestPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="122" column="28" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/synthesize/presenter/SynthesizePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="120" column="49" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/eightnumber/presenter/EightNumberPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1217">
+          <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="174" column="49" selection-start-line="174" selection-start-column="49" selection-end-line="174" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/pay/order/OrderActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="106" column="41" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sixfuntion_crapmyrtle.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="105" column="24" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/NameDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/global/HttpConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="55" column="44" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/sixfunction/namedetails/presenter/NameDetailsPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1174">
+          <caret line="147" column="48" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_gb_six_name.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/icon_gb_six_bazijinpi.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/sixtab/EightNumBean03.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="785" column="27" selection-start-line="785" selection-start-column="23" selection-end-line="785" selection-end-column="27" />
+          <folding>
+            <element signature="e#34924#34925#0" expanded="true" />
+            <element signature="e#34967#34968#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/sixtab/NameDetails03.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/activity/result/ResultCommonActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="163" column="4" selection-start-line="163" selection-start-column="4" selection-end-line="163" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/bean/sixtab/MarrageResultBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

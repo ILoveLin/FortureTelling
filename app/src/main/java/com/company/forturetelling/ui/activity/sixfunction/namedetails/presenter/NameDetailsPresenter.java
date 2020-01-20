@@ -130,7 +130,7 @@ public class NameDetailsPresenter {
                         EightNumBean02 mBean02 = mGson.fromJson(response, type);
 
                         if ("0".equals(mBean02.getStatus())) {
-//                            sendNo3Request(mBean02.getData().getOid());
+                            mView.showContentView();
                             mView.updateFinish(mBean02.getData().getOid(),"姓名详批");
 
                         }
@@ -145,7 +145,7 @@ public class NameDetailsPresenter {
         Log.e("mImageUri", "=========sendNo===03====参数=========" + oid);
 
         OkHttpUtils.post()
-                .url(HttpConstants.EightNumber03)
+                .url(HttpConstants.NameDetails03)
                 .addParams("oid", oid + "")
                 .build()
                 .execute(new StringCallback() {

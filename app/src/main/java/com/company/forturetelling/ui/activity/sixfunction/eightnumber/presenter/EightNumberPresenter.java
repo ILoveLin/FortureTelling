@@ -132,11 +132,6 @@ public class EightNumberPresenter {
 
                         if ("0".equals(mBean02.getStatus())) {
                             //TODO  获取到订单号 跳转到支付界面
-                            Bundle bundle = new Bundle();
-                            Log.e("mImageUri", "=========sendNo===03==3====" + response);
-
-                            bundle.putString("oid", mBean02.getData().getOid());
-                            bundle.putString("title", "八字精批");
                             mView.showContentView();
                             mView.updateFinish(mBean02.getData().getOid(), "八字精批");
 

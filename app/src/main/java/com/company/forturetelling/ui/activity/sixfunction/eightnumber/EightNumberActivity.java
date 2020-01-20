@@ -85,13 +85,16 @@ public class EightNumberActivity extends BaseActivity implements EightNumberView
     @Override
     public void updateFinish(String oid, String title) {
 
-            String total_fee = 1000+"";
-            Bundle bundle = new Bundle();
-            bundle.putString("oid", oid);
-            bundle.putString("title", title);
-            bundle.putString("total_fee", total_fee);
-            //TODO  获取到订单号 跳转到支付界面
-            openActivity(SelectPayActivity.class, bundle);
+        String total_fee = 1000 + "";
+        Bundle bundle = new Bundle();
+        bundle.putString("oid", oid);
+        bundle.putString("title", title);
+        bundle.putString("total_fee", total_fee);
+        bundle.putString("text_surname", "");  //姓
+        bundle.putString("text_name", "");     //名
+        bundle.putString("text_all_name", tvThreeInputName.getText().toString().trim() + ""); //姓名
+        //TODO  获取到订单号 跳转到支付界面
+        openActivity(SelectPayActivity.class, bundle);
 
     }
 

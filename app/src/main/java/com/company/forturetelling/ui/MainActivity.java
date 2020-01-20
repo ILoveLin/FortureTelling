@@ -128,6 +128,7 @@ public class MainActivity extends BaseActivity {
         hideFragments(transaction);
         switch (index) {
             case Constants.TAB_HOME:   //1　　
+                hideFragments(transaction);
                 StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
                 StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
                 if (firstFragment == null) {
@@ -143,6 +144,7 @@ public class MainActivity extends BaseActivity {
                 overAnim(tvTabFirstPage);
                 break;
             case Constants.TAB_DRUGS_QUERY://药品查询  //2
+                hideFragments(transaction);
                 StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
                 StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
                 if (secondFragment == null) {
@@ -159,6 +161,7 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case Constants.TAB_NEWS:   //3
+                hideFragments(transaction);
                 StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
                 StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
                 if (thirdFragment == null) {
@@ -175,6 +178,7 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case Constants.TAB_MINE:   //4
+                hideFragments(transaction);
                 StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
                 StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
                 if (fourthFragment == null) {

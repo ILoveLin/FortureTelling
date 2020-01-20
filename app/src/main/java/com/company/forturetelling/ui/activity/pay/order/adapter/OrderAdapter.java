@@ -28,7 +28,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     public interface ItemClickCallBack {
-        void onItemClick(OrderBean.DataBean.ListBean bean);
+        void onItemClick(OrderBean.DataBean.ListBean bean, int position);
     }
 
     public List<OrderBean.DataBean.ListBean> datas = null;
@@ -55,6 +55,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
         OrderBean.DataBean.ListBean listBean = datas.get(position);
         viewHolder.bar_product_name.setRightText("" + listBean.getTitle());
+        viewHolder.bar_text_name.setRightText("" + listBean.getText_all_name());
         viewHolder.bar_my_name.setRightText("" + listBean.getName());
         viewHolder.bar_order_num.setRightText("" + listBean.getOrder_no());
         String type = listBean.getType();
@@ -79,7 +80,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         viewHolder.linear_all_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickCallBack.onItemClick(listBean);
+                clickCallBack.onItemClick(listBean,position);
             }
         });
 
@@ -100,6 +101,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public SettingBar bar_product_name;
+        public SettingBar bar_text_name;
         public SettingBar bar_my_name;
         public SettingBar bar_order_num;
         public SettingBar bar_order_statue;
@@ -108,6 +110,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         public ViewHolder(View view) {
             super(view);
             bar_product_name = (SettingBar) view.findViewById(R.id.bar_product_name);
+            bar_text_name = (SettingBar) view.findViewById(R.id.bar_text_name);
             bar_my_name = (SettingBar) view.findViewById(R.id.bar_my_name);
             bar_order_num = (SettingBar) view.findViewById(R.id.bar_order_num);
             bar_order_statue = (SettingBar) view.findViewById(R.id.bar_order_statue);

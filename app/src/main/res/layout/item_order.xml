@@ -26,12 +26,22 @@
             app:bar_rightText="在线付费_取名" />
 
         <com.company.forturetelling.view.SettingBar
+            android:id="@+id/bar_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_mine_bar"
+            app:bar_leftColor="@color/black80"
+            app:bar_leftText="测试姓名"
+            app:bar_rightColor="@color/black80"
+            app:bar_rightText="张三" />
+
+        <com.company.forturetelling.view.SettingBar
             android:id="@+id/bar_my_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_mine_bar"
             app:bar_leftColor="@color/black80"
-            app:bar_leftText="姓名"
+            app:bar_leftText="用户姓名"
             app:bar_rightColor="@color/black80"
             app:bar_rightText="巨思_50" />
 

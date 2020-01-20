@@ -8,9 +8,9 @@ package com.company.forturetelling.bean.paybean;
 public class WXOrderCheckoutBean {
 
     /**
-     * status : 0
-     * msg : ok
-     * data : {"return_code":"SUCCESS","return_msg":"ok"}
+     * status : -1
+     * msg : error
+     * data : {"id":142,"total":"0.01","out_trade_no":"202001201200301119249400","body":"八字精辟","return_code":"FAIL","return_msg":"ok"}
      */
 
     private String status;
@@ -43,21 +43,36 @@ public class WXOrderCheckoutBean {
 
     public static class DataBean {
         /**
-         * return_code : SUCCESS
+         * id : 142
+         * total : 0.01
+         * out_trade_no : 202001201200301119249400
+         * body : 八字精辟
+         * return_code : FAIL
          * return_msg : ok
          */
 
+        private String id;
+        private String total;
+        private String out_trade_no;
+        private String body;
         private String return_code;
         private String return_msg;
-        private String body;
-        private String out_trade_no;
 
-        public String getBody() {
-            return body;
+
+        public String getId() {
+            return id;
         }
 
-        public void setBody(String body) {
-            this.body = body;
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getTotal() {
+            return total;
+        }
+
+        public void setTotal(String total) {
+            this.total = total;
         }
 
         public String getOut_trade_no() {
@@ -66,6 +81,14 @@ public class WXOrderCheckoutBean {
 
         public void setOut_trade_no(String out_trade_no) {
             this.out_trade_no = out_trade_no;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
         }
 
         public String getReturn_code() {

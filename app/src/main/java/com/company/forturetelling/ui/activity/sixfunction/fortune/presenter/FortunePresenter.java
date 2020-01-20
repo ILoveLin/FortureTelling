@@ -122,6 +122,7 @@ public class FortunePresenter {
 
                         if ("0".equals(mBean02.getStatus())) {
 //                            sendNo3Request(mBean02.getData().getOid());
+                            mView.showContentView();
                             mView.updateFinish(mBean02.getData().getOid(), "今年运势");
 
                         }

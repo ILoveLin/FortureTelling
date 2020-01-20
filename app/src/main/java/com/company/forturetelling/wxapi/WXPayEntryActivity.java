@@ -13,6 +13,7 @@ import com.company.forturetelling.bean.paybean.AliPaySecondResultBean;
 import com.company.forturetelling.bean.paybean.WXOrderCheckoutBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
 import com.company.forturetelling.ui.activity.pay.order.EventOrderMessage;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
 import com.google.gson.Gson;
@@ -23,12 +24,10 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Type;
 
@@ -47,7 +46,6 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_result);
-        EventBus.getDefault().register(this);
         Log.e(TAG, "##############onCreate##########");
         //注册API 没有这个不会执行onResp
         api = WXAPIFactory.createWXAPI(this, Constants.APP_ID_WECHART);
@@ -74,14 +72,6 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     public void onReq(BaseReq req) {
         Log.e("PayUtils----WX", "WXPayEntryActivity====onReq===");
 
-//        if (paymentWechat == null) {
-//            paymentWechat = new PaymentWechat();
-//        }
-//        paymentWechat.setOpenId(req.openId);
-//        paymentWechat.setTransaction(req.transaction);
-//        paymentWechat.setType(req.getType());
-//        paymentWechat.setCheckArgs(req.checkArgs());
-//        Log.e(TAG, "onReq#" + paymentWechat.toString());
     }
 
 
@@ -103,7 +93,6 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 //TODU走二次校验,然后跳转结果界面
                 checkoutSecondWeChartPay();
 
-//				EventBusUtils.post(new EventBusWechatGoldBean());
             } else if (errCode == -2) {/*取消支付*/
                 Toast.makeText(this, "取消支付", Toast.LENGTH_LONG).show();
             }
@@ -112,57 +101,69 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ExitEvent(EventOrderMessage messageEvent) {
-        out_trade_no = messageEvent.getOut_trade_no();
-    }
 
     private void checkoutSecondWeChartPay() {
-        OkHttpUtils.get()
-                .url(HttpConstants.WXPay_Second)
-                .addParams("out_trade_no", out_trade_no)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Log.e("PayUtils----ALI-Second", "Exception===ALIPay====");
+        String mAppid = SelectPayActivity.payWXBean.getAppid();
+        String mPartnerid = SelectPayActivity.payWXBean.getPartnerid();
+        String mPrepayid = SelectPayActivity.payWXBean.getPrepayid();
+        String mNoncestr = SelectPayActivity.payWXBean.getNoncestr();
+        String mTimestamp = SelectPayActivity.payWXBean.getTimestamp();
+        String mPackagee = SelectPayActivity.payWXBean.getPackagee();
+        String mSign = SelectPayActivity.payWXBean.getSign();
+        out_trade_no = String.valueOf(SharePreferenceUtil.get(getApplicationContext(), Constants.WECHAT_SECOND_ORDERID, ""));
+        Log.e("PayUtils----ALI-Second", "response==ALIPay=request==Second==" + out_trade_no);
+        Log.e("PayUtils----ALI-Second", "response==ALIPay=request==prepayid==" + mPrepayid);
+        Log.e("PayUtils----ALI-Second", "response==ALIPay=request==timestamp==" + mTimestamp);
 
-                    }
+        if ("".equals(out_trade_no)) {
+            Toast.makeText(getApplicationContext(), "二次校验orderid为空", Toast.LENGTH_SHORT).show();
+        } else {
+            OkHttpUtils.post()
+                    .url(HttpConstants.WXPay_Second)
+                    .addParams("out_trade_no", out_trade_no)
+                    .addParams("appid", mAppid)
+                    .addParams("partnerid", mPartnerid)
+                    .addParams("prepayid", mPrepayid)
+                    .addParams("noncestr", mNoncestr)
+                    .addParams("timestamp", mTimestamp)
+                    .addParams("package", mPackagee)
+                    .addParams("sign", mSign)
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            Log.e("PayUtils----ALI-Second", "Exception===ALIPay====");
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e("PayUtils----ALI-Second", "response==ALIPay===Second==" + response);
-                        Type type = new TypeToken<AliPaySecondResultBean>() {
-                        }.getType();
-                        Gson gson = new Gson();
-                        WXOrderCheckoutBean mWXOrderCheckoutBean = gson.fromJson(response, type);
-                        //status  = 1 成功   =0 失败  -1没有获取到回调
-                        String status = mWXOrderCheckoutBean.getData() + "";
-
-                        if ("SUCCESS".equals(status)) {  //成功
-                            Toast.makeText(getApplicationContext(), "微信订单二次校验SUCCESS", Toast.LENGTH_SHORT).show();
-                            String title = mWXOrderCheckoutBean.getData().getBody() + "";
-                            String out_trade_no = mWXOrderCheckoutBean.getData().getOut_trade_no() + "";
-                            Bundle bundle = new Bundle();
-                            bundle.putString("oid", out_trade_no);
-                            bundle.putString("title", title);
-                            openActivity(ResultCommonActivity.class, bundle);
-                        } else {    //失败
-                            Toast.makeText(getApplicationContext(), "微信订单二次校验失败", Toast.LENGTH_SHORT).show();
-//                            showToast("支付宝订单二次校验失败");
-//                            showToast("" + status);
                         }
 
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Log.e("PayUtils----ALI-Second", "response==ALIPay===Second==" + response);
+                            Type type = new TypeToken<WXOrderCheckoutBean>() {
+                            }.getType();
+                            Gson gson = new Gson();
+                            WXOrderCheckoutBean mWXOrderCheckoutBean = gson.fromJson(response, type);
+                            //status  = 1 成功   =0 失败  -1没有获取到回调
+                            String status = mWXOrderCheckoutBean.getStatus() + "";
+                            if ("0".equals(status)) {  //成功
+                                Toast.makeText(getApplicationContext(), "微信订单二次校验SUCCESS", Toast.LENGTH_SHORT).show();
+                                String title = mWXOrderCheckoutBean.getData().getBody() + "";
+                                String out_trade_no = mWXOrderCheckoutBean.getData().getOut_trade_no() + "";
+                                Bundle bundle = new Bundle();
+                                bundle.putString("oid", out_trade_no);
+                                bundle.putString("title", title);
+                                openActivity(ResultCommonActivity.class, bundle);
+                            } else {    //失败
+                                Toast.makeText(getApplicationContext(), "微信订单二次校验失败", Toast.LENGTH_SHORT).show();
+//                            showToast("支付宝订单二次校验失败");
+//                            showToast("" + status);
+                            }
 
-                    }
-                });
+
+                        }
+                    });
+        }
+
     }
 
 

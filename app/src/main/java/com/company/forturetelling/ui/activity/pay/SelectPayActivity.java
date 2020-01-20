@@ -24,6 +24,7 @@ import com.company.forturetelling.bean.paybean.PayResult;
 import com.company.forturetelling.bean.paybean.WXParamsBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.pay.order.EventOrderMessage;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
 import com.company.forturetelling.view.dialog.PayBottomDialog;
 import com.google.gson.Gson;
@@ -31,8 +32,11 @@ import com.google.gson.reflect.TypeToken;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -63,6 +67,9 @@ public class SelectPayActivity extends BaseActivity {
     private String notify_url;
     private Gson gson;
     private String total_fee;
+    private String text_surname;
+    private String text_name;
+    private String text_all_name;
 
     @Override
     public int getContentViewId() {
@@ -155,10 +162,8 @@ public class SelectPayActivity extends BaseActivity {
     }
 
 
-    private PayBean payWXBean;
+
     private String orderInfo;
-
-
     public void GetParamsFromBackground(int payType) {
         switch (payType) {
             //金额 （分） 比如 1 = 1分 10 = 1毛 100=1元
@@ -168,13 +173,13 @@ public class SelectPayActivity extends BaseActivity {
                         .addParams("body", title)
                         .addParams("out_trade_no", oid)
                         .addParams("total_fee", "1")
+                        .addParams("text_surname",text_surname )   //姓
+                        .addParams("text_name",text_name )//名
+                        .addParams("text_all_name",text_all_name )//姓名
                         .build()
                         .execute(new StringCallback() {
-
-
                             @Override
                             public void onError(Call call, Exception e, int id) {
-
                                 Log.e("PayUtils----WX", "PayUtils===Exception");
                             }
 
@@ -184,7 +189,6 @@ public class SelectPayActivity extends BaseActivity {
                                 if (response != "" && response != null) {
                                     Type type = new TypeToken<WXParamsBean>() {
                                     }.getType();
-                                    payWXBean = new PayBean();
                                     WXParamsBean wxParamsBean = gson.fromJson(response, type);
                                     payWXBean.setAppid(wxParamsBean.getData().getAppid());
                                     payWXBean.setPartnerid(wxParamsBean.getData().getPartnerid());
@@ -193,13 +197,14 @@ public class SelectPayActivity extends BaseActivity {
                                     payWXBean.setNoncestr(wxParamsBean.getData().getNoncestr());
                                     payWXBean.setTimestamp(wxParamsBean.getData().getTimestamp());
                                     payWXBean.setSign(wxParamsBean.getData().getSign());
-                                    toWXPay();
+                                    if (isWeixinAvilible(SelectPayActivity.this)) {
+                                        toWXPay();
+                                    } else {
+                                        showToast("请先安装微信");
+                                    }
                                 } else {
                                     showToast("微信返回参数未空");
                                 }
-//                                WXParamsBean wxParamsBean = new WXParamsBean();
-
-
                             }
                         });
                 break;
@@ -210,6 +215,9 @@ public class SelectPayActivity extends BaseActivity {
                         .addParams("body", title)
                         .addParams("out_trade_no", oid)
                         .addParams("total_fee", "0.01")
+                        .addParams("text_surname",text_surname )   //姓
+                        .addParams("text_name",text_name )//名
+                        .addParams("text_all_name",text_all_name )//姓名
                         .build()
                         .execute(new StringCallback() {
                             @Override
@@ -273,28 +281,11 @@ public class SelectPayActivity extends BaseActivity {
                         checkoutSecondAliPay(out_trade_no);
 
                     } else {
-                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-//                        Type type = new TypeToken<AliPayInforBean>() {
-//                        }.getType();
-//                        AliPayInforBean mAliPayInforBean = gson.fromJson(resultInfo, type);
-//                        String out_trade_no = mAliPayInforBean.getAlipay_trade_app_pay_response().getOut_trade_no();
-//
-//                        checkoutSecondAliPay(out_trade_no);
-
                     }
                     break;
                 }
                 case SDK_AUTH_FLAG: {
-                    Log.e("PayUtils----ALI", "response==ALIPay===resultInfo==" + SDK_AUTH_FLAG);
 
-                    // 判断resultStatus 为“9000”且result_code
-                    // 为“200”则代表授权成功，具体状态码代表含义可参考授权接口文档
-//                    if (TextUtils.equals(resultStatus, "9000") && TextUtils.equals(authResult.getResultCode(), "200")) {
-//                        // 获取alipay_open_id，调支付时作为参数extern_token 的value
-//                        // 传入，则支付账户为该授权账户
-//                    } else {
-//                        // 其他状态值则为授权失败
-//                    }
                     break;
                 }
                 default:
@@ -307,7 +298,6 @@ public class SelectPayActivity extends BaseActivity {
 
     //阿里支付二次校验
     private void checkoutSecondAliPay(String out_trade_no) {
-
         OkHttpUtils.get()
                 .url(HttpConstants.ALIPay_Second)
                 .addParams("out_trade_no", out_trade_no)
@@ -327,14 +317,13 @@ public class SelectPayActivity extends BaseActivity {
                         AliPaySecondResultBean mAliPaySecondResultBean = gson.fromJson(response, type);
                         //status  = 1 成功   =0 失败  -1没有获取到回调
                         String status = mAliPaySecondResultBean.getData().getStatus() + "";
-                        if ("1".equals(status)) {  //成功
+                        if ("0".equals(status)) {  //成功
                             Bundle bundle = new Bundle();
                             bundle.putString("oid", oid);
                             bundle.putString("title", title);
                             openActivity(ResultCommonActivity.class, bundle);
                         } else {    //失败
                             showToast("支付宝订单二次校验失败");
-                            showToast("" + status);
                         }
 
 
@@ -377,6 +366,7 @@ public class SelectPayActivity extends BaseActivity {
      * 调起微信支付的方法
      * 需要后台返回7个参数
      **/
+    public static  PayBean payWXBean=new PayBean();
     private void toWXPay() {
         iwxapi = WXAPIFactory.createWXAPI(this, null); //初始化微信api
         iwxapi.registerApp(Constants.APP_ID_WECHART); //注册appid
@@ -398,6 +388,7 @@ public class SelectPayActivity extends BaseActivity {
                         request.packageValue + ",nonceStr=" + request.nonceStr + ",timeStamp=" +
                         request.timeStamp + ",sign=" + request.sign);
 
+                SharePreferenceUtil.put(getApplicationContext(), Constants.WECHAT_SECOND_ORDERID, oid);
                 iwxapi.sendReq(request);//发送调起微信的请求
             }
         };
@@ -427,6 +418,12 @@ public class SelectPayActivity extends BaseActivity {
         title = getIntent().getStringExtra("title");
         oid = getIntent().getStringExtra("oid");
         total_fee = getIntent().getStringExtra("total_fee");
+
+        text_surname = getIntent().getStringExtra("text_surname");
+        text_name = getIntent().getStringExtra("text_name");
+        text_all_name = getIntent().getStringExtra("text_all_name");
+
+
         shop_name.setText("商品名称:" + title);
         shop_num.setText("订单编号:" + oid);
         gson = new Gson();

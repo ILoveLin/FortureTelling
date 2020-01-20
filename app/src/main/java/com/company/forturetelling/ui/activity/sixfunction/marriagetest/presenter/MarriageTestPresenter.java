@@ -120,7 +120,7 @@ public class MarriageTestPresenter {
                         EightNumBean02 mBean02 = mGson.fromJson(response, type);
 
                         if ("0".equals(mBean02.getStatus())) {
-//                            sendNo3Request(mBean02.getData().getOid());
+                            mView.showContentView();
                             mView.updateFinish(mBean02.getData().getOid(), "婚姻测算");
 
                         }
