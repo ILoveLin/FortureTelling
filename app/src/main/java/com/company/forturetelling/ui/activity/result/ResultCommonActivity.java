@@ -15,6 +15,8 @@ import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.bus.SixTabResultEvent;
 import com.company.forturetelling.bean.sixtab.EightNumBean03;
+import com.company.forturetelling.bean.sixtab.MarriageTestBean;
+import com.company.forturetelling.bean.sixtab.NameDetailsBean;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.view.GridDivider;
 import com.google.gson.reflect.TypeToken;
@@ -153,18 +155,11 @@ public class ResultCommonActivity extends BaseActivity {
                             case "八字精批"://八字精批
                                 getSetSeamData(response);
                                 break;
-                            case "姓名详批"://姓名详批   不同的Bean
-//                                Type type = new TypeToken<EightNumBean03>() {
-//                                }.getType();
-//                                EightNumBean03 mBean03 = mGson.fromJson(response, type);
-//                                if ("0".equals(mBean03.getStatus())) {
-//                                    mListData = getListData(mBean03);
-//                                    getSetSomeData(mBean03);
-//                                }
+                            case "姓名详批"://姓名详批   不同的Bean   02
+                                getSetTab02Data(response);
                                 break;
-                            case "婚姻测算"://婚姻测算   不同的Bean
-
-                                
+                            case "婚姻测算"://婚姻测算   不同的Bean    03
+                                getSetTab03Data(response);
                                 break;
                             case "今年运势"://今年运势
                                 getSetSeamData(response);
@@ -181,12 +176,40 @@ public class ResultCommonActivity extends BaseActivity {
                 });
     }
 
+    //    姓名详批
+    private void getSetTab02Data(String response) {
+        Type type = new TypeToken<NameDetailsBean>() {
+        }.getType();
+        NameDetailsBean mNameDetailsBean = mGson.fromJson(response, type);
+        if ("0".equals(mNameDetailsBean.getStatus())) {
+            List<String> bazi = mNameDetailsBean.getData().getReturnX().getUser().getBazi();
+            mListData = getListData(bazi);
+            SetTab02Data(mNameDetailsBean);
+        }
+
+    }
+
+    //    婚姻测试
+    private void getSetTab03Data(String response) {
+        Type type = new TypeToken<MarriageTestBean>() {
+        }.getType();
+        MarriageTestBean mMarriageTestBean = mGson.fromJson(response, type);
+        if ("0".equals(mMarriageTestBean.getStatus())) {
+            List<String> bazi = mMarriageTestBean.getData().getReturnX().getUser().getBazi();
+            mListData = getListData(bazi);
+            SetTab03Data(mMarriageTestBean);
+        }
+
+    }
+
     private void getSetSeamData(String response) {
         Type type = new TypeToken<EightNumBean03>() {
         }.getType();
         EightNumBean03 mBean03 = mGson.fromJson(response, type);
         if ("0".equals(mBean03.getStatus())) {
-            mListData = getListData(mBean03);
+            List<String> baziList = mBean03.getData().getCookies().getBazi();
+
+            mListData = getListData(baziList);
             getSetSomeData(mBean03);
         }
     }
@@ -202,6 +225,166 @@ public class ResultCommonActivity extends BaseActivity {
         Log.e("mImageUri", "=========sendNo=wx==common==title====" + title);
         setTitleName(title + "");
         setPageStateView();
+    }
+
+    private void SetTab03Data(MarriageTestBean mBean03) {
+        MarriageTestBean.DataBeanXXX.ReturnBean.UserBean userBean = mBean03.getData().getReturnX().getUser();
+
+        username = userBean.getXingming().getXing() + userBean.getXingming().getMing();
+        birthday = mBean03.getData().getData().getData().getY() + "年" +
+                mBean03.getData().getData().getData().getM() + "月" +
+                mBean03.getData().getData().getData().getD() + "日  " +
+                mBean03.getData().getData().getData().getH() + "时";
+
+        born = mBean03.getData().getData().getData().getLDate();
+        String sexNum = mBean03.getData().getData().getData().getGender();
+        if ("0".equals(sexNum)) {
+            sex = "男";
+        } else {
+            sex = "女";
+
+        }
+        sx = mBean03.getData().getReturnX().getUser().getSx();
+        MarriageTestBean.DataBeanXXX.RglmBean rglmBean = mBean03.getData().getRglm();
+
+
+        //性格-爱情-事业-财运-健康
+        characterBean = new SixTabResultEvent.CharacterBean();
+        loveBean = new SixTabResultEvent.LoveBean();
+        businessBean = new SixTabResultEvent.BusinessBean();
+        richBean = new SixTabResultEvent.RichBean();
+        healthBean = new SixTabResultEvent.HealthBean();
+
+        characterBean.setTitle("性格分析");
+        characterBean.setContent(rglmBean.getXgfx() + "");
+        loveBean.setTitle("爱情分析");
+        loveBean.setContent(rglmBean.getAqfx() + "");
+        businessBean.setTitle("事业分析");
+        businessBean.setContent(rglmBean.getSyfx() + "");
+        richBean.setTitle("财运分析");
+        richBean.setContent(rglmBean.getCyfx() + "");
+        healthBean.setTitle("健康分析");
+        healthBean.setContent(rglmBean.getJkfx() + "");
+
+        //设置个人信息
+        tvInfoSex.setText(sex + ""); //性别
+        tvInfoZodiac.setText(sx + ""); //生肖
+        tvInfoBron.setText(birthday + ""); //阳历
+        tvInfoBrithday.setText(born + ""); //阴历
+
+        //设置recycle
+        sixHeadRecyclerView.setVisibility(View.VISIBLE);
+        GridLayoutManager layoutManager = new GridLayoutManager(ResultCommonActivity.this, 5);
+        sixHeadRecyclerView.setLayoutManager(layoutManager);
+        sixHeadRecyclerView.addItemDecoration(new GridDivider(ResultCommonActivity.this, 2,
+                this.getResources().getColor(R.color.color_b59487)));
+        GirdAdapter adapter = new GirdAdapter(this, mListData);
+        sixHeadRecyclerView.setAdapter(adapter);
+
+        //设置title和文本
+        tvLove01.setText("" + characterBean.getTitle());
+        tvLove02.setText("" + loveBean.getTitle());
+        tvLove03.setText("" + businessBean.getTitle());
+        tvLove04.setText("" + richBean.getTitle());
+        tvLove05.setText("" + healthBean.getTitle());
+
+
+        CharSequence result1 = Html.fromHtml(characterBean.getContent());
+        CharSequence result2 = Html.fromHtml(loveBean.getContent());
+        CharSequence result3 = Html.fromHtml(businessBean.getContent());
+        CharSequence result4 = Html.fromHtml(richBean.getContent());
+        CharSequence result5 = Html.fromHtml(healthBean.getContent());
+
+
+        tvDetails01.setText("" + result1);
+        tvDetails02.setText("" + result2);
+        tvDetails03.setText("" + result3);
+        tvDetails04.setText("" + result4);
+        tvDetails05.setText("" + result5);
+
+
+        showContent();
+
+
+    }
+
+    private void SetTab02Data(NameDetailsBean mBean03) {
+        username = mBean03.getData().getData().getXing() + mBean03.getData().getData().getUsername();
+        birthday = mBean03.getData().getData().getY() + "年" +
+                mBean03.getData().getData().getM() + "月" +
+                mBean03.getData().getData().getD() + "日  " +
+                mBean03.getData().getData().getH() + "时";
+
+        born = mBean03.getData().getData().getLDate();
+        String sexNum = mBean03.getData().getData().getGender();
+        if ("0".equals(sexNum)) {
+            sex = "男";
+        } else {
+            sex = "女";
+
+        }
+        sx = mBean03.getData().getReturnX().getUser().getSx();
+        NameDetailsBean.DataBeanXX.RglmBean rglmBean = mBean03.getData().getRglm();
+
+
+        //性格-爱情-事业-财运-健康
+        characterBean = new SixTabResultEvent.CharacterBean();
+        loveBean = new SixTabResultEvent.LoveBean();
+        businessBean = new SixTabResultEvent.BusinessBean();
+        richBean = new SixTabResultEvent.RichBean();
+        healthBean = new SixTabResultEvent.HealthBean();
+
+        characterBean.setTitle("性格分析");
+        characterBean.setContent(rglmBean.getXgfx() + "");
+        loveBean.setTitle("爱情分析");
+        loveBean.setContent(rglmBean.getAqfx() + "");
+        businessBean.setTitle("事业分析");
+        businessBean.setContent(rglmBean.getSyfx() + "");
+        richBean.setTitle("财运分析");
+        richBean.setContent(rglmBean.getCyfx() + "");
+        healthBean.setTitle("健康分析");
+        healthBean.setContent(rglmBean.getJkfx() + "");
+
+        //设置个人信息
+        tvInfoSex.setText(sex + ""); //性别
+        tvInfoZodiac.setText(sx + ""); //生肖
+        tvInfoBron.setText(birthday + ""); //阳历
+        tvInfoBrithday.setText(born + ""); //阴历
+
+        //设置recycle
+        sixHeadRecyclerView.setVisibility(View.VISIBLE);
+        GridLayoutManager layoutManager = new GridLayoutManager(ResultCommonActivity.this, 5);
+        sixHeadRecyclerView.setLayoutManager(layoutManager);
+        sixHeadRecyclerView.addItemDecoration(new GridDivider(ResultCommonActivity.this, 2,
+                this.getResources().getColor(R.color.color_b59487)));
+        GirdAdapter adapter = new GirdAdapter(this, mListData);
+        sixHeadRecyclerView.setAdapter(adapter);
+
+        //设置title和文本
+        tvLove01.setText("" + characterBean.getTitle());
+        tvLove02.setText("" + loveBean.getTitle());
+        tvLove03.setText("" + businessBean.getTitle());
+        tvLove04.setText("" + richBean.getTitle());
+        tvLove05.setText("" + healthBean.getTitle());
+
+
+        CharSequence result1 = Html.fromHtml(characterBean.getContent());
+        CharSequence result2 = Html.fromHtml(loveBean.getContent());
+        CharSequence result3 = Html.fromHtml(businessBean.getContent());
+        CharSequence result4 = Html.fromHtml(richBean.getContent());
+        CharSequence result5 = Html.fromHtml(healthBean.getContent());
+
+
+        tvDetails01.setText("" + result1);
+        tvDetails02.setText("" + result2);
+        tvDetails03.setText("" + result3);
+        tvDetails04.setText("" + result4);
+        tvDetails05.setText("" + result5);
+
+
+        showContent();
+
+
     }
 
     private void getSetSomeData(EightNumBean03 mBean03) {
@@ -283,9 +466,8 @@ public class ResultCommonActivity extends BaseActivity {
 
     }
 
-    private ArrayList<String> getListData(EightNumBean03 mBean03) {
+    private ArrayList<String> getListData(List<String> baziList) {
 
-        List<String> baziList = mBean03.getData().getCookies().getBazi();
 
         ArrayList<String> strList = new ArrayList<>();
         strList.add("八字");
