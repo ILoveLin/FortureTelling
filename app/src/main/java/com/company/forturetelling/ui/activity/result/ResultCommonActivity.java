@@ -137,7 +137,7 @@ public class ResultCommonActivity extends BaseActivity {
 
     private void sendRequest(String url) {
         Log.e("mImageUri", "=========sendNo===03======" + oid);
-
+        showLoading();
         OkHttpUtils.post()
                 .url(url)
                 .addParams("oid", oid + "")
@@ -158,7 +158,7 @@ public class ResultCommonActivity extends BaseActivity {
                             case "姓名详批"://姓名详批   不同的Bean   02
                                 getSetTab02Data(response);
                                 break;
-                            case "婚姻测算"://婚姻测算   不同的Bean    03
+                            case "婚姻测算"://婚姻测算   不同的Bean    03　　　　
                                 getSetTab03Data(response);
                                 break;
                             case "今年运势"://今年运势
