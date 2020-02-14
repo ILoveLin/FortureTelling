@@ -317,6 +317,7 @@ public class SelectPayActivity extends BaseActivity {
                         AliPaySecondResultBean mAliPaySecondResultBean = gson.fromJson(response, type);
                         //status  = 1 成功   =0 失败  -1没有获取到回调
                         String status = mAliPaySecondResultBean.getData().getStatus() + "";
+//                        showContent();
                         if ("0".equals(status)) {  //成功
                             Bundle bundle = new Bundle();
                             bundle.putString("oid", oid);

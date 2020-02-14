@@ -150,6 +150,7 @@ public class ResultCommonActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
+                        showContent();
                         Log.e("mImageUri", "=========sendNo===03======" + response);
                         switch (title) {
                             case "八字精批"://八字精批
