@@ -192,7 +192,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void initView() {
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.VISIBLE);
-        setTitleName("注册界面");
+        String weChat = getIntent().getStringExtra("WeChat");
+        setTitleName("" + weChat);
         setPageStateView();
         mHandler.sendEmptyMessage(MSG_LOAD_DATA);
 
@@ -452,9 +453,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                 userid = bean.getData().getUserid() + "";
 //                                token = bean.getData().getToken() + "";
 
+
+                                //TODO 在这个界面提交 验证码 绑定手机号码,并且关闭微信登入界面,Login界面,直接在Mainfragment,并且保持当前的userid
+
                                 SharePreferenceUtil.put(RegisterActivity.this, Constants.USERID, userid + "");
 //                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Token, token + "");
-                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Device,  "android");
+                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Device, "android");
                                 SharePreferenceUtil.put(RegisterActivity.this, Constants.Is_Logined, true);
                                 showToast("注册成功");
                                 openActivity(MainActivity.class);

@@ -20,7 +20,6 @@
 
 
     <com.company.forturetelling.utils.ClearEditText
-
         android:id="@+id/register_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,29 +47,44 @@
         android:layout_marginRight="@dimen/padding_10" />
 
 
-    <com.company.forturetelling.utils.ClearEditText
-        android:id="@+id/register_password"
+    <LinearLayout
+        android:id="@+id/linear_phone_num"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_below="@+id/view"
-        android:layout_marginLeft="@dimen/padding_20"
-        android:layout_marginTop="@dimen/padding_10"
-        android:layout_marginRight="@dimen/padding_20"
-        android:background="@color/white_85"
-        android:drawablePadding="8dp"
-        android:hint="请输入密码"
-        android:maxLength="32"
-        android:paddingLeft="@dimen/padding_10"
-        android:paddingBottom="@dimen/padding_10"
-        android:text=""
-        android:textColor="@color/color_3f3f3f"
-        android:textColorHint="@color/color_3f3f3f"
-        android:textSize="@dimen/padding_16" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.company.forturetelling.utils.ClearEditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/padding_20"
+            android:layout_marginRight="@dimen/padding_20"
+            android:layout_weight="5"
+            android:background="@color/white_85"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="请输入验证码"
+            android:maxLength="32"
+            android:paddingLeft="@dimen/padding_10"
+            android:text=""
+            android:textColor="@color/color_3f3f3f"
+            android:textColorHint="@color/color_3f3f3f"
+            android:textSize="@dimen/padding_16" />
+
+        <com.company.forturetelling.view.CountdownView
+            android:id="@+id/cv_test_countdown"
+            style="@style/CountdownViewStyle" />
+
+    </LinearLayout>
+
 
     <View
         android:id="@+id/view02"
         style="@style/LineStyleE5E5E5"
-        android:layout_below="@+id/register_password"
+        android:layout_below="@+id/linear_phone_num"
         android:layout_marginLeft="@dimen/padding_10"
         android:layout_marginRight="@dimen/padding_10" />
 

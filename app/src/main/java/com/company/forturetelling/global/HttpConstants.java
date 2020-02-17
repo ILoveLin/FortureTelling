@@ -25,6 +25,7 @@ public class HttpConstants {
     public static final String TodayDetails = Common + "/api/login/jmsg";
     public static final String Knowledge = Common + "/api/login/mlzs";
     public static final String LiftFortune = Common + "/api/login/mpfx";   //get
+    public static final String WeChat_Login = Common + "/api/login/weixinlogin";   //get
 
 
     //添加取名接口  get

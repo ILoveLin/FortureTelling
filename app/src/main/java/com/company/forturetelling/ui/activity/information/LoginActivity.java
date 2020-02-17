@@ -17,6 +17,7 @@ import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.LoginBean;
 import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.bean.bus.LoginEvent;
+import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
@@ -30,6 +31,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -104,7 +107,11 @@ public class LoginActivity extends BaseActivity {
             showToast("请打开网络链接");
         }
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void ExitEvent(WeChartEvent WeChartEvent) {
+        this.finish();
 
+    }
     private void sendRequest() {
         showLoading();
         OkHttpUtils.post()
@@ -177,7 +184,10 @@ public class LoginActivity extends BaseActivity {
         phone_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity(RegisterActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("WeChat", "注册界面");
+                openActivity(RegisterActivity.class, bundle);
+//                openActivity(RegisterActivity.class);
             }
         });
 
@@ -235,10 +245,18 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
+
     }
 }

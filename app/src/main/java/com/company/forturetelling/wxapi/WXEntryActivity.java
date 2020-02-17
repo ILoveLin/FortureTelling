@@ -1,26 +1,43 @@
 package com.company.forturetelling.wxapi;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.company.forturetelling.base.App;
+import com.company.forturetelling.bean.WechartBeanUpdate;
+import com.company.forturetelling.bean.WechatLoginBean;
+import com.company.forturetelling.bean.bus.ExitEvent;
+import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
+import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.RegisterActivity;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -55,8 +72,22 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 //        iwxapi.handleIntent(getIntent(), this);
         //如果没回调onResp，八成是这句没有写
         Log.e("Wetchat", "login==01=");
-
+        EventBus.getDefault().register(this);
         App.msgApi.handleIntent(getIntent(), this);
+
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void ExitEvent(WeChartEvent WeChartEvent) {
+        String message = WeChartEvent.getMessage();
+        if("全部关闭".equals(message)) {
+            this.finish();
+        }
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
 
     }
 
@@ -174,14 +205,79 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                 String responseInfo = response.body().string();
                 Log.e("Wetchat", "login==05===responseInfo=====" + responseInfo);
 
+
+                Gson gson = new Gson();
+
+                Type type = new TypeToken<WechatLoginBean>() {
+                }.getType();
+                WechatLoginBean mBean = gson.fromJson(responseInfo, type);
+
                 Log.d("fan123", "onResponse: " + responseInfo);
                 SharedPreferences.Editor editor = getSharedPreferences("userInfo", MODE_PRIVATE).edit();
                 editor.putString("responseInfo", responseInfo);
+                //在这里把数据提交给后台
                 editor.commit();
-                finish();
-                mProgressDialog.dismiss();
+                requestData(mBean);
+
             }
         });
+    }
+
+    private void requestData(WechatLoginBean mBean) {
+        OkHttpUtils.post()
+                .url(HttpConstants.WeChat_Login)
+                .addParams("openid", mBean.getOpenid())
+                .addParams("nickname", mBean.getNickname())
+                .addParams("sex", mBean.getSex())
+                .addParams("headimgurl", mBean.getHeadimgurl())
+                .addParams("unionid", mBean.getUnionid())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                        finish();
+                        mProgressDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                        Gson gson = new Gson();
+
+                        Type type = new TypeToken<WechartBeanUpdate>() {
+                        }.getType();
+                        WechartBeanUpdate mBean = gson.fromJson(response, type);
+                        Log.e("Wetchat", "login==end===数据保持后台完毕====" + mBean.getStatus());
+
+                        if ("0".equals(mBean.getStatus())) {
+//                            EventBus.getDefault().post(new WeChartEvent("登入"));
+                            Bundle bundle = new Bundle();
+                            bundle.putString("WeChat", "保定手机号");
+                            openActivity(RegisterActivity.class, bundle);
+                        } else {
+                            Toast.makeText(WXEntryActivity.this, "后台数据保存失败", Toast.LENGTH_SHORT).show();
+                        }
+
+                        finish();
+                        mProgressDialog.dismiss();
+                    }
+                });
+
+
+    }
+
+
+    /**
+     * 打开activity
+     *
+     * @param ActivityClass
+     * @param b
+     */
+    public void openActivity(Class<? extends Activity> ActivityClass, Bundle b) {
+        Intent intent = new Intent(this, ActivityClass);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
 }

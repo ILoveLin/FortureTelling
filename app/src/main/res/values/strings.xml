@@ -19,6 +19,7 @@
     <!--<string name="main_tab_mine">我的04</string>-->
     <string name="main_tab_mine">我的</string>
     <string name="main_tab_biyao">比药</string>
+    <string name="common_code_send">发送验证码</string>
 
     <string name="common_confirm">确定</string>
     <string name="common_cancel">取消</string>
