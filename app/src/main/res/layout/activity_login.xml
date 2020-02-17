@@ -72,6 +72,15 @@
         android:layout_marginRight="@dimen/padding_40"
         android:text="登入" />
 
+    <Button
+        android:id="@+id/btn_login_wechat"
+        style="@style/ButtonStyle_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_40"
+        android:layout_marginTop="@dimen/padding_30"
+        android:layout_marginRight="@dimen/padding_40"
+        android:text="微信登录" />
 
 
     <TextView

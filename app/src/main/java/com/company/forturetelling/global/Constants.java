@@ -32,13 +32,15 @@ public class Constants {
 
 //    微信资料
 //    AppID：wx4b9e09ae470dc4ce
+//    AppSecret： ebb2251808c184f72cb7e3d6d272a1cf
 //    签名：fe99d480f0571524a4ddea6f0c8a613f     //正式版本
 //
 //    商户ID:1574217601
 //    API密钥，在商户平台设置:wanzu202020202020202020202020202
 
     //appid 微信分配的公众账号ID
-    public static final String APP_ID_WECHART = "wx4b9e09ae470dc4ce";
+    public static final String  APP_ID_WECHART = "wx4b9e09ae470dc4ce";
+    public static final String APP_SECRET = "ebb2251808c184f72cb7e3d6d272a1cf";
 
     //商户号 微信分配的公众账号ID
     public static final String MCH_ID = "1574217601";

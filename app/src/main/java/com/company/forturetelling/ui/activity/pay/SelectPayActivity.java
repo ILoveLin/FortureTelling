@@ -214,6 +214,7 @@ public class SelectPayActivity extends BaseActivity {
                         .url(HttpConstants.ALIPay)
                         .addParams("body", title)
                         .addParams("out_trade_no", oid)
+                        .addParams("total_fee", "5")
                         .addParams("total_fee", "0.01")
                         .addParams("text_surname",text_surname )   //姓
                         .addParams("text_name",text_name )//名

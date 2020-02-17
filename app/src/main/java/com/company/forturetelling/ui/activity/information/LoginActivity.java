@@ -1,5 +1,8 @@
 package com.company.forturetelling.ui.activity.information;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.company.forturetelling.R;
+import com.company.forturetelling.base.App;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.LoginBean;
 import com.company.forturetelling.bean.bus.ExitEvent;
@@ -20,6 +24,7 @@ import com.company.forturetelling.ui.activity.RegisterActivity;
 import com.company.forturetelling.utils.ClearEditText;
 import com.company.forturetelling.utils.NetworkUtil;
 import com.google.gson.reflect.TypeToken;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -27,6 +32,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +53,8 @@ public class LoginActivity extends BaseActivity {
     TextView tvLoginForget;
     @BindView(R.id.btn_login_commit)
     Button btnLoginCommit;
+    @BindView(R.id.btn_login_wechat)
+    Button btn_login_wechat;
     @BindView(R.id.ib_left)
     ImageButton ib_left;
     @BindView(R.id.tv_title)
@@ -173,7 +181,43 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+
+        btn_login_wechat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wxLogin();
+            }
+        });
+
     }
+
+    public void wxLogin() {
+        if (!App.msgApi.isWXAppInstalled()) {
+            showToast("您还未安装微信客户端");
+            return;
+        }
+        final SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        req.state = "diandi_wx_login";
+        App.msgApi.sendReq(req);
+    }
+
+//
+//    //判断是否安装 微信
+//    public boolean isWeixinAvilible(Context context) {
+//        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+//        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+//        if (pinfo != null) {
+//            for (int i = 0; i < pinfo.size(); i++) {
+//                String pn = pinfo.get(i).packageName;
+//                if (pn.equals("com.tencent.mm")) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+
 
     private void checkData() {
         username = etLoginPhone.getText().toString().trim();

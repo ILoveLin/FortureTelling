@@ -26,6 +26,7 @@ public class App extends Application {
 
     private static App app;
     public static String AppFilePath = "app";
+    public static IWXAPI msgApi;
 
     public App() {
         app = this;
@@ -46,7 +47,7 @@ public class App extends Application {
          * 做一些sdk等等的init
          */
         //微信支付
-        final IWXAPI msgApi = WXAPIFactory.createWXAPI(getApplicationContext(), null);
+        msgApi = WXAPIFactory.createWXAPI(getApplicationContext(), null);
         // 将该app注册到微信   AppID:步骤二申请到的AppID
         // msgApi.registerApp("wx4b9e09ae470dc4ce");
         msgApi.registerApp(Constants.APP_ID_WECHART);
