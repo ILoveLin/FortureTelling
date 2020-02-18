@@ -48,7 +48,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="vertical">
 
                 <ImageView
@@ -56,9 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/icon_gb_six_name"
-
-                    />
+                    android:src="@mipmap/icon_gb_six_name" />
 
                 <!--个人信息-->
                 <LinearLayout
@@ -165,156 +162,51 @@
                     <!--&lt;!&ndash;您的五行八字资料&ndash;&gt;-->
 
                     <!--<LinearLayout-->
-                        <!---->
-                        <!--android:visibility="visible"-->
-                        <!--android:id="@+id/linear_recycle"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginTop="@dimen/padding_20"-->
-                        <!--android:orientation="vertical">-->
+                    <!---->
+                    <!--android:visibility="visible"-->
+                    <!--android:id="@+id/linear_recycle"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginTop="@dimen/padding_20"-->
+                    <!--android:orientation="vertical">-->
 
-                        <!--<TextView-->
+                    <!--<TextView-->
 
-                            <!--android:visibility="visible"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="您的五行八字资料"-->
-                            <!--android:textColor="@color/black80"-->
-                            <!--android:textSize="@dimen/padding_18" />-->
+                    <!--android:visibility="visible"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="您的五行八字资料"-->
+                    <!--android:textColor="@color/black80"-->
+                    <!--android:textSize="@dimen/padding_18" />-->
 
-                        <!--<android.support.v7.widget.RecyclerView-->
-                            <!--android:visibility="visible"-->
-                            <!--android:id="@+id/six_head_recyclerView"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginLeft="@dimen/padding_10"-->
-                            <!--android:layout_marginTop="@dimen/padding_20"-->
-                            <!--android:layout_marginRight="@dimen/padding_10"-->
-                            <!--android:paddingBottom="@dimen/padding_20">-->
+                    <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:visibility="visible"-->
+                    <!--android:id="@+id/six_head_recyclerView"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/padding_10"-->
+                    <!--android:layout_marginTop="@dimen/padding_20"-->
+                    <!--android:layout_marginRight="@dimen/padding_10"-->
+                    <!--android:paddingBottom="@dimen/padding_20">-->
 
 
-                        <!--</android.support.v7.widget.RecyclerView>-->
+                    <!--</android.support.v7.widget.RecyclerView>-->
 
                     <!--</LinearLayout>-->
 
 
                 </LinearLayout>
-                <!--今日运势01-->
-                <LinearLayout
-                    android:layout_marginTop="@dimen/padding_20"
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
+
+                <android.support.v7.widget.RecyclerView
+
+                    android:id="@+id/getname_recycle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_fortune_infor_detalis"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/include_details_title_01" />
+                    android:layout_height="match_parent">
 
 
-                    <TextView
-                        android:id="@+id/tv_details_01"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_10"
-                        android:layout_marginTop="@dimen/padding_20"
-                        android:background="@color/white"
-                        android:paddingLeft="@dimen/padding_10"
-                        android:textSize="@dimen/padding_22" />
-                </LinearLayout>
-
-                <!--本周运势02-->
-                <LinearLayout
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_20"
-                    android:background="@drawable/shape_fortune_infor_detalis"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/include_details_title_02" />
-
-                    <TextView
-                        android:id="@+id/tv_details_02"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_10"
-                        android:layout_marginTop="@dimen/padding_20"
-                        android:background="@color/white"
-                        android:paddingLeft="@dimen/padding_10"
-                        android:textSize="@dimen/padding_22" />
-                </LinearLayout>
-                <!--本月运势03-->
-                <LinearLayout
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_20"
-                    android:background="@drawable/shape_fortune_infor_detalis"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/include_details_title_03" />
-
-                    <TextView
-                        android:id="@+id/tv_details_03"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_10"
-                        android:layout_marginTop="@dimen/padding_20"
-                        android:background="@color/white"
-                        android:paddingLeft="@dimen/padding_10"
-                        android:textSize="@dimen/padding_22" />
-                </LinearLayout>
-                <!--今年运势04-->
-                <LinearLayout
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_20"
-                    android:layout_marginBottom="@dimen/padding_20"
-                    android:background="@drawable/shape_fortune_infor_detalis"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/include_details_title_04" />
-
-                    <TextView
-                        android:id="@+id/tv_details_04"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_10"
-                        android:layout_marginTop="@dimen/padding_20"
-                        android:background="@color/white"
-                        android:paddingLeft="@dimen/padding_10"
-                        android:textSize="@dimen/padding_22" />
-                </LinearLayout>
-                <!--今年运势05-->
-                <LinearLayout
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_20"
-                    android:background="@drawable/shape_fortune_infor_detalis"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/include_details_title_05" />
-
-                    <TextView
-                        android:id="@+id/tv_details_05"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_10"
-                        android:layout_marginTop="@dimen/padding_20"
-                        android:background="@color/white"
-                        android:paddingLeft="@dimen/padding_10"
-                        android:textSize="@dimen/padding_22" />
-                </LinearLayout>
+                </android.support.v7.widget.RecyclerView>
             </LinearLayout>
+
 
         </android.support.v4.widget.NestedScrollView>
 

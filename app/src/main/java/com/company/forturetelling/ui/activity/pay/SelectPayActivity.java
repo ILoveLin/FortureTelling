@@ -26,7 +26,7 @@ import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.pay.order.EventOrderMessage;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
-import com.company.forturetelling.ui.activity.result.ResultNameDetalisActivity;
+import com.company.forturetelling.ui.activity.sixfunction.getname.GetNameResultActivity;
 import com.company.forturetelling.view.dialog.PayBottomDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -307,7 +307,6 @@ public class SelectPayActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Log.e("PayUtils----ALI-Second", "Exception===ALIPay====");
 
                     }
 
@@ -326,9 +325,8 @@ public class SelectPayActivity extends BaseActivity {
                             Bundle bundle = new Bundle();
                             bundle.putString("oid", oid);
                             bundle.putString("title", title);
-
                             if("取名".equals(title)) {
-                                openActivity(ResultNameDetalisActivity.class, bundle);
+                                openActivity(GetNameResultActivity.class, bundle);
 
                             }else{
                                 openActivity(ResultCommonActivity.class, bundle);

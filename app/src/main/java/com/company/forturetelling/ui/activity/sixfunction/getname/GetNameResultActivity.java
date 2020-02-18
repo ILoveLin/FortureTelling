@@ -64,7 +64,8 @@ public class GetNameResultActivity extends BaseActivity {
     private String nongliname = "";
     private String bazi = "";
     private Boolean isFristIn = true;
-    private String addName;
+    public String addName;
+
 
     @Override
     public int getContentViewId() {
@@ -87,8 +88,12 @@ public class GetNameResultActivity extends BaseActivity {
         isBaziNull = false;
         tv_name_empty.setVisibility(View.INVISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
+
+
         orderNo = getIntent().getStringExtra("orderNo");
-        addName = getIntent().getStringExtra("addName");
+        orderNo = getIntent().getStringExtra("oid");
+        Log.e("getName=====", "Exception===orderNo===="+orderNo);
+        Log.e("getName=====", "Exception===addName===="+addName);
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 //        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         GridLayoutManager layoutManager = new GridLayoutManager(GetNameResultActivity.this, 2);
@@ -133,7 +138,7 @@ public class GetNameResultActivity extends BaseActivity {
         OkHttpUtils.get()
                 .url(HttpConstants.NameDetails)
                 .addParams("orderno", orderNo)  //
-                .addParams("page", page + "")
+//                .addParams("page", page + "")
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -143,14 +148,18 @@ public class GetNameResultActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.e("mImageUri", "=========file===orderNo======" + response);
+                        Log.e("mImageUri", "=========file==订单界面=orderNo======" + response);
+                        Log.e("mImageUri", "=========file==订单界面=orderNo======" + orderNo);
 
                         showContent();
                         Type type = new TypeToken<NameDetailsBean>() {
                         }.getType();
                         mBean = gson.fromJson(response, type);
+                        mAdapter.setName(mBean.getData().getInfo().getName());
                         if ("0".equals(mBean.getStatus())) {
-                            if (mBean.getData().getFullname().size() != 0) {
+                            List<NameDetailsBean.DataBean.FullnameBean> fullname = mBean.getData().getFullname();
+
+                            if (fullname!=null && mBean.getData().getFullname().size() != 0) {
                                 newBeanList = mBean.getData().getFullname();
                                 refreshData(newBeanList, statue);
                             } else {

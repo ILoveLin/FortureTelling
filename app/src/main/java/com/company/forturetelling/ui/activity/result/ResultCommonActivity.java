@@ -76,8 +76,6 @@ public class ResultCommonActivity extends BaseActivity {
     ImageView im_header_pic;
     @BindView(R.id.linear_recycle)
     LinearLayout linear_recycle;
-
-
     private String oid;
     private String birthday;
     private String sex = "男";

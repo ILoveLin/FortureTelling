@@ -11,7 +11,6 @@ import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
-import com.company.forturetelling.ui.activity.result.ResultNameDetalisActivity;
 import com.company.forturetelling.ui.activity.sixfunction.eightnumber.EightNumberActivity;
 import com.company.forturetelling.ui.activity.sixfunction.namedetails.presenter.NameDetailsPresenter;
 import com.company.forturetelling.ui.activity.sixfunction.namedetails.presenter.NameDetailsView;

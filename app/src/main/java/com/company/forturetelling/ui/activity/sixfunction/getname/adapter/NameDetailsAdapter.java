@@ -40,7 +40,9 @@ public class NameDetailsAdapter extends RecyclerView.Adapter<NameDetailsAdapter.
 
     private Context applicationContext;
     private String addName;
-
+    public  void setName(String addName) {
+        this.addName =addName;
+    }
     public NameDetailsAdapter(List<NameDetailsBean.DataBean.FullnameBean> newBeanList, Context applicationContext, String addName) {
         this.datas = newBeanList;
         this.addName = addName;
