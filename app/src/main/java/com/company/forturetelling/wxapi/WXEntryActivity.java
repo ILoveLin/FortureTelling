@@ -7,18 +7,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.company.forturetelling.base.App;
 import com.company.forturetelling.bean.WechartBeanUpdate;
 import com.company.forturetelling.bean.WechatLoginBean;
-import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
-import com.company.forturetelling.ui.activity.RegisterActivity;
+import com.company.forturetelling.ui.activity.information.RegisterActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -26,7 +24,6 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_relative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_horizontal"
+            android:layoutAnimation="@anim/layout_animation_fall_down"
+            android:orientation="vertical"
+            tools:layoutAnimation="@null">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/register_title"
+                android:textColor="@color/black60"
+                android:textSize="23sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/register_hint"
+                android:textColor="@color/black20"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_register_edit1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.company.forturetelling.view.RegexEditText
+                        android:id="@+id/et_register_phone"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/common_phone_input_hint"
+                        android:inputType="textVisiblePassword"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        app:regexType="mobile" />
+
+                    <View
+                        style="@style/HorizontalLineStyle"
+                        android:layout_gravity="bottom" />
+                </FrameLayout>
+
+                <com.company.forturetelling.view.CountdownView
+                    android:id="@+id/cv_register_countdown"
+                    style="@style/CountdownViewStyle" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_register_code"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/common_code_input_hint"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <View style="@style/HorizontalLineStyle" />
+
+            <com.company.forturetelling.view.PasswordEditText
+                android:id="@+id/et_register_password1"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/register_password_hint1"
+                android:maxLength="20"
+                android:maxLines="1" />
+
+            <View style="@style/HorizontalLineStyle" />
+
+            <com.company.forturetelling.view.PasswordEditText
+                android:id="@+id/et_register_password2"
+                style="@style/EditTextStyle"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/register_password_hint2"
+                android:maxLength="20"
+                android:maxLines="1" />
+
+            <View style="@style/HorizontalLineStyle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_setting_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    android:paddingLeft="@dimen/padding_10"
+                    android:paddingRight="@dimen/padding_10"
+                    app:bar_leftColor="@color/color_A4A4A4"
+                    app:bar_leftSize="@dimen/padding_15"
+                    app:bar_leftText="我的生日"
+                    app:bar_rightColor="@color/color_A4A4A4"
+                    app:bar_rightHint="请输入"
+                    app:bar_rightSize="@dimen/padding_15" />
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_setting_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    android:clickable="true"
+                    android:paddingLeft="@dimen/padding_10"
+                    android:paddingRight="@dimen/padding_10"
+                    app:bar_leftColor="@color/color_A4A4A4"
+                    app:bar_leftSize="@dimen/padding_15"
+                    app:bar_leftText="我的地址"
+                    app:bar_rightColor="@color/color_A4A4A4"
+                    app:bar_rightHint="请输入"
+                    app:bar_rightSize="@dimen/padding_15" />
+
+                <com.company.forturetelling.view.SettingBar
+                    android:id="@+id/bar_setting_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mine_bar"
+                    android:paddingLeft="@dimen/padding_10"
+                    android:paddingRight="@dimen/padding_10"
+                    app:bar_leftColor="@color/color_A4A4A4"
+                    app:bar_leftSize="@dimen/padding_15"
+                    app:bar_leftText="我的性别"
+                    app:bar_rightColor="@color/color_A4A4A4"
+                    app:bar_rightHint="请输入"
+                    app:bar_rightSize="@dimen/padding_15" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_register_commit"
+                style="@style/ButtonStyleLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/register_title" />
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_14"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="注册即表示同意"
+
+                    />
+
+                <TextView
+                    android:id="@+id/phone_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_register"
+                    android:layout_toRightOf="@+id/test"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="《注册协议》"
+                    android:textColor="@color/colorPrimary"
+
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</RelativeLayout>
+

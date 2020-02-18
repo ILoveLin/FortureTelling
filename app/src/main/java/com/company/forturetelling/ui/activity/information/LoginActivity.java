@@ -1,8 +1,5 @@
 package com.company.forturetelling.ui.activity.information;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,12 +13,9 @@ import com.company.forturetelling.base.App;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.LoginBean;
 import com.company.forturetelling.bean.bus.ExitEvent;
-import com.company.forturetelling.bean.bus.LoginEvent;
 import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
-import com.company.forturetelling.ui.MainActivity;
-import com.company.forturetelling.ui.activity.RegisterActivity;
 import com.company.forturetelling.utils.ClearEditText;
 import com.company.forturetelling.utils.NetworkUtil;
 import com.google.gson.reflect.TypeToken;
@@ -35,7 +29,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

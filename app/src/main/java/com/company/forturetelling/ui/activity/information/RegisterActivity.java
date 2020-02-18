@@ -1,4 +1,4 @@
-package com.company.forturetelling.ui.activity;
+package com.company.forturetelling.ui.activity.information;
 
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,8 +25,6 @@ import com.company.forturetelling.bean.RegisterBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
-import com.company.forturetelling.ui.activity.information.InforSettingActivity;
-import com.company.forturetelling.ui.activity.information.presenter.InforPresenter;
 import com.company.forturetelling.utils.ClearEditText;
 import com.company.forturetelling.view.CircleImageView;
 import com.company.forturetelling.view.SettingBar;

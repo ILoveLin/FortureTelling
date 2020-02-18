@@ -26,6 +26,7 @@ import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.pay.order.EventOrderMessage;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
+import com.company.forturetelling.ui.activity.result.ResultNameDetalisActivity;
 import com.company.forturetelling.view.dialog.PayBottomDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -214,7 +215,7 @@ public class SelectPayActivity extends BaseActivity {
                         .url(HttpConstants.ALIPay)
                         .addParams("body", title)
                         .addParams("out_trade_no", oid)
-                        .addParams("total_fee", "5")
+//                        .addParams("total_fee", "5")
                         .addParams("total_fee", "0.01")
                         .addParams("text_surname",text_surname )   //姓
                         .addParams("text_name",text_name )//名
@@ -313,6 +314,8 @@ public class SelectPayActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         Log.e("PayUtils----ALI-Second", "response==ALIPay===Second==" + response);
+                        Log.e("PayUtils----ALI-Second", "response==ALIPay=oid==Second==" + oid);
+                        Log.e("PayUtils----ALI-Second", "response==ALIPay=title==Second==" + title);
                         Type type = new TypeToken<AliPaySecondResultBean>() {
                         }.getType();
                         AliPaySecondResultBean mAliPaySecondResultBean = gson.fromJson(response, type);
@@ -323,7 +326,15 @@ public class SelectPayActivity extends BaseActivity {
                             Bundle bundle = new Bundle();
                             bundle.putString("oid", oid);
                             bundle.putString("title", title);
-                            openActivity(ResultCommonActivity.class, bundle);
+
+                            if("取名".equals(title)) {
+                                openActivity(ResultNameDetalisActivity.class, bundle);
+
+                            }else{
+                                openActivity(ResultCommonActivity.class, bundle);
+
+                            }
+
                         } else {    //失败
                             showToast("支付宝订单二次校验失败");
                         }

@@ -3,6 +3,8 @@ package com.company.forturetelling.view;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -45,9 +47,10 @@ public final class ClearEditText extends RegexEditText
         super.initialize(context, attrs);
 
         // Wrap the drawable so that it can be tinted pre Lollipop
-//        mClearDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_input_delete));
+        mClearDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_input_delete));
         mClearDrawable = getResources().getDrawable( R.drawable.ic_input_delete);
-        mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
+//        mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
+        mClearDrawable.setBounds(0, 0, 45, 45);
         setDrawableVisible(false);
         super.setOnTouchListener(this);
         super.setOnFocusChangeListener(this);

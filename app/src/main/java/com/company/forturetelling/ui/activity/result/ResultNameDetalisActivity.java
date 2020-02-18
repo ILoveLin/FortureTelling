@@ -30,7 +30,7 @@ import okhttp3.Call;
 /**
  * Created by Lovelin on 2019/12/24
  * <p>
- * Describe:
+ * Describe:这个是单独的取名 结果界面
  */
 public class ResultNameDetalisActivity extends BaseActivity {
     @BindView(R.id.im_header_pic)
@@ -109,7 +109,7 @@ public class ResultNameDetalisActivity extends BaseActivity {
     }
 
     private void responseListener() {
-        sendRequest(HttpConstants.NameDetails03);
+        sendRequest(HttpConstants.NameDetails);
 
 
     }

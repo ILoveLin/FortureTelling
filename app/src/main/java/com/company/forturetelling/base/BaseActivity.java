@@ -3,6 +3,8 @@ package com.company.forturetelling.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -29,6 +31,8 @@ import com.yun.common.utils.StatusBarUtil;
 import com.yun.common.utils.StatusBarUtils;
 import com.yun.common.utils.ToastUtil;
 import com.yun.common.utils.popupwindow.PopupWindowTwoButton;
+
+import java.util.List;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -136,7 +140,32 @@ public abstract class BaseActivity extends AppCompatActivity {
     //------------------------title_bar 操作-----------------
     //------------------------title_bar 操作-----------------
     //------------------------title_bar 操作-----------------
+    //判断是否安装 微信
+    public  boolean isWeixinAvilible(Context context) {
+        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName;
+                if (pn.equals("com.tencent.mm")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public void startActivity(Class<? extends Activity> cls) {
+        startActivity(new Intent(this, cls));
+    }
 
+    public void startActivityFinish(Class<? extends Activity> cls) {
+        startActivityFinish(new Intent(this, cls));
+    }
+
+    public void startActivityFinish(Intent intent) {
+        startActivity(intent);
+        finish();
+    }
 
     /**
      * 设置标题栏名称

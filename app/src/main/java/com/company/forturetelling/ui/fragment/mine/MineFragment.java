@@ -26,6 +26,7 @@ import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.NewsActivity;
 import com.company.forturetelling.ui.activity.information.InforSettingActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
 import com.company.forturetelling.utils.CacheUtil;
@@ -198,7 +199,8 @@ public class MineFragment extends BaseFragment implements MineView {
                 openActivity(InforSettingActivity.class);
                 break;
             case R.id.linear_current_info_unlogin: // 未登录状态----个人设置
-                openActivity(LoginActivity.class);
+//                openActivity(LoginActivity.class);
+                openActivity(LoginAnimatorActivity.class);
                 break;
             case R.id.bar_clan_data: //清理缓存
                 showPop();

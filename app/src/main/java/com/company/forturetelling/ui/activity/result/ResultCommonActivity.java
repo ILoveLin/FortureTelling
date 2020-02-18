@@ -35,7 +35,7 @@ import okhttp3.Call;
 /**
  * Created by Lovelin on 2019/12/24
  * <p>
- * Describe:
+ * Describe:5个统一的界面
  */
 public class ResultCommonActivity extends BaseActivity {
     @BindView(R.id.tv_info_sex)

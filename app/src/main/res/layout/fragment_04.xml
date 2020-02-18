@@ -158,6 +158,8 @@
 
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_clan_data"
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mine_bar"
@@ -167,6 +169,8 @@
                     app:bar_rightText="0.3M" />
 
                 <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
                     android:id="@+id/bar_payed_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -177,6 +181,8 @@
                     app:bar_rightText="" />
 
                 <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
                     android:id="@+id/bar_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,6 +193,8 @@
                   />
 
                 <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
                     android:id="@+id/bar_about_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

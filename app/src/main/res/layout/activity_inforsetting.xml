@@ -101,6 +101,8 @@
                     android:layout_height="@dimen/padding_10"
                     android:background="@color/color_f4f4f4" />
                 <com.company.forturetelling.view.SettingBar
+                    android:paddingRight="@dimen/padding_10"
+                    android:paddingLeft="@dimen/padding_10"
                     android:id="@+id/bar_setting_account_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -112,6 +114,8 @@
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_setting_maname"
                     android:layout_width="match_parent"
+                    android:paddingRight="@dimen/padding_10"
+                    android:paddingLeft="@dimen/padding_10"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
@@ -123,6 +127,8 @@
                     android:id="@+id/bar_setting_birthday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/padding_10"
+                    android:paddingLeft="@dimen/padding_10"
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的生日"
@@ -136,6 +142,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
+                    android:paddingRight="@dimen/padding_10"
+                    android:paddingLeft="@dimen/padding_10"
                     app:bar_leftText="我的地址"
                     app:bar_rightColor="@color/color_666666"
                     app:bar_rightText="江西省 上饶市" />
@@ -146,6 +154,8 @@
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的性别"
+                    android:paddingRight="@dimen/padding_10"
+                    android:paddingLeft="@dimen/padding_10"
                     app:bar_rightColor="@color/color_666666"
                     app:bar_rightText="男" />
 
@@ -156,6 +166,8 @@
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="修改密码"
+                    android:paddingRight="@dimen/padding_10"
+                    android:paddingLeft="@dimen/padding_10"
                     app:bar_rightColor="@color/color_666666"
                     app:bar_rightText="" />
 

@@ -175,6 +175,13 @@ public class GlideUtils {
 
         Glide.with(mContext).load(path)
                 .apply(options).into(imageview);
+
+
+//        ImageLoader.with(this)
+//                .load(data.getIcon())
+//                .circle()
+//                .into(mLogoView);
+
 //        Glide.with(mContext)
 //                .load(path)
 //                .into(imageview);

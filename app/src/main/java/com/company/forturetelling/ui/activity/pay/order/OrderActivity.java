@@ -14,6 +14,7 @@ import com.company.forturetelling.ui.activity.pay.order.adapter.OrderAdapter;
 import com.company.forturetelling.ui.activity.pay.order.presenter.OrderPresenter;
 import com.company.forturetelling.ui.activity.pay.order.presenter.OrderView;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
+import com.company.forturetelling.ui.activity.result.ResultNameDetalisActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -102,9 +103,12 @@ public class OrderActivity extends BaseActivity implements OrderView {
                 bundle.putString("text_surname", "");  //姓
                 bundle.putString("text_name", "");     //名
                 bundle.putString("text_all_name", ""); //姓名
+                if("取名".equals(title)) {
+                    openActivity(ResultNameDetalisActivity.class, bundle);
+                }else{
+                    openActivity(ResultCommonActivity.class, bundle);
+                }
 
-
-                openActivity(ResultCommonActivity.class, bundle);
             }
         });
     }
