@@ -178,5 +178,7 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat:28.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: me.weyye.ColorTrackTabLayout:library:1.0.1@aar" level="project" />
     <orderEntry type="module" module-name="commonlib" />
+    <orderEntry type="module" module-name="commonlib" />
+    <orderEntry type="module" module-name="commonlib" />
   </component>
 </module>

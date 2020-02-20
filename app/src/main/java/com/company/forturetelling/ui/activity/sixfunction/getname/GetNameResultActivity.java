@@ -150,7 +150,6 @@ public class GetNameResultActivity extends BaseActivity {
                     public void onResponse(String response, int id) {
                         Log.e("mImageUri", "=========file==订单界面=orderNo======" + response);
                         Log.e("mImageUri", "=========file==订单界面=orderNo======" + orderNo);
-
                         showContent();
                         Type type = new TypeToken<NameDetailsBean>() {
                         }.getType();
@@ -167,7 +166,6 @@ public class GetNameResultActivity extends BaseActivity {
                                 tv_name_empty.setVisibility(View.VISIBLE);
                                 mRecyclerView.setVisibility(View.INVISIBLE);
                             }
-
 
                         } else {
                             showError();
@@ -197,7 +195,6 @@ public class GetNameResultActivity extends BaseActivity {
                     }
                 } else {
                     isNongliNull = true;
-
                     nongliname += "";
                     nonglinamesubstring = nongliname.substring(0, nongliname.length() - 1);
                 }

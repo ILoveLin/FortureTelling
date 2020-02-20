@@ -14,6 +14,7 @@ import com.company.forturetelling.bean.sixtab.EightNumBean03;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.activity.sixfunction.getname.GetNameActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,7 +51,7 @@ public class EightNumberPresenter {
         String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
         if ("".equals(userid)) {
             mView.showToast("请先登入~~  ");
-            Intent intent = new Intent(mContext, LoginActivity.class);
+            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
             mContext.startActivity(intent);
         }else{
             mView.showLoadingView();

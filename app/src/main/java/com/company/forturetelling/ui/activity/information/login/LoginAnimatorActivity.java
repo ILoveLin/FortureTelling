@@ -95,7 +95,9 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
     @Override
     public void onClickTitleRightTvBtn(View v) {
         super.onClickTitleRightTvBtn(v);
-        openActivity(RegisterAnimatorActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("title", "注册");
+        openActivity(RegisterAnimatorActivity.class,bundle);
     }
 
     private void initView() {
@@ -169,6 +171,8 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ExitEvent(WeChartEvent WeChartEvent) {
         this.finish();
+        Log.e("Wetchat", "login==end===数据保持后台完毕=login==");
+
 
     }
 

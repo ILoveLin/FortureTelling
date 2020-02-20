@@ -16,6 +16,8 @@ public class Constants {
     //系统和请求头
     public static final String Token = "token";
     public static final String Device = "android";
+    public static final String WX_Openid = "WX_Openid";
+    public static final String MessageId = "MessageId";
     public static final String USERID = "USERID";
     public static final String Name = "Name";   //昵称
 

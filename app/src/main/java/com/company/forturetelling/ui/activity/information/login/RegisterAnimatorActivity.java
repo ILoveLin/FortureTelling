@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -21,17 +22,21 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
+import com.company.forturetelling.bean.CheckPhoneBean;
 import com.company.forturetelling.bean.CityBean;
 import com.company.forturetelling.bean.RegisterBean;
+import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
-import com.company.forturetelling.ui.activity.information.RegisterActivity;
+import com.company.forturetelling.view.CountdownView;
+import com.company.forturetelling.view.PasswordEditText;
 import com.company.forturetelling.view.RegexEditText;
 import com.company.forturetelling.view.SettingBar;
 import com.company.forturetelling.view.calendar.ChineseCalendar;
 import com.company.forturetelling.view.calendar.DialogGLC;
+import com.company.forturetelling.wxapi.WXEntryActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yun.common.utils.CommonUtils;
@@ -48,6 +53,7 @@ import org.json.JSONArray;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,6 +74,16 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
     SettingBar bar_setting_sex;
     @BindView(R.id.register_relative)
     RelativeLayout register_relative;
+    @BindView(R.id.et_register_password1)
+    PasswordEditText et_register_password1;
+    @BindView(R.id.et_register_password2)
+    PasswordEditText et_register_password2;
+    @BindView(R.id.cv_register_countdown)
+    CountdownView cv_register_countdown;
+    @BindView(R.id.tv_title_register)
+    TextView tv_title_register;
+    @BindView(R.id.btn_register_commit)
+    Button btn_register_commit;
     @BindView(R.id.et_register_phone)   //手机号码
             RegexEditText et_register_phone;
     @BindView(R.id.et_register_code)   //手机号码
@@ -76,10 +92,17 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
     private String currentBirthday;
     private Thread thread;
     private boolean isLoaded = false;
-
     private static final int MSG_LOAD_DATA = 0x0001;
     private static final int MSG_LOAD_SUCCESS = 0x0002;
     private static final int MSG_LOAD_FAILED = 0x0003;
+    private String token;
+    private ArrayList<CityBean> options1Items = new ArrayList<>();
+    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
+    private String province;
+    private String city;
+    private String password02;
+    private String password01;
+    private String phoneType = "1";
     //判断地址数据是否获取成功
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -111,24 +134,16 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
             }
         }
     };
-    private String token;
-
-    private ArrayList<CityBean> options1Items = new ArrayList<>();
-    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
-    private String province;
-    private String city;
+    private String title;
 
     private void initJsonData() {//解析数据
-
         /**
          * 注意：assets 目录下的Json文件仅供参考，实际使用可自行替换文件
          * 关键逻辑在于循环体
          *
          * */
         String CityData = new GetJsonDataUtil().getJson(RegisterAnimatorActivity.this, "city.json");//获取assets目录下的json文件数据
-
         ArrayList<CityBean> jsonBean = parseData(CityData);//用Gson 转成实体
-
         /**
          * 添加省份数据
          *
@@ -136,15 +151,12 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
          * PickerView会通过getPickerViewText方法获取字符串显示出来。
          */
         options1Items = jsonBean;
-
         for (int i = 0; i < jsonBean.size(); i++) {//遍历省份
             ArrayList<String> CityList = new ArrayList<>();//该省的城市列表（第二级）
             ArrayList<ArrayList<String>> Province_AreaList = new ArrayList<>();//该省的所有地区列表（第三极）
-
             for (int c = 0; c < jsonBean.get(i).getCity_list().size(); c++) {//遍历该省份的所有城市
                 String CityName = jsonBean.get(i).getCity_list().get(c);
                 CityList.add(CityName);//添加城市
-
             }
 
             /**
@@ -152,9 +164,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
              */
             options2Items.add(CityList);
         }
-
         mHandler.sendEmptyMessage(MSG_LOAD_SUCCESS);
-
     }
 
     public ArrayList<CityBean> parseData(String result) {//Gson 解析
@@ -173,7 +183,6 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
         return detail;
     }
 
-
     @Override
     public int getContentViewId() {
         return R.layout.activity_register_anim;
@@ -185,18 +194,33 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
     }
 
     private void initView() {
-
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.VISIBLE);
         setTitleRightBtnVisibility(View.GONE);
         setTitleName("");
         setPageStateView();
         mHandler.sendEmptyMessage(MSG_LOAD_DATA);
+        register = false;
+        title = getIntent().getStringExtra("title");
+        Log.e("Net", "response===校验手机输入分类  1 注册 2 忘记密码=====title===" + title);
+
+        if (title.equals("注册")) {
+//            分类 1 注册 2 忘记密码
+            phoneType = "1";
+            SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.WX_Openid, "");   //第一次注册,微信的open必须把它置空
+
+            tv_title_register.setText("注册");
+            btn_register_commit.setText("注册");
+        } else {
+            phoneType = "1";
+            tv_title_register.setText("完善信息");
+            btn_register_commit.setText("完成");
+        }
     }
 
 
     @OnClick({R.id.bar_setting_birthday, R.id.bar_setting_address, R.id.bar_setting_sex,
-            R.id.btn_register_commit})
+            R.id.btn_register_commit, R.id.cv_register_countdown})
     public void multipleOnclick(View view) {
         switch (view.getId()) {
             case R.id.bar_setting_birthday: //生日
@@ -208,13 +232,60 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
             case R.id.bar_setting_sex: //性别   性别 0 女 1男
                 showUpPop(register_relative);
                 break;
+            case R.id.cv_register_countdown: //倒计时,校验手机是否已经注册过了
+                checkPhoneIsRegister();
+
+//                CommonUtils.closeKeyboard(RegisterAnimatorActivity.this);
+//                checkData();
+                break;
             case R.id.btn_register_commit: //提交
                 CommonUtils.closeKeyboard(RegisterAnimatorActivity.this);
                 checkData();
                 break;
 
         }
+    }
 
+    private boolean register = false;
+
+    private void checkPhoneIsRegister() {
+        Log.e("Net", "response===校验手机输入分类  1 注册 2 忘记密码=====phoneType===" + phoneType);
+        phone = et_register_phone.getText().toString().trim();
+        //todo 此处需要校验手机验证码
+        if (TextUtils.isEmpty(phone)) {
+            showToast("手机号码不能为空");
+        } else {
+            OkHttpUtils.get()
+                    .url(HttpConstants.Register_CheckPhone)
+                    .addParams("PhoneNumbers", phone + "") //	手机号
+                    .addParams("type", phoneType)   //分类 1 注册 2 忘记密码
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            showToast("请求错误");
+                            showError();
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Type type = new TypeToken<CheckPhoneBean>() {
+                            }.getType();
+                            CheckPhoneBean bean = mGson.fromJson(response, type);
+//                            0 成功 -1失败
+                            Log.e("Net", "response===bean===  getStatus    0 成功 -1失败=====" + bean.getStatus());
+                            Log.e("Net", "response===response=== ====" + response);
+
+                            if ("0".equals(bean.getStatus())) {
+                                register = true;  //是否能请求注册或者完善信息的开关   ,默认是关了的
+                                SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.MessageId, bean.getData().getBizId() + "");
+                            } else if ("-1".equals(bean.getStatus())) {
+                                register = false;
+                                showToast(bean.getMsg() + "");
+                            }
+                        }
+                    });
+        }
 
     }
 
@@ -225,91 +296,110 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
     private String code;
 
     private void checkData() {
-
-        //todo 此处需要校验手机验证码
+//        if (register) {
+        Log.e("Net", "response===时间戳=====secondTimestamp=1==");
         phone = et_register_phone.getText().toString().trim();
         code = et_register_code.getText().toString().trim();
+        password01 = et_register_password1.getText().toString().trim() + "";
+        password02 = et_register_password2.getText().toString().trim() + "";
         if (TextUtils.isEmpty(phone)) {
             showToast("手机号码不能为空");
         } else if (TextUtils.isEmpty(code)) {
             showToast("验证码不能为空");
+        } else if (TextUtils.isEmpty(password01)) {
+            showToast("密码不能为空");
+        } else if (TextUtils.isEmpty(password02)) {
+            showToast("确认密码不能为空");
         } else if (TextUtils.isEmpty(currentBirthday)) {
             showToast("出生年月不能为空");
         } else if (TextUtils.isEmpty(province) || TextUtils.isEmpty(city)) {
             showToast("地址不能未空");
         } else if (TextUtils.isEmpty(StatueSex + "")) {
             showToast("性别不能未空");
-        } else {
-            showLoading();
+        } else if (!("".equals(password01)) && !("".equals(password02))) {
+            if (!(password01.equals(password02))) {
+                showToast("两次输入的密码必须相同");
+
+            } else {
+                Log.e("Net", "response===时间戳=====secondTimestamp=2==");
+
+                showLoading();
 //            开始请求注册
-            Log.e("Net", "response==username=1==" + phone + "==" + code
-                    + "==" + StatueSex + "==" + currentBirthday + "==" + province + "==" + city);
-
-            OkHttpUtils.post()
-                    .url(HttpConstants.Register)
-//                    .addParams("username", username)
-//                    .addParams("password", password)
-                    .addParams("gender", StatueSex + "")
-                    .addParams("birthday", currentBirthday)
-                    .addParams("province", province)
-                    .addParams("city", city)
-                    .build()
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onError(Call call, Exception e, int id) {
-                            showToast("请求错误");
-                            showError();
-
-                        }
-
-                        @Override
-                        public void onResponse(String response, int id) {
-                            Type type = new TypeToken<RegisterBean>() {
-                            }.getType();
-                            bean = mGson.fromJson(response, type);
-//                            Log.e("Net", "response==username=1==" + bean.getStatus());
-//                            Log.e("Net", "response==username=1==" + bean.getMsg());
-
-                            Log.e("Net", "login==RegisterBean===" + response);
-
-                            if ("0".equals(bean.getStatus())) {
-                                //sp存token
-                                showContent();
-//                                        token = bean.getData().getToken();
-                                userid = bean.getData().getUserid() + "";
-//                                token = bean.getData().getToken() + "";
-
-
-                                //TODO 在这个界面提交 验证码 绑定手机号码,并且关闭微信登入界面,Login界面,直接在Mainfragment,并且保持当前的userid
-
-                                SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.USERID, userid + "");
-//                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Token, token + "");
-                                SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Device, "android");
-                                SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Is_Logined, true);
-                                showToast("注册成功");
-                                openActivity(MainActivity.class);
-                                finish();
-//                                        SharePreferenceUtil.put(getContext(), Constants.Info_Headimg, "1");
-//                                        SharePreferenceUtil.put(getContext(), Constants.Info_Name, "1");　　
-//                                        SharePreferenceUtil.put(getContext(), Constants.Info_Sign, "1");
-//                                          初始化我的界面原始数据
-//                                        EventBus.getDefault().post(new CloseFragmentEvent(bean, 1));
-//                                        EventBus.getDefault().post(MineFragment.newInstance());
-//                                        EventBus.getDefault().post(new RefreshEvent(new LoginBean(),""));
-
-
-                            } else {
-                                showContent();
-                                showToast(bean.getMsg() + "");
+                String VXopenid = (String) SharePreferenceUtil.get(RegisterAnimatorActivity.this, Constants.WX_Openid, "");
+                String messageId = (String) SharePreferenceUtil.get(RegisterAnimatorActivity.this, Constants.MessageId, "");
+                String secondTimestamp = getSecondTimestampTwo(new Date()) + "";
+                Log.e("Net", "response==username=1==" + phone + "==" + messageId + "==" + code + "==" + secondTimestamp
+                        + "==" + StatueSex + "==" + currentBirthday + "==" + province + "==" + city);
+                Log.e("Net", "response===时间戳=====secondTimestamp=1==" + secondTimestamp);
+                Log.e("Net", "response===时间戳=====secondTimestamp=1==" + System.currentTimeMillis());
+                OkHttpUtils.post()
+                        .url(HttpConstants.Register)
+                        .addParams("PhoneNumbers", phone)
+                        .addParams("BizId", messageId)
+                        .addParams("vcode", code)      //验证码
+                        .addParams("ytime", secondTimestamp + "")   //验证码时间 传时间戳（注意是秒）
+                        .addParams("openid", VXopenid)  //微信唯一标识    可传可不传
+                        .addParams("password", password01)  //微信唯一标识    可传可不传
+                        .addParams("gender", StatueSex + "")
+                        .addParams("birthday", currentBirthday)
+                        .addParams("province", province)
+                        .addParams("city", city)
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                showToast("请求错误");
+                                showError();
                             }
 
+                            @Override
+                            public void onResponse(String response, int id) {
+                                Type type = new TypeToken<RegisterBean>() {
+                                }.getType();
+                                bean = mGson.fromJson(response, type);
+                                Log.e("Net", "login==RegisterBean===" + response);
+                                if ("0".equals(bean.getStatus())) {
+                                    //sp存token
+                                    showContent();
+                                    userid = bean.getData().getUserid() + "";
+                                    //TODO 在这个界面提交 验证码 绑定手机号码,并且关闭微信登入界面,Login界面,直接在Mainfragment,并且保持当前的userid
+                                    SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.USERID, userid + "");
+//                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Token, token + "");
+                                    SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Device, "android");
+                                    SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Is_Logined, true);
+                                    EventBus.getDefault().post(new ExitEvent("登入"));
+                                    showToast("注册成功");
+                                    openActivity(MainActivity.class);
+                                    finish();
+                                } else {
+                                    showContent();
+                                    showToast(bean.getMsg() + "");
+                                }
+                            }
+                        });
 
-                        }
-                    });
+            }
         }
+//        } else {
+//            showToast("手机号已被注册");
+//        }
+
 
     }
 
+    /**
+     * 获取精确到秒的时间戳
+     *
+     * @param date
+     * @return
+     */
+    public static int getSecondTimestampTwo(Date date) {
+        if (null == date) {
+            return 0;
+        }
+        String timestamp = String.valueOf(date.getTime() / 1000);
+        return Integer.valueOf(timestamp);
+    }
 
     private PopupWindow popupWindow;
     private TranslateAnimation animation;
@@ -385,19 +475,16 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
 //                mPresenter.sendAddressRequest(province, city, bar_setting_address);
             }
         })
-
                 .setDividerColor(Color.BLACK)
                 .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
                 .setContentTextSize(20)
                 .setOutSideCancelable(false)// default is true
                 .build();
 
-
         pvOptions.setPicker(options1Items, options2Items);//二级选择器（市区）
 //pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
         pvOptions.show();
     }
-
 
     private DialogGLC mDialog;
 
@@ -421,8 +508,6 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
                         bar_setting_birthday.setRightText("");
                         return;
                     }
-//                    mPresenter.sendDataRequest(barSettingBirthday, birthday);
-
                     bar_setting_birthday.setRightText("" + currentBirthday);
                     String showToast = "Gregorian : " + calendar.get(Calendar.YEAR) + "年"
                             + (calendar.get(Calendar.MONTH) + 1) + "月"
@@ -454,7 +539,6 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
         }
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -482,9 +566,12 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ExitEvent(WeChartEvent WeChartEvent) {
-//        this.finish();
+        Log.e("Wetchat", "login==end===数据保持后台完毕=register==");
+
+        this.finish();
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

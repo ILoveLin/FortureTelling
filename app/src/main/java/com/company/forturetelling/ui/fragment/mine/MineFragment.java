@@ -20,6 +20,7 @@ import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseFragment;
 import com.company.forturetelling.bean.UpdateBean;
 import com.company.forturetelling.bean.bus.ExitEvent;
+import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.bean.information.InforBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
@@ -119,6 +120,11 @@ public class MineFragment extends BaseFragment implements MineView {
             responseListener();
         }
     }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void ExitEvent(WeChartEvent WeChartEvent) {
+//        initView();
+//        responseListener();
+//    }
 
     private void initData() {
         linearCurrentInfo.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +168,12 @@ public class MineFragment extends BaseFragment implements MineView {
 //                                Log.e("mImageUri", "=========sendNo===昵称==" + inforBean.getData().getInfo().getName());
 
                                 tvCurrentName.setText("" + inforBean.getData().getInfo().getName());
-                                GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + inforBean.getData().getInfo().getHeadimg(), currentPic);
+                                String headimg = inforBean.getData().getInfo().getHeadimg();
+                                if (headimg.contains("http://")) {
+                                    GlideUtils.LogadCustomCircleImage(getActivity(), inforBean.getData().getInfo().getHeadimg(), currentPic);
+                                } else {
+                                    GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + inforBean.getData().getInfo().getHeadimg(), currentPic);
+                                }
 
                             } else {
                                 showToast("请求失败");
@@ -192,7 +203,7 @@ public class MineFragment extends BaseFragment implements MineView {
     }
 
 
-    @OnClick({R.id.linear_current_info_unlogin,R.id.bar_payed_order, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
+    @OnClick({R.id.linear_current_info_unlogin, R.id.bar_payed_order, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
     public void multipleOnclick(View view) {
         switch (view.getId()) {
             case R.id.linear_current_info: //个人设置

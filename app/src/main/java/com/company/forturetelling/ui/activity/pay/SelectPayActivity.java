@@ -327,7 +327,6 @@ public class SelectPayActivity extends BaseActivity {
                             bundle.putString("title", title);
                             if("取名".equals(title)) {
                                 openActivity(GetNameResultActivity.class, bundle);
-
                             }else{
                                 openActivity(ResultCommonActivity.class, bundle);
 

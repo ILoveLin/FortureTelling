@@ -14,6 +14,7 @@ import com.company.forturetelling.bean.calculate.AddNameBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
 import com.company.forturetelling.ui.activity.sixfunction.eightnumber.EightNumberActivity;
 import com.company.forturetelling.utils.ClearEditText;
@@ -115,7 +116,7 @@ public class GetNameActivity extends BaseActivity {
         String userid = (String) SharePreferenceUtil.get(this, Constants.USERID, "");
         if ("".equals(userid)) {
             showToast("请先登入~~  ");
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, LoginAnimatorActivity.class);
             startActivity(intent);
         } else {
 

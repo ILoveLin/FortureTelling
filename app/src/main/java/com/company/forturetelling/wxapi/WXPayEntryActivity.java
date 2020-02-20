@@ -16,6 +16,7 @@ import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
 import com.company.forturetelling.ui.activity.pay.order.EventOrderMessage;
 import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
+import com.company.forturetelling.ui.activity.sixfunction.getname.GetNameResultActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
@@ -152,7 +153,11 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("oid", out_trade_no);
                                 bundle.putString("title", title);
-                                openActivity(ResultCommonActivity.class, bundle);
+                                if("取名".equals(title)) {
+                                    openActivity(GetNameResultActivity.class, bundle);
+                                }else{
+                                    openActivity(ResultCommonActivity.class, bundle);
+                                }
                             } else {    //失败
                                 Toast.makeText(getApplicationContext(), "微信订单二次校验失败", Toast.LENGTH_SHORT).show();
 //                            showToast("支付宝订单二次校验失败");

@@ -13,10 +13,14 @@ import android.widget.Toast;
 import com.company.forturetelling.base.App;
 import com.company.forturetelling.bean.WechartBeanUpdate;
 import com.company.forturetelling.bean.WechatLoginBean;
+import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.MainActivity;
+import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.information.RegisterActivity;
+import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -24,6 +28,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
+import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -53,6 +58,7 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
     private ProgressBar progressBar;
     private WXEntryActivity mContext;
     private ProgressDialog mProgressDialog;
+    private WechatLoginBean mWXBean;
 
     //    AppID：wx4b9e09ae470dc4ce
 //    AppSecret： ebb2251808c184f72cb7e3d6d272a1cf
@@ -73,14 +79,16 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
         App.msgApi.handleIntent(getIntent(), this);
 
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ExitEvent(WeChartEvent WeChartEvent) {
         String message = WeChartEvent.getMessage();
-        if("全部关闭".equals(message)) {
+        if ("全部关闭".equals(message)) {
             this.finish();
         }
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -114,13 +122,17 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
             case BaseResp.ErrCode.ERR_OK:
                 String code = ((SendAuth.Resp) baseResp).code;
                 getAccessToken(code);
-                Log.e("Wetchat", "login==03===ok=" + code.toString());
+                Log.e("Wetchat", "login==03===ok=获取授权" + code.toString());
 
                 break;
             case BaseResp.ErrCode.ERR_AUTH_DENIED://用户拒绝授权
+                Log.e("Wetchat", "login==03===ok=用户拒绝授权");
+
 //                finish();
                 break;
             case BaseResp.ErrCode.ERR_USER_CANCEL://用户取消
+                Log.e("Wetchat", "login==03===ok=用户取消");
+
 //                finish();
                 break;
             default:
@@ -128,6 +140,9 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                 break;
         }
     }
+
+    public String access = null;
+    public String openId = null;
 
     private void getAccessToken(String code) {
         Log.e("Wetchat", "login==04===getAccessToken=");
@@ -162,9 +177,6 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
             public void onResponse(Call call, Response response) throws IOException {
                 String responseInfo = response.body().string();
                 Log.d("fan12", "onResponse: " + responseInfo);
-
-                String access = null;
-                String openId = null;
                 try {
                     JSONObject jsonObject = new JSONObject(responseInfo);
                     access = jsonObject.getString("access_token");
@@ -207,18 +219,19 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 
                 Type type = new TypeToken<WechatLoginBean>() {
                 }.getType();
-                WechatLoginBean mBean = gson.fromJson(responseInfo, type);
+                mWXBean = gson.fromJson(responseInfo, type);
 
                 Log.d("fan123", "onResponse: " + responseInfo);
                 SharedPreferences.Editor editor = getSharedPreferences("userInfo", MODE_PRIVATE).edit();
                 editor.putString("responseInfo", responseInfo);
                 //在这里把数据提交给后台
                 editor.commit();
-                requestData(mBean);
+                requestData(mWXBean);
 
             }
         });
     }
+
 
     private void requestData(WechatLoginBean mBean) {
         OkHttpUtils.post()
@@ -245,16 +258,40 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                         Type type = new TypeToken<WechartBeanUpdate>() {
                         }.getType();
                         WechartBeanUpdate mBean = gson.fromJson(response, type);
-                        Log.e("Wetchat", "login==end===数据保持后台完毕====" + mBean.getStatus());
 
-                        if ("0".equals(mBean.getStatus())) {
+                        Log.e("Wetchat", "login==end===数据保持后台完毕==response==" + response);
+
+//                        1 登录    0 跳转注册完善信息
+                        if ("0".equals(mBean.getStatus() + "")) {
 //                            EventBus.getDefault().post(new WeChartEvent("登入"));
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Openid, mWXBean.getOpenid());
                             Bundle bundle = new Bundle();
-                            bundle.putString("WeChat", "保定手机号");
-                            openActivity(RegisterActivity.class, bundle);
-                        } else {
-                            Toast.makeText(WXEntryActivity.this, "后台数据保存失败", Toast.LENGTH_SHORT).show();
+                            bundle.putString("title", openId);
+                            Log.e("Wetchat", "login==end===数据保持后台完毕==00000==" + mBean.getStatus() + "");
+                            EventBus.getDefault().post(new ExitEvent("登入"));
+                            openActivity(RegisterAnimatorActivity.class, bundle);
+                            Toast.makeText(WXEntryActivity.this, "请您完善信息", Toast.LENGTH_SHORT).show();
+
+
+                        } else if ("1".equals(mBean.getStatus() + "")) {
+                            String userid = mBean.getData().getUserid() + "";
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Openid, mWXBean.getOpenid());
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.USERID, userid + "");
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.Device, "android");
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.Is_Logined, true);
+                            EventBus.getDefault().post(new ExitEvent("登入"));
+                            Toast.makeText(WXEntryActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("title", "完善信息");
+                            openActivity(MainActivity.class, bundle);
+                            Log.e("Wetchat", "login==end===数据保持后台完毕==11111==" + mBean.getStatus() + "");
+                            finish();
                         }
+//                        else {
+//                            Log.e("Wetchat", "login==end===数据保持后台完毕==else==");
+//                            Toast.makeText(WXEntryActivity.this, "后台数据保存失败", Toast.LENGTH_SHORT).show();
+//                        }
 
                         finish();
                         mProgressDialog.dismiss();

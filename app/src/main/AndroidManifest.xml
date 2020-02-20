@@ -76,7 +76,7 @@
         <activity android:name=".ui.activity.sixfunction.synthesize.SynthesizeActivity" />
         <activity android:name=".ui.activity.result.ResultCommonActivity" />
         <activity android:name=".ui.activity.result.ResultMarragetestActivity" />
-        <activity android:name=".ui.activity.result.ResultNameDetalisActivity" />
+        <!--<activity android:name=".ui.activity.result.ResultNameDetalisActivity" />-->
         <activity android:name=".ui.activity.pay.order.OrderActivity" />
 
         <activity android:name=".ui.activity.information.login.LoginAnimatorActivity" />

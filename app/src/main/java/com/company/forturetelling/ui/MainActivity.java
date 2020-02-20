@@ -27,6 +27,7 @@ import com.company.forturetelling.base.ActivityCollector;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.UpdateBean;
 import com.company.forturetelling.bean.bus.ExitEvent;
+import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.fragment.calculate.CalculateFragment;
@@ -117,6 +118,14 @@ public class MainActivity extends BaseActivity {
     public void ExitEvent(ExitEvent messageEvent) {
         setChoiceItem(Constants.TAB_MINE);
     }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void ExitEvent(WeChartEvent WeChartEvent) {
+//        Log.e("Wetchat", "login==end===数据保持后台完毕=main==");
+//
+//
+//        setChoiceItem(Constants.TAB_MINE);
+//    }
+
 
     private void setChoiceItem(Integer index) {
         if (index < 0) {
@@ -194,7 +203,8 @@ public class MainActivity extends BaseActivity {
                 overAnim(tvTabFourthPage);
                 break;
         }
-        transaction.commit();
+//        transaction.commit();
+        transaction.commitAllowingStateLoss();
     }
 
     @OnClick({R.id.tv_tab_homepage, R.id.tv_tab_drug_query, R.id.tv_tab_recomment, R.id.rel_tab_mine})

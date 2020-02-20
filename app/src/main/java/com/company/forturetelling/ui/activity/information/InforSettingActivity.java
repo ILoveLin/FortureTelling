@@ -206,7 +206,13 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                                 InforBean.DataBean.InfoBean info = inforBean.getData().getInfo();
                                 tvCurrentName.setText("" + info.getName());
                                 bar_setting_maname.setRightText("" + info.getName());
-                                GlideUtils.LogadCustomCircleImage(InforSettingActivity.this, HttpConstants.Common + info.getHeadimg(), currentPic);
+                                String headimg = info.getHeadimg();
+                                if (headimg.contains("http://")) {
+                                    GlideUtils.LogadCustomCircleImage(InforSettingActivity.this, inforBean.getData().getInfo().getHeadimg(), currentPic);
+                                } else {
+                                    GlideUtils.LogadCustomCircleImage(InforSettingActivity.this, HttpConstants.Common + inforBean.getData().getInfo().getHeadimg(), currentPic);
+
+                                }
                                 barSettingBirthday.setRightText("" + info.getBirthday());
                                 bar_setting_address.setRightText("" + info.getProvince() + "省 " + info.getCity() + "市");
                                 bar_setting_account_phone.setRightText("" + info.getUsername());
