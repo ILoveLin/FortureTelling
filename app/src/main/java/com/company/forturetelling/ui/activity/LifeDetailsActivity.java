@@ -12,6 +12,7 @@ import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.LifeBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.fragment.fortune.FortuneFragment;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -70,32 +71,38 @@ public class LifeDetailsActivity extends BaseActivity {
 
     private void responseListener() {
         String userid = (String) SharePreferenceUtil.get(LifeDetailsActivity.this, Constants.USERID, "");
-        showLoading();
-        OkHttpUtils.get()
-                .url(HttpConstants.LiftFortune)
-                .addParams("userid", userid)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
+        if ("".equals(userid)) {
+            showToast("立即登登入,更多体验");
+            openActivity(LoginAnimatorActivity.class);
+        } else {
+            showLoading();
+            OkHttpUtils.get()
+                    .url(HttpConstants.LiftFortune)
+                    .addParams("userid", userid)
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
 
-                        showError();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Type type = new TypeToken<LifeBean>() {
-                        }.getType();
-                        LifeBean mBean01 = mGson.fromJson(response, type);
-                        if ("0".equals(mBean01.getStatus())) {
-                            showContent();
-                            refreshData(mBean01);
-
+                            showError();
                         }
 
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Type type = new TypeToken<LifeBean>() {
+                            }.getType();
+                            LifeBean mBean01 = mGson.fromJson(response, type);
+                            if ("0".equals(mBean01.getStatus())) {
+                                showContent();
+                                refreshData(mBean01);
 
-                    }
-                });
+                            }
+
+
+                        }
+                    });
+        }
+
 
     }
 

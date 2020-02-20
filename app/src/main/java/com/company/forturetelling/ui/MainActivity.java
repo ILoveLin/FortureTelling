@@ -203,8 +203,8 @@ public class MainActivity extends BaseActivity {
                 overAnim(tvTabFourthPage);
                 break;
         }
-//        transaction.commit();
-        transaction.commitAllowingStateLoss();
+        transaction.commit();
+//        transaction.commitAllowingStateLoss();
     }
 
     @OnClick({R.id.tv_tab_homepage, R.id.tv_tab_drug_query, R.id.tv_tab_recomment, R.id.rel_tab_mine})

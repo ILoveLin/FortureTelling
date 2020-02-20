@@ -190,11 +190,12 @@ public class ResultCommonActivity extends BaseActivity {
 
     //    婚姻测试
     private void getSetTab03Data(String response) {
+
         Type type = new TypeToken<MarriageTestBean>() {
         }.getType();
         MarriageTestBean mMarriageTestBean = mGson.fromJson(response, type);
         if ("0".equals(mMarriageTestBean.getStatus())) {
-            List<String> bazi = mMarriageTestBean.getData().getReturnX().getUser().getBazi();
+            List<String> bazi = mMarriageTestBean.getData().getBazi();
             mListData = getListData(bazi);
             SetTab03Data(mMarriageTestBean);
         }
@@ -227,24 +228,25 @@ public class ResultCommonActivity extends BaseActivity {
     }
 
     private void SetTab03Data(MarriageTestBean mBean03) {
-        MarriageTestBean.DataBeanXXX.ReturnBean.UserBean userBean = mBean03.getData().getReturnX().getUser();
+        MarriageTestBean.DataBeanX.UserBean userBean = mBean03.getData().getUser();
 
         username = userBean.getXingming().getXing() + userBean.getXingming().getMing();
-        birthday = mBean03.getData().getData().getData().getY() + "年" +
-                mBean03.getData().getData().getData().getM() + "月" +
-                mBean03.getData().getData().getData().getD() + "日  " +
-                mBean03.getData().getData().getData().getH() + "时";
+        birthday = mBean03.getData().getData().getY() + "年" +
+                mBean03.getData().getData().getM() + "月" +
+                mBean03.getData().getData().getD() + "日  " +
+                mBean03.getData().getData().getH() + "时";
 
-        born = mBean03.getData().getData().getData().getLDate();
-        String sexNum = mBean03.getData().getData().getData().getGender();
+        born = mBean03.getData().getData().getLDate();
+        String sexNum = mBean03.getData().getData().getGender();
         if ("0".equals(sexNum)) {
             sex = "男";
         } else {
             sex = "女";
 
         }
-        sx = mBean03.getData().getReturnX().getUser().getSx();
-        MarriageTestBean.DataBeanXXX.RglmBean rglmBean = mBean03.getData().getRglm();
+        sx = mBean03.getData().getUser().getSx();
+        MarriageTestBean.DataBeanX.RglmBean rglmBean = mBean03.getData().getRglm();
+//        MarriageTestBean.DataBeanXXX.RglmBean rglmBean = mBean03.getData().getRglm();
 
 
         //性格-爱情-事业-财运-健康

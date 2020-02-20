@@ -10,7 +10,7 @@ public class WechartBeanUpdate {
     /**
      * status : 1
      * msg : ok
-     * data : {"name":"乐观","gender":"1","headimg":"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIpDnvrfGsKKxXBiccAVZMZK0qH79ybg48GU7IlMeMU8pNBSJwhv5vgib10q3NUVtm3EIgicHaSu8pnQ/132","province":"","birthday":"1997-6-8","city":"","userid":92,"username":""}
+     * data : {"name":"乐观","gender":"0","headimg":"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIpDnvrfGsKKxXBiccAVZMZK0qH79ybg48GU7IlMeMU8pNBSJwhv5vgibQK3JyrJCjo1W4BJhgjab1Q/132","province":"江西","birthday":"1997-6-10","city":"上饶","userid":74,"username":"13133610536"}
      */
 
     private int status;
@@ -44,13 +44,13 @@ public class WechartBeanUpdate {
     public static class DataBean {
         /**
          * name : 乐观
-         * gender : 1
-         * headimg : http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIpDnvrfGsKKxXBiccAVZMZK0qH79ybg48GU7IlMeMU8pNBSJwhv5vgib10q3NUVtm3EIgicHaSu8pnQ/132
-         * province :
-         * birthday : 1997-6-8
-         * city :
-         * userid : 92
-         * username :
+         * gender : 0
+         * headimg : http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIpDnvrfGsKKxXBiccAVZMZK0qH79ybg48GU7IlMeMU8pNBSJwhv5vgibQK3JyrJCjo1W4BJhgjab1Q/132
+         * province : 江西
+         * birthday : 1997-6-10
+         * city : 上饶
+         * userid : 74
+         * username : 13133610536
          */
 
         private String name;

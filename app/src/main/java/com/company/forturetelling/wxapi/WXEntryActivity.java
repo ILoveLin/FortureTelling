@@ -252,14 +252,13 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 
                     @Override
                     public void onResponse(String response, int id) {
+                        Log.e("Wetchat", "login==end===数据保持后台完毕==response==" + response);
 
                         Gson gson = new Gson();
 
                         Type type = new TypeToken<WechartBeanUpdate>() {
                         }.getType();
                         WechartBeanUpdate mBean = gson.fromJson(response, type);
-
-                        Log.e("Wetchat", "login==end===数据保持后台完毕==response==" + response);
 
 //                        1 登录    0 跳转注册完善信息
                         if ("0".equals(mBean.getStatus() + "")) {

@@ -311,7 +311,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private View popupView;
     private TextView icon_sex_man;
     private TextView icon_sex_wonman;
-
     /**
      * 修改性别
      *

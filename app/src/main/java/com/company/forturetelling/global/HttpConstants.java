@@ -17,12 +17,12 @@ public class HttpConstants {
     public static final String Update = Common + "/api/bs/genxin";
 
     public static final String Login = Common + "/api/login/users";
-//    public static final String Register = Common + "/api/login/index";
+    //    public static final String Register = Common + "/api/login/index";
     public static final String Register = Common + "/api/dx/registered";
     public static final String Register_CheckPhone = Common + "/api/dx/PhoneNumbe";
     public static final String Image = Common + "/api/login/img";      //上传图片   /api/login/img
     public static final String InformationSetting = Common + "/api/login/updateinfo";
-    public static final String Update_Password = Common + "/api/login/updatepassword";
+    public static final String Update_Password = Common + "/api/dx/updatepassword";
     public static final String Information = Common + "/api/login/info";
     public static final String TodayDetails = Common + "/api/login/jmsg";
     public static final String Knowledge = Common + "/api/login/mlzs";
@@ -46,7 +46,8 @@ public class HttpConstants {
     public static final String Fortune03 = Common + "/sm2/index.php?ac=jinnian2xq";                //post
     // 今年运程----接口--三步
     public static final String MarriageTest02 = Common + "/sm2/index.php?ac=yinyuancs2";                //post
-    public static final String MarriageTest03 = Common + "/sm2/index.php?ac=yinyuancs2xq";                //post
+    public static final String MarriageTest03 = Common + "/sm2/index.php?ac=android";                //post
+//    public static final String MarriageTest03 = Common + "/sm2/index.php?ac=yinyuancs2xq";                //post //原来的
 
     // 综合分析----接口--三步
     public static final String Synthesize02 = Common + "/sm2/index.php?ac=bazi2";                //post
@@ -57,7 +58,7 @@ public class HttpConstants {
     public static final String NameDetails01 = Common + "/api/bs/xmfx";                //get
     public static final String NameDetails02 = Common + "/sm2/index.php?ac=xmfx33";                //post
     public static final String NameDetails03 = Common + "/sm2/index.php?ac=xmfx33xq";                //post
-//    http://testbazi.zgszfy.com/api/aop/index
+    //    http://testbazi.zgszfy.com/api/aop/index
     //支付
     public static final String WXPay = Common + "/api/Wxpay/wx_pay";                //post
     public static final String WXPay_Second = Common + "/api/Wxpay/wx_notify";                //post

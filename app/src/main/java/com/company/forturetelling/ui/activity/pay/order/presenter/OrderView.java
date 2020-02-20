@@ -1,6 +1,5 @@
 package com.company.forturetelling.ui.activity.pay.order.presenter;
 
-import com.company.forturetelling.bean.KnowledgeBean;
 import com.company.forturetelling.bean.OrderBean;
 
 import java.util.List;
@@ -22,5 +21,5 @@ public interface OrderView {
     void showToast(String string);
 
 
-    void refreshData(List<OrderBean.DataBean.ListBean> listBean, String statue);
+    void refreshData(List<OrderBean.DataBean.ListBean> listBean, String statue, String pagecount);
 }

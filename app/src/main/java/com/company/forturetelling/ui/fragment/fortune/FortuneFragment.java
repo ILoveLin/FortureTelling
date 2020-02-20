@@ -20,6 +20,7 @@ import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.FortuneDetailsActivity;
 import com.company.forturetelling.ui.activity.LifeDetailsActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.fragment.fortune.presenter.FortunePresenter;
 import com.company.forturetelling.ui.fragment.fortune.presenter.FortuneView;
 import com.company.forturetelling.utils.NetworkUtil;
@@ -220,6 +221,13 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
 
     private void refreshData01() {
+        String headimg = infoBean.getHeadimg();
+        if (headimg.contains("http://")) {
+            GlideUtils.LogadCustomCircleImage(getActivity(),  infoBean.getHeadimg(), tv01Pic);
+        } else {
+            GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + infoBean.getHeadimg(), tv01Pic);
+        }
+
         GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + infoBean.getHeadimg(), tv01Pic);
         username = infoBean.getUsername();
      String username = infoBean.getName();
@@ -324,7 +332,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
             case R.id.part_fortune_01: //命盘分析
                 if ("".equals(userid)) {
                     showToast("立即登登入,更多体验");
-                    openActivity(LoginActivity.class);
+                    openActivity(LoginAnimatorActivity.class);
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putString("userid", userid1 + "");
@@ -339,7 +347,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                 String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
                 if ("".equals(userid)) {
                     showToast("立即登登入,更多体验");
-                    openActivity(LoginActivity.class);
+                    openActivity(LoginAnimatorActivity.class);
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putString("name", infoBean.getUsername() + "");

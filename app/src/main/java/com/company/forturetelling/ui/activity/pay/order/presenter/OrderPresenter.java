@@ -62,7 +62,7 @@ public class OrderPresenter {
                             if ("0".equals(size)) {
                                 mView.showEmptyView();
                             } else {
-                                mView.refreshData(listBean, statue);
+                                mView.refreshData(listBean, statue,mBean.getData().getPagecount());
                             }
                         } else {
                             mView.showErrorView();

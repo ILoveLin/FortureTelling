@@ -27,6 +27,7 @@ import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.information.PasswordActivity;
 import com.company.forturetelling.ui.activity.information.RegisterActivity;
 import com.company.forturetelling.utils.NetworkUtil;
 import com.google.gson.reflect.TypeToken;
@@ -97,7 +98,7 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
         super.onClickTitleRightTvBtn(v);
         Bundle bundle = new Bundle();
         bundle.putString("title", "注册");
-        openActivity(RegisterAnimatorActivity.class,bundle);
+        openActivity(RegisterAnimatorActivity.class, bundle);
     }
 
     private void initView() {
@@ -250,7 +251,7 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_login_forget:
-//                startActivity(PasswordForgetActivity.class);
+                startActivity(PasswordActivity.class);
                 break;
             case R.id.btn_login_commit:
                 if (mPhoneView.getText().toString().length() != 11) {

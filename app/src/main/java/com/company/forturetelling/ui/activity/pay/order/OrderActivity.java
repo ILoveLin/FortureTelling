@@ -40,7 +40,9 @@ public class OrderActivity extends BaseActivity implements OrderView {
     private ArrayList<OrderBean.DataBean.ListBean> mDataList = new ArrayList<>();
     private OrderAdapter mAdapter;
     private int page = 1;
+    private int pagecount;
     private OrderPresenter mPresenter;
+
 
     @Override
     public int getContentViewId() {
@@ -80,8 +82,13 @@ public class OrderActivity extends BaseActivity implements OrderView {
         mSmartRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                page++;
-                mPresenter.sendRequest(page, "loadMore");
+                if (page <= pagecount) {
+                    mSmartRefresh.finishLoadMore();
+                    mAdapter.notifyDataSetChanged();
+                } else {
+                    page++;
+                    mPresenter.sendRequest(page, "loadMore");
+                }
             }
 
         });
@@ -97,16 +104,16 @@ public class OrderActivity extends BaseActivity implements OrderView {
 
 
                 bundle.putString("oid", order_no);
-                bundle.putString("position", position+"");
+                bundle.putString("position", position + "");
                 bundle.putString("title", title);
 
                 //添加三个参数
                 bundle.putString("text_surname", "");  //姓
                 bundle.putString("text_name", "");     //名
                 bundle.putString("text_all_name", ""); //姓名
-                if("取名".equals(title)) {
+                if ("取名".equals(title)) {
                     openActivity(GetNameResultActivity.class, bundle);
-                }else{
+                } else {
                     openActivity(ResultCommonActivity.class, bundle);
                 }
 
@@ -115,10 +122,11 @@ public class OrderActivity extends BaseActivity implements OrderView {
     }
 
     @Override
-    public void refreshData(List<OrderBean.DataBean.ListBean> newBeanList, String statue) {
+    public void refreshData(List<OrderBean.DataBean.ListBean> newBeanList, String statue, String pagecount) {
         switch (statue) {
             case "refresh":
                 mDataList.clear();
+                this.pagecount = Integer.valueOf(pagecount);
                 if (newBeanList != null && newBeanList.size() != 0) {
                     mDataList.addAll(newBeanList);
                 }

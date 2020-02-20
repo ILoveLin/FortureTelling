@@ -278,6 +278,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
 
                             if ("0".equals(bean.getStatus())) {
                                 register = true;  //是否能请求注册或者完善信息的开关   ,默认是关了的
+                                showToast(bean.getMsg() + "");
                                 SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.MessageId, bean.getData().getBizId() + "");
                             } else if ("-1".equals(bean.getStatus())) {
                                 register = false;
@@ -374,6 +375,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
                                 } else {
                                     showContent();
                                     showToast(bean.getMsg() + "");
+
                                 }
                             }
                         });
