@@ -371,10 +371,19 @@ public class GregorianLunarCalendarView extends LinearLayout implements NumberPi
         }
     }
 
+    /**
+     * 改变默认年份
+     *
+     * @param cc
+     * @param isGregorian
+     * @param anim
+     */
     //without scroll animation when init
     private void initValuesForY(ChineseCalendar cc, boolean isGregorian, boolean anim) {
         if (isGregorian) {
-            int yearSway = cc.get(Calendar.YEAR);
+//            获取当前年份
+//            int yearSway = cc.get(Calendar.YEAR);
+            int yearSway = 1996;
             setValuesForPickerView(mYearPickerView, yearSway, YEAR_START, YEAR_STOP, mDisplayYearsGregorian, false, anim);
         } else {
             int yearSway = cc.get(ChineseCalendar.CHINESE_YEAR);
