@@ -36,7 +36,6 @@
                 android:background="@drawable/icon_blue_right" />
 
             <TextView
-                android:layout_marginRight="@dimen/padding_10"
                 android:id="@+id/line_sex"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

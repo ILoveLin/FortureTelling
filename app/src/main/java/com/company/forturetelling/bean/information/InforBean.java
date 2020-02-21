@@ -104,6 +104,16 @@ public class InforBean {
             private String name;
             private int astroid;
             private String jmsht;
+            private String perfect;
+
+            public String getPerfect() {
+                return perfect;
+            }
+
+            public void setPerfect(String perfect) {
+                this.perfect = perfect;
+            }
+
             private List<String> zhongheids;
 
             public String getName() {
