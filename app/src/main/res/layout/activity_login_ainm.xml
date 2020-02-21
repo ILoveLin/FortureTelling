@@ -117,6 +117,16 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="40dp"
             android:text="登录" />
+        <Button
+            android:id="@+id/btn_register_commit"
+            style="@style/ButtonStyleRegister"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="40dp"
+            android:text="注册" />
 
     </LinearLayout>
 

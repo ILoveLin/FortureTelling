@@ -134,7 +134,8 @@ public class GlideUtils {
 //        Glide.with(mContext).asBitmap().load(path).into(imageview);
 
     }
-  public static void LogadUserCircleImage(final Context mContext, String path, final ImageView imageview) {
+
+    public static void LogadUserCircleImage(final Context mContext, String path, final ImageView imageview) {
 
 
         RequestOptions options = new RequestOptions()

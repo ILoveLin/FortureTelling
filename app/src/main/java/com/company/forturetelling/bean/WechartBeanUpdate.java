@@ -10,18 +10,18 @@ public class WechartBeanUpdate {
     /**
      * status : 1
      * msg : ok
-     * data : {"name":"乐观","gender":"0","headimg":"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIpDnvrfGsKKxXBiccAVZMZK0qH79ybg48GU7IlMeMU8pNBSJwhv5vgibQK3JyrJCjo1W4BJhgjab1Q/132","province":"江西","birthday":"1997-6-10","city":"上饶","userid":74,"username":"13133610536"}
+     * data : {"openid":"1","name":"1212","gender":"1","headimg":"12121","province":"北京","city":"北京","birthday":"1997-6-8","userid":0,"username":"0","perfect":false}
      */
 
-    private int status;
+    private String status;
     private String msg;
     private DataBean data;
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -43,24 +43,36 @@ public class WechartBeanUpdate {
 
     public static class DataBean {
         /**
-         * name : 乐观
-         * gender : 0
-         * headimg : http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIpDnvrfGsKKxXBiccAVZMZK0qH79ybg48GU7IlMeMU8pNBSJwhv5vgibQK3JyrJCjo1W4BJhgjab1Q/132
-         * province : 江西
-         * birthday : 1997-6-10
-         * city : 上饶
-         * userid : 74
-         * username : 13133610536
+         * openid : 1
+         * name : 1212
+         * gender : 1
+         * headimg : 12121
+         * province : 北京
+         * city : 北京
+         * birthday : 1997-6-8
+         * userid : 0
+         * username : 0
+         * perfect : false
          */
 
+        private String openid;
         private String name;
         private String gender;
         private String headimg;
         private String province;
-        private String birthday;
         private String city;
+        private String birthday;
         private int userid;
         private String username;
+        private String perfect;
+
+        public String getOpenid() {
+            return openid;
+        }
+
+        public void setOpenid(String openid) {
+            this.openid = openid;
+        }
 
         public String getName() {
             return name;
@@ -94,20 +106,20 @@ public class WechartBeanUpdate {
             this.province = province;
         }
 
-        public String getBirthday() {
-            return birthday;
-        }
-
-        public void setBirthday(String birthday) {
-            this.birthday = birthday;
-        }
-
         public String getCity() {
             return city;
         }
 
         public void setCity(String city) {
             this.city = city;
+        }
+
+        public String getBirthday() {
+            return birthday;
+        }
+
+        public void setBirthday(String birthday) {
+            this.birthday = birthday;
         }
 
         public int getUserid() {
@@ -124,6 +136,14 @@ public class WechartBeanUpdate {
 
         public void setUsername(String username) {
             this.username = username;
+        }
+
+        public String getPerfect() {
+            return perfect;
+        }
+
+        public void setPerfect(String perfect) {
+            this.perfect = perfect;
         }
     }
 }

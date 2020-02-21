@@ -24,10 +24,12 @@ import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.bean.information.InforBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.NewsActivity;
 import com.company.forturetelling.ui.activity.information.InforSettingActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
+import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
 import com.company.forturetelling.utils.CacheUtil;
@@ -168,7 +170,10 @@ public class MineFragment extends BaseFragment implements MineView {
 //                                Log.e("mImageUri", "=========sendNo===昵称==" + inforBean.getData().getInfo().getName());
 
                                 tvCurrentName.setText("" + inforBean.getData().getInfo().getName());
-                                String headimg = inforBean.getData().getInfo().getHeadimg();
+
+                                String headimg = inforBean.getData().getInfo().getHeadimg() + "";
+                                Log.e("mImageUri", "=========sendNo===minefragment==" + headimg);
+
                                 if (headimg.contains("http://")) {
                                     GlideUtils.LogadCustomCircleImage(getActivity(), inforBean.getData().getInfo().getHeadimg(), currentPic);
                                 } else {
@@ -207,7 +212,22 @@ public class MineFragment extends BaseFragment implements MineView {
     public void multipleOnclick(View view) {
         switch (view.getId()) {
             case R.id.linear_current_info: //个人设置
-                openActivity(InforSettingActivity.class);
+                Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
+                String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
+                if (isLogin) {   //登入了
+                    if ("true".equals(Perfect)) {  //已经完善
+                        openActivity(InforSettingActivity.class);
+
+                    } else {  //未完善
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", "完善信息");
+                        bundle.putString("type", "");
+//                        EventBus.getDefault().post(new ExitEvent("登入"));
+                        openActivity(RegisterAnimatorActivity.class, bundle);
+                    }
+                } else {//未登录
+                    openActivity(LoginAnimatorActivity.class);
+                }
                 break;
             case R.id.linear_current_info_unlogin: // 未登录状态----个人设置
 //                openActivity(LoginActivity.class);

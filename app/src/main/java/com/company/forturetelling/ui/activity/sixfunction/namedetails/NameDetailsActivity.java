@@ -100,6 +100,7 @@ public class NameDetailsActivity extends BaseActivity implements NameDetailsView
         //TODO  获取到订单号 跳转到支付界面
         bundle.putString("text_surname", tv_addname_name01.getText().toString().trim() + "");  //姓
         bundle.putString("text_name", tv_addname_name02.getText().toString().trim() + "");     //名
+        bundle.putString("price", "66");      //价格
         bundle.putString("text_all_name", tv_addname_name01.getText().toString().trim() + "" + tv_addname_name02.getText().toString().trim() + ""); //姓名
         openActivity(SelectPayActivity.class, bundle);
     }

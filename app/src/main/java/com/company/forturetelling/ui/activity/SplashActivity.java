@@ -12,6 +12,7 @@ import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.wxapi.WXEntryActivity;
 import com.google.gson.Gson;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.yun.common.utils.StatusBarUtil;
@@ -57,7 +58,6 @@ public class SplashActivity extends BaseActivity {
         isFirstIn = (Boolean) SharePreferenceUtil.get(this, Constants.SP_IS_FIRST_IN,
                 true);
         //是否登入
-        isLogined = (Boolean) SharePreferenceUtil.get(this, Constants.Is_Logined, false);
         // 从浅到深,从百分之10到百分之百
         AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
         aa.setDuration(1500);// 设置动画时间

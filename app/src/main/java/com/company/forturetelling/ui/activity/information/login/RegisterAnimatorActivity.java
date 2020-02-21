@@ -30,6 +30,7 @@ import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
+import com.company.forturetelling.ui.activity.information.RegisterActivity;
 import com.company.forturetelling.view.CountdownView;
 import com.company.forturetelling.view.PasswordEditText;
 import com.company.forturetelling.view.RegexEditText;
@@ -135,6 +136,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
         }
     };
     private String title;
+    private String type;
 
     private void initJsonData() {//解析数据
         /**
@@ -202,6 +204,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
         mHandler.sendEmptyMessage(MSG_LOAD_DATA);
         register = false;
         title = getIntent().getStringExtra("title");
+        type = getIntent().getStringExtra("type");
         Log.e("Net", "response===校验手机输入分类  1 注册 2 忘记密码=====title===" + title);
 
         if (title.equals("注册")) {
@@ -368,7 +371,20 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
 //                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Token, token + "");
                                     SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Device, "android");
                                     SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Is_Logined, true);
-                                    EventBus.getDefault().post(new ExitEvent("登入"));
+                                    Log.e("Net", "login==RegisterBean==进来了吗111111111111111=");
+                                    String perfect = (String) SharePreferenceUtil.get(RegisterAnimatorActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
+                                    Log.e("Wetchat", "login==end===数据保持后台完毕==----注册界面-perfec11t===之前======" + perfect + "");
+                                    SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.WX_Perfect, "true");
+                                    String perfec11t = (String) SharePreferenceUtil.get(RegisterAnimatorActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
+                                    Log.e("Wetchat", "login==end===数据保持后台完毕==----注册界面-perfec11t===之后======" + perfec11t + "");
+
+                                    if ("02".equals(type)) {
+                                        EventBus.getDefault().post(new ExitEvent("02"));
+
+                                    } else {
+                                        EventBus.getDefault().post(new ExitEvent("登入"));
+
+                                    }
                                     showToast("注册成功");
                                     openActivity(MainActivity.class);
                                     finish();

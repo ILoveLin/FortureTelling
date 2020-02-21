@@ -18,7 +18,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <com.shehuan.niv.NiceImageView
+            <com.company.forturetelling.view.CircleImageView
                 android:id="@+id/tv01_pic"
                 android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/padding_80"
@@ -28,6 +28,16 @@
                 app:border_color="#FF7F24"
                 app:border_width="0dp"
                 app:is_circle="true" />
+
+            <!--<com.company.forturetelling.view.CircleImageView-->
+            <!--android:id="@+id/current_pic"-->
+            <!--android:layout_width="@dimen/padding_50"-->
+            <!--android:layout_height="@dimen/padding_50"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginLeft="@dimen/padding_20"-->
+            <!--android:src="@mipmap/icon_fortune_touxiang">-->
+
 
             <LinearLayout
                 android:layout_width="match_parent"

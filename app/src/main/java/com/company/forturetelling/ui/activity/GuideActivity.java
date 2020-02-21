@@ -89,7 +89,10 @@ public class GuideActivity extends BaseActivity {
 //                    startActivity(intent);
 //                    finish();
 //                } else {
-                    startActivity(new Intent(GuideActivity.this, MainActivity.class));
+                SharePreferenceUtil.put(GuideActivity.this, Constants.SP_IS_FIRST_IN, false);   //是否第一次登录
+                SharePreferenceUtil.put(GuideActivity.this, Constants.Is_Logined, false);
+                SharePreferenceUtil.put(GuideActivity.this, Constants.WX_Perfect, "false");
+                startActivity(new Intent(GuideActivity.this, MainActivity.class));
 //                    finish();
 //                }
 

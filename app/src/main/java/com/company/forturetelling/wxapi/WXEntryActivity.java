@@ -252,20 +252,21 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.e("Wetchat", "login==end===数据保持后台完毕==response==" + response);
-
                         Gson gson = new Gson();
-
                         Type type = new TypeToken<WechartBeanUpdate>() {
                         }.getType();
                         WechartBeanUpdate mBean = gson.fromJson(response, type);
+                        Log.e("Wetchat", "login==end===数据保持后台完毕=response=00000==" + response + "");
+                        Log.e("Wetchat", "login==end===数据保持后台完毕==mBean.getData().getPerfect()==" + mBean.getData().getPerfect());
 
 //                        1 登录    0 跳转注册完善信息
                         if ("0".equals(mBean.getStatus() + "")) {
 //                            EventBus.getDefault().post(new WeChartEvent("登入"));
                             SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Openid, mWXBean.getOpenid());
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Perfect, mBean.getData().getPerfect());
                             Bundle bundle = new Bundle();
                             bundle.putString("title", openId);
+                            bundle.putString("type", "");
                             Log.e("Wetchat", "login==end===数据保持后台完毕==00000==" + mBean.getStatus() + "");
                             EventBus.getDefault().post(new ExitEvent("登入"));
                             openActivity(RegisterAnimatorActivity.class, bundle);
@@ -278,6 +279,7 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                             SharePreferenceUtil.put(WXEntryActivity.this, Constants.USERID, userid + "");
                             SharePreferenceUtil.put(WXEntryActivity.this, Constants.Device, "android");
                             SharePreferenceUtil.put(WXEntryActivity.this, Constants.Is_Logined, true);
+                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Perfect, mBean.getData().getPerfect() + "");
                             EventBus.getDefault().post(new ExitEvent("登入"));
                             Toast.makeText(WXEntryActivity.this, "登入成功", Toast.LENGTH_SHORT).show();
 

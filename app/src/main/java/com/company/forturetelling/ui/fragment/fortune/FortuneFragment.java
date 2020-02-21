@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseFragment;
 import com.company.forturetelling.bean.bus.ExitEvent;
@@ -24,6 +25,7 @@ import com.company.forturetelling.ui.activity.information.login.LoginAnimatorAct
 import com.company.forturetelling.ui.fragment.fortune.presenter.FortunePresenter;
 import com.company.forturetelling.ui.fragment.fortune.presenter.FortuneView;
 import com.company.forturetelling.utils.NetworkUtil;
+import com.company.forturetelling.view.CircleImageView;
 import com.company.forturetelling.view.CircularProgressView;
 import com.company.forturetelling.view.RatingBar;
 import com.google.gson.Gson;
@@ -32,6 +34,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shehuan.niv.NiceImageView;
+import com.squareup.picasso.Picasso;
 import com.yun.common.utils.GlideUtils;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -61,7 +64,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     CircularProgressView mProgress;
     Unbinder unbinder;
     @BindView(R.id.tv01_pic)
-    NiceImageView tv01Pic;
+    CircleImageView tv01Pic;
     @BindView(R.id.tv01_name)
     TextView tv01Name;
     @BindView(R.id.tv01_name_type)
@@ -159,6 +162,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     private void sendRequest() {
         String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
         if (userid.equals("")) {
+
         } else {
             showLoadingView();
             OkHttpUtils.post()
@@ -222,17 +226,28 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
     private void refreshData01() {
         String headimg = infoBean.getHeadimg();
+        Log.e("mImageUri", "=========sendNo===title01=title01======" + title01);
+
         if (headimg.contains("http://")) {
-            GlideUtils.LogadCustomCircleImage(getActivity(),  infoBean.getHeadimg(), tv01Pic);
+            Picasso.with(getActivity()).load(infoBean.getHeadimg())
+                    .placeholder(R.drawable.icon_mine_pic).error(R.drawable.icon_mine_pic).into(tv01Pic);
+
         } else {
-            GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + infoBean.getHeadimg(), tv01Pic);
+            Picasso.with(getActivity()).load(HttpConstants.Common + infoBean.getHeadimg())
+                    .placeholder(R.drawable.icon_mine_pic).error(R.drawable.icon_mine_pic).into(tv01Pic);
         }
 
         GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + infoBean.getHeadimg(), tv01Pic);
         username = infoBean.getUsername();
-     String username = infoBean.getName();
+        String username = infoBean.getName();
         tv01Name.setText(username + "");
-        tv01_name_type.setText("喜神用" + infoBean.getJmsht() + "");
+        if ("".equals(infoBean.getJmsht(  ))) {
+            tv01_name_type.setText("喜神用" + infoBean.getJmsht() + "土");
+
+        } else {
+            tv01_name_type.setText("喜神用" + infoBean.getJmsht() + "");
+
+        }
         for (int i = 0; i < 4; i++) {
             switch (i) {
                 case 0:

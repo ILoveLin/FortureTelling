@@ -11,12 +11,14 @@ public class Constants {
     public static final String SP_IS_FIRST_IN = "sp_is_first_in";
     public static final String Is_Logined = "is_logined";
     public static final String Logined = "is_logined";
+    public static final String Is_Main_To_Login = "Is_Main_To_Login";
 
 
     //系统和请求头
     public static final String Token = "token";
     public static final String Device = "android";
     public static final String WX_Openid = "WX_Openid";
+    public static final String WX_Perfect = "true";   //ture 已完善 false 未完善,默认true
     public static final String MessageId = "MessageId";
     public static final String USERID = "USERID";
     public static final String Name = "Name";   //昵称
@@ -29,7 +31,7 @@ public class Constants {
     public static final String Info_Sign = "Sign";                   //签名
 
 
-//    public static final String APP_ID_WECHART = "Weixin";
+    //    public static final String APP_ID_WECHART = "Weixin";
     public static final String APP_ID_ALIPAY = "Alipay";
 
 //    微信资料
@@ -41,15 +43,14 @@ public class Constants {
 //    API密钥，在商户平台设置:wanzu202020202020202020202020202
 
     //appid 微信分配的公众账号ID
-    public static final String  APP_ID_WECHART = "wx4b9e09ae470dc4ce";
+    public static final String APP_ID_WECHART = "wx4b9e09ae470dc4ce";
     public static final String APP_SECRET = "ebb2251808c184f72cb7e3d6d272a1cf";
 
     //商户号 微信分配的公众账号ID
     public static final String MCH_ID = "1574217601";
 
     //  API密钥，在商户平台设置
-    public static final  String API_KEY= "wanzu202020202020202020202020202";
-
+    public static final String API_KEY = "wanzu202020202020202020202020202";
 
 
     //appid 支付宝分配的ID
@@ -62,19 +63,15 @@ public class Constants {
 //    public static final  String API_KEY= "wanzu202020202020202020202020202";
 
 
-
-
-
-    public static final String ACTION_NAME_PAYMENT_ALIPY= "payment_alipay";//支付宝支付回调
-    public static final String ACTION_NAME_PAYMENT_WECHAT= "payment_wechat";//微信支付回调
-    public static final String ACTION_NAME_PAYMENT_SUCCESS= "payment_success";//支付成功
-    public static final String ACTION_NAME_PAYMENT_ERROR= "payment_error";//支付失败
+    public static final String ACTION_NAME_PAYMENT_ALIPY = "payment_alipay";//支付宝支付回调
+    public static final String ACTION_NAME_PAYMENT_WECHAT = "payment_wechat";//微信支付回调
+    public static final String ACTION_NAME_PAYMENT_SUCCESS = "payment_success";//支付成功
+    public static final String ACTION_NAME_PAYMENT_ERROR = "payment_error";//支付失败
     public static final String KEY_OBJ_PAYMENT_WECHAT = "payment_wechat";
 
 
-
     //微信二次校验的  out_trade_no
-    public static final String WECHAT_SECOND_ORDERID= "payment_wechat";//微信支付回调
+    public static final String WECHAT_SECOND_ORDERID = "payment_wechat";//微信支付回调
 
 
 }

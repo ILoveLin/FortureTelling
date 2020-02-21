@@ -22,6 +22,7 @@ import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.bean.CityBean;
 import com.company.forturetelling.bean.RegisterBean;
+import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
@@ -39,6 +40,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 
 import java.lang.reflect.Type;
@@ -311,6 +313,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private View popupView;
     private TextView icon_sex_man;
     private TextView icon_sex_wonman;
+
     /**
      * 修改性别
      *
@@ -440,14 +443,16 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //                            Log.e("Net", "response==username=1==" + bean.getStatus());
 //                            Log.e("Net", "response==username=1==" + bean.getMsg());
 
+
                             Log.e("Net", "login==RegisterBean===" + response);
 
-                            if ("0".equals(bean.getStatus())) {
+                            if ("0".equals(bean.getStatus()+"")) {
                                 //sp存token
                                 showContent();
 //                                        token = bean.getData().getToken();
                                 userid = bean.getData().getUserid() + "";
 //                                token = bean.getData().getToken() + "";
+                                Log.e("Net", "login==RegisterBean==进来了吗0000000000000000=" );
 
 
                                 //TODO 在这个界面提交 验证码 绑定手机号码,并且关闭微信登入界面,Login界面,直接在Mainfragment,并且保持当前的userid
@@ -456,6 +461,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Token, token + "");
                                 SharePreferenceUtil.put(RegisterActivity.this, Constants.Device, "android");
                                 SharePreferenceUtil.put(RegisterActivity.this, Constants.Is_Logined, true);
+
+
                                 showToast("注册成功");
                                 openActivity(MainActivity.class);
                                 finish();
@@ -472,7 +479,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                 showContent();
                                 showToast(bean.getMsg() + "");
                             }
-
 
 
                         }

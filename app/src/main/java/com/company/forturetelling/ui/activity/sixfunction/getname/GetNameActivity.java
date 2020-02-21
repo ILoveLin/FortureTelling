@@ -154,6 +154,7 @@ public class GetNameActivity extends BaseActivity {
                                 bundle.putString("title", title);
                                 bundle.putString("text_surname", "");  //姓
                                 bundle.putString("text_name", "");     //名
+                                bundle.putString("price", "86");      //价格
                                 bundle.putString("text_all_name", tvAddnameName.getText().toString().trim() + ""); //姓名
                                 //TODO  获取到订单号 跳转到支付界面
                                 openActivity(SelectPayActivity.class, bundle);

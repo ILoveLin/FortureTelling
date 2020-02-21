@@ -44,6 +44,7 @@ import com.company.forturetelling.bean.information.InforBean;
 import com.company.forturetelling.bean.information.InforSettingBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.activity.information.presenter.InforPresenter;
 import com.company.forturetelling.ui.activity.information.presenter.InforView;
 import com.company.forturetelling.view.CircleImageView;
@@ -405,7 +406,12 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                 SharePreferenceUtil.put(InforSettingActivity.this, Constants.Is_Logined, false);
                 SharePreferenceUtil.put(InforSettingActivity.this, Constants.Logined, false);
                 SharePreferenceUtil.put(InforSettingActivity.this, Constants.USERID, "");
-                EventBus.getDefault().post(new ExitEvent("退出"));
+                SharePreferenceUtil.get(InforSettingActivity.this, Constants.Is_Main_To_Login, "no");
+
+                try {
+                    EventBus.getDefault().post(new ExitEvent("退出"));
+                } catch (Exception ex) {
+                }
                 twoButton.dismiss();
                 finish();
 

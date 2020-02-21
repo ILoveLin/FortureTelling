@@ -92,20 +92,10 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
     }
 
 
-    //右边的点击事件
-    @Override
-    public void onClickTitleRightTvBtn(View v) {
-        super.onClickTitleRightTvBtn(v);
-        Bundle bundle = new Bundle();
-        bundle.putString("title", "注册");
-        openActivity(RegisterAnimatorActivity.class, bundle);
-    }
-
     private void initView() {
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.VISIBLE);
-        setTitleRightBtnVisibility(View.VISIBLE);
-        setTitleRightTvbtnName("注册", getResources().getColor(R.color.color_3375D5));
+        setTitleRightBtnVisibility(View.INVISIBLE);
         setTitleName("");
         setPageStateView();
 //        mPresenter = new NameDetailsPresenter(this, this);
@@ -200,6 +190,8 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
                         }.getType();
                         LoginBean mBean = mGson.fromJson(response, type);
                         String status = mBean.getStatus() + "";  //0 成功   1失败
+                        Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====登录界面=====status====" + status + "");
+
                         if ("0".equals(status)) {
 //                            Log.e("Net", "login==response===" + mBean.getData().getToken());
                             showContent();
@@ -209,7 +201,12 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
 //                            SharePreferenceUtil.put(LoginActivity.this, Constants.Token, token + "");
                             SharePreferenceUtil.put(LoginAnimatorActivity.this, Constants.Device, "android");
                             SharePreferenceUtil.put(LoginAnimatorActivity.this, Constants.Is_Logined, true);
-                            EventBus.getDefault().post(new ExitEvent("登入"));
+                            SharePreferenceUtil.put(LoginAnimatorActivity.this, Constants.WX_Perfect, "true");  //是否完善信息
+                            String type02 = (String) SharePreferenceUtil.get(LoginAnimatorActivity.this, Constants.Is_Main_To_Login, "no");
+//                            EventBus.getDefault().post(new ExitEvent("登入"));
+//                            EventBus.getDefault().post(new ExitEvent("02"));
+
+                                EventBus.getDefault().post(new ExitEvent("登入"));
 //                            Bundle bundle = new Bundle();
 //                            bundle.putString("WeChat", "注册界面");
 //                            openActivity(RegisterActivity.class, bundle);
@@ -247,11 +244,17 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
     }
 
 
-    @OnClick({R.id.tv_login_forget, R.id.btn_login_commit, R.id.btn_login_wechat})
+    @OnClick({R.id.tv_login_forget, R.id.btn_login_commit, R.id.btn_login_wechat, R.id.btn_register_commit})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_login_forget:
                 startActivity(PasswordActivity.class);
+                break;
+            case R.id.btn_register_commit:
+                Bundle bundle = new Bundle();
+                bundle.putString("title", "注册");
+                bundle.putString("type", "");
+                openActivity(RegisterAnimatorActivity.class, bundle);
                 break;
             case R.id.btn_login_commit:
                 if (mPhoneView.getText().toString().length() != 11) {

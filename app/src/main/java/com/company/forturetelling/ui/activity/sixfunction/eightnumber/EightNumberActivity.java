@@ -92,6 +92,9 @@ public class EightNumberActivity extends BaseActivity implements EightNumberView
         bundle.putString("total_fee", total_fee);
         bundle.putString("text_surname", "");  //姓
         bundle.putString("text_name", "");     //名
+        bundle.putString("price", "66");      //价格
+
+
         bundle.putString("text_all_name", tvThreeInputName.getText().toString().trim() + ""); //姓名
         //TODO  获取到订单号 跳转到支付界面
         openActivity(SelectPayActivity.class, bundle);
@@ -155,22 +158,22 @@ public class EightNumberActivity extends BaseActivity implements EightNumberView
             mDialog = new DialogGLC(this, new DialogGLC.onCilckListener() {
                 @Override
                 public void onGetDataResult(ChineseCalendar calendar) {
-                    String showToast = "Gregorian : " + calendar.get(Calendar.YEAR) + "年"
-                            + (calendar.get(Calendar.MONTH) + 1) + "月"
-                            + calendar.get(Calendar.DAY_OF_MONTH) + "日"
-                            + calendar.get(Calendar.HOUR_OF_DAY) + "点"
-                            + calendar.get(Calendar.MINUTE) + "分------------" +
-                            "\n"
-                            + "Lunar     : " + calendar.getChinese(ChineseCalendar.CHINESE_YEAR)
-                            + (calendar.getChinese(ChineseCalendar.CHINESE_MONTH))
-                            + calendar.getChinese(ChineseCalendar.CHINESE_DATE)
-                            + calendar.getChinese(ChineseCalendar.CHINESE_HOUR)
-                            +
-                            "\n" + "\n" + "\n" + "-----------上传的日期---------" +
-                            calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-"
-                            + calendar.get(Calendar.DAY_OF_MONTH) + "-"
-                            + calendar.get(Calendar.HOUR_OF_DAY) + "-"
-                            + calendar.get(Calendar.MINUTE);
+//                    String showToast = "Gregorian : " + calendar.get(Calendar.YEAR) + "年"
+//                            + (calendar.get(Calendar.MONTH) + 1) + "月"
+//                            + calendar.get(Calendar.DAY_OF_MONTH) + "日"
+//                            + calendar.get(Calendar.HOUR_OF_DAY) + "点"
+//                            + calendar.get(Calendar.MINUTE) + "分------------" +
+//                            "\n"
+//                            + "Lunar     : " + calendar.getChinese(ChineseCalendar.CHINESE_YEAR)
+//                            + (calendar.getChinese(ChineseCalendar.CHINESE_MONTH))
+//                            + calendar.getChinese(ChineseCalendar.CHINESE_DATE)
+//                            + calendar.getChinese(ChineseCalendar.CHINESE_HOUR)
+//                            +
+//                            "\n" + "\n" + "\n" + "-----------上传的日期---------" +
+//                            calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-"
+//                            + calendar.get(Calendar.DAY_OF_MONTH) + "-"
+//                            + calendar.get(Calendar.HOUR_OF_DAY) + "-"
+//                            + calendar.get(Calendar.MINUTE);
                     bornData = calendar.get(Calendar.YEAR) + "-"
                             + (calendar.get(Calendar.MONTH) + 1) + "-"
                             + calendar.get(Calendar.DAY_OF_MONTH);
