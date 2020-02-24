@@ -26,13 +26,8 @@ public class MyInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-//        String device = (String) SharePreferenceUtil.get(mContext, Constants.Device, "");
-//        String token = (String) SharePreferenceUtil.get(mContext, Constants.Token, "");
         String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
-//        Log.e("Net", "data==1==Interceptor===" + device);
-//        Log.e("Net", "data==1==Interceptor===" + token);
-//        Log.e("mImageUri", "=========sendNo===调试头==" + userid);
-
+        Log.e("Net", "login==GetUserID====调试头====" + userid + "");
         Request request = chain.request().newBuilder()
 //                .addHeader("device", "android")
 //                .addHeader("token", token)

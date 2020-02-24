@@ -2,21 +2,37 @@ package com.company.forturetelling.ui.activity;
 
 import android.content.Intent;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
+import com.company.forturetelling.GetUseridBean;
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
+import com.company.forturetelling.bean.RegisterBean;
+import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.global.Constants;
+import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
+import com.company.forturetelling.utils.DeviceIdUtil;
 import com.company.forturetelling.wxapi.WXEntryActivity;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.yun.common.utils.StatusBarUtil;
 import com.yun.common.utils.StatusBarUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.lang.reflect.Type;
+
+import okhttp3.Call;
 
 
 /**
@@ -82,6 +98,7 @@ public class SplashActivity extends BaseActivity {
 
 
     public void initData() {
+
         switchGoing();
 
     }
@@ -89,6 +106,8 @@ public class SplashActivity extends BaseActivity {
 
     //判断进入那个activity
     private void switchGoing() {
+
+        sendRequestForUserID();
         if (isFirstIn) {
 //            第一次进入-- 走引导页，否则进入MainActivity
             SharePreferenceUtil.put(SplashActivity.this, Constants.SP_IS_FIRST_IN,
@@ -106,13 +125,54 @@ public class SplashActivity extends BaseActivity {
 //                startActivity(intent);
 //                finish();
 //            } else {
-                Intent intent = new Intent();
-                intent.setClass(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent();
+            intent.setClass(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
 //                finish();
 //            }
 
         }
+    }
+
+    private void sendRequestForUserID() {
+        String deviceid = DeviceIdUtil.getDeviceId(this);
+        OkHttpUtils.post()
+                .url(HttpConstants.GetUserID)
+                .addParams("deviceid", deviceid + "")
+                .addParams("type", "1")   //分类 1 安卓 2 ios
+                .build()
+                .execute(new StringCallback() {
+
+                    private String userid;
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        showToast("请求错误");
+                        showError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Type type = new TypeToken<GetUseridBean>() {
+                        }.getType();
+                        GetUseridBean bean = mGson.fromJson(response, type);
+                        Log.e("Net", "login==GetUserID===" + response);
+                        Log.e("Net", "login==deviceid===" + deviceid);
+                        if ("0".equals(bean.getStatus()+"")) {
+                            //sp存token
+                            showContent();
+                            userid = bean.getData().getUserid() + "";
+                            SharePreferenceUtil.put(SplashActivity.this, Constants.USERID, userid + "");
+                            String userid = (String) SharePreferenceUtil.get(SplashActivity.this, Constants.USERID, "");
+                            Log.e("Net", "login==GetUserID====调试头====" + userid + "");
+                            finish();
+                        } else {
+                            showContent();
+
+                        }
+                    }
+                });
+
     }
 
 

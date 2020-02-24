@@ -38,45 +38,45 @@ public class SynthesizePresenter {
     }
 
     public void sendNo1Request(String datadate, String username, String gender, String h) {
+//
+//        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
+//        if ("".equals(userid)) {
+//            mView.showToast("请先登入~~  ");
+//            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
+//            mContext.startActivity(intent);
+//        } else {
+        mView.showLoadingView();
+        OkHttpUtils.get()
+                .url(HttpConstants.EightNumber01)
+                .addParams("datadate", datadate)
+                .addParams("username", username)
+                .addParams("gender", gender)
+                .addParams("h", h)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        mView.showErrorView();
+                    }
 
-        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
-        if ("".equals(userid)) {
-            mView.showToast("请先登入~~  ");
-            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
-            mContext.startActivity(intent);
-        } else {
-            mView.showLoadingView();
-            OkHttpUtils.get()
-                    .url(HttpConstants.EightNumber01)
-                    .addParams("datadate", datadate)
-                    .addParams("username", username)
-                    .addParams("gender", gender)
-                    .addParams("h", h)
-                    .build()
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onError(Call call, Exception e, int id) {
-                            mView.showErrorView();
-                        }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.e("mImageUri", "=========sendNo===fortune01======" + response);
 
-                        @Override
-                        public void onResponse(String response, int id) {
-                            Log.e("mImageUri", "=========sendNo===fortune01======" + response);
+                        Type type = new TypeToken<EightNumBean01>() {
+                        }.getType();
+                        EightNumBean01 mBean01 = mGson.fromJson(response, type);
 
-                            Type type = new TypeToken<EightNumBean01>() {
-                            }.getType();
-                            EightNumBean01 mBean01 = mGson.fromJson(response, type);
-
-                            if ("0".equals(mBean01.getStatus())) {
-                                sendNo2Request(mBean01.getData());
-
-                            }
-
+                        if ("0".equals(mBean01.getStatus())) {
+                            sendNo2Request(mBean01.getData());
 
                         }
-                    });
 
-        }
+
+                    }
+                });
+
+//        }
 
     }
 

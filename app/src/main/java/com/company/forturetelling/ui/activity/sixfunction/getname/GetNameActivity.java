@@ -113,13 +113,6 @@ public class GetNameActivity extends BaseActivity {
 
 
     private void sendOrderRequest() {
-        String userid = (String) SharePreferenceUtil.get(this, Constants.USERID, "");
-        if ("".equals(userid)) {
-            showToast("请先登入~~  ");
-            Intent intent = new Intent(this, LoginAnimatorActivity.class);
-            startActivity(intent);
-        } else {
-
             showLoading();
             OkHttpUtils.get()
                     .url(HttpConstants.AddName)
@@ -165,8 +158,6 @@ public class GetNameActivity extends BaseActivity {
                         }
                     });
 
-        }
-//
 
     }
 

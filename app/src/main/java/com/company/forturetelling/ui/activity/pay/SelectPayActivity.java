@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alipay.sdk.app.PayTask;
@@ -56,6 +57,10 @@ public class SelectPayActivity extends BaseActivity {
 
     @BindView(R.id.shop_name)
     TextView shop_name;
+    @BindView(R.id.ll_pay_weichat)
+    LinearLayout ll_pay_weichat;
+    @BindView(R.id.ll_pay_ali)
+    LinearLayout ll_pay_ali;
 
     private String title;
     private String oid;
@@ -85,7 +90,7 @@ public class SelectPayActivity extends BaseActivity {
 
     private void responseListener() {
 
-        mWeichatSelect.setOnClickListener(new View.OnClickListener() {
+        ll_pay_weichat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showToast("微信支付");
@@ -98,7 +103,7 @@ public class SelectPayActivity extends BaseActivity {
 
             }
         });
-        mAliPaySelect.setOnClickListener(new View.OnClickListener() {
+        ll_pay_ali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showToast("支付宝支付");
@@ -115,6 +120,7 @@ public class SelectPayActivity extends BaseActivity {
                 showToast("确认支付");
                 //重置
 //                        payBean = PayUtils.GetParamsFromBackground(payType);
+
                 if (0 == payType) {
                     GetParamsFromBackground(payType);
                 } else {
@@ -142,82 +148,25 @@ public class SelectPayActivity extends BaseActivity {
     private static final int PAY_TYPE_WECHAT = 0;  //微信支付,默认支付方式
     private static final int PAY_TYPE_ALIPAY = 1;  //支付宝支付
     private int payType = 0;
-
-
-    private void pay() {
-
-//        dialogView = getLayoutInflater().inflate(R.layout.dialog_pay_type, null);
-//        //微信支付的选择
-//        mWeichatSelect = dialogView.findViewById(R.id.iv_buy_weichat_select);
-//        //支付宝的选择
-//        mAliPaySelect = dialogView.findViewById(R.id.iv_buy_alipay_select);
-//        mAliPaySelect = dialogView.findViewById(R.id.tv_confirm);
-
-//
-//
-//        PayBottomDialog dialog = new PayBottomDialog(SelectPayActivity.this, dialogView, new int[]{R.id.ll_pay_weichat, R.id.ll_pay_ali, R.id.tv_confirm, R.id.tv_cancel});
-//        dialog.bottmShow();
-//        dialog.setOnBottomItemClickListener(new PayBottomDialog.OnBottomItemClickListener() {
-//            @Override
-//            public void onBottomItemClick(PayBottomDialog dialog, View view) {
-//                switch (view.getId()) {
-//                    case R.id.ll_pay_weichat:   //微信支付
-//                        showToast("微信支付");
-//                        if (PAY_TYPE_WECHAT != payType) {
-//                            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
-//                            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
-//                            payType = PAY_TYPE_WECHAT;
-//
-//                        }
-//
-//                        break;
-//                    case R.id.ll_pay_ali:  //支付宝支付
-//                        showToast("支付宝支付");
-//                        if (PAY_TYPE_ALIPAY != payType) {
-//                            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
-//                            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
-//                            payType = PAY_TYPE_ALIPAY;
-//                        }
-//                        break;
-//                    case R.id.tv_confirm:  //确认支付
-//                        //TODO 支付
-//                        showToast("确认支付");
-//                        //重置
-////                        payBean = PayUtils.GetParamsFromBackground(payType);
-//                        if (0 == payType) {
-//                            GetParamsFromBackground(payType);
-//                        } else {
-//                            GetParamsFromBackground(payType);
-//
-//                        }
-//                        payType = PAY_TYPE_WECHAT;
-//
-//                        dialog.cancel();
-//                        break;
-//                    case R.id.tv_cancel:  //取消支付
-//                        showToast("取消支付");
-//                        //重置
-//                        payType = PAY_TYPE_WECHAT;
-//                        dialog.cancel();
-//                        break;
-//                }
-//            }
-//        });
-
-    }
-
-
     private String orderInfo;
+    private String currentPrice = "6800";
 
     public void GetParamsFromBackground(int payType) {
         switch (payType) {
             //金额 （分） 比如 1 = 1分 10 = 1毛 100=1元
             case 0:         //微信
+                if ("取名".equals(title)) {
+                    currentPrice = "8800";
+
+                } else {
+                    currentPrice = "6800";
+                }
                 OkHttpUtils.post()
                         .url(HttpConstants.WXPay)
                         .addParams("body", title)
                         .addParams("out_trade_no", oid)
-                        .addParams("total_fee", "1")
+                        .addParams("total_fee", currentPrice)
+//                        .addParams("total_fee", "1")
                         .addParams("text_surname", text_surname)   //姓
                         .addParams("text_name", text_name)//名
                         .addParams("text_all_name", text_all_name)//姓名
@@ -255,12 +204,19 @@ public class SelectPayActivity extends BaseActivity {
                 break;
             case 1:         //支付宝
                 //价格 比如 0.01 = 1分 0.1 = 1毛 1 = 1元
+                if ("取名".equals(title)) {
+                    currentPrice = "88";
+
+                } else {
+                    currentPrice = "68";
+                }
                 OkHttpUtils.get()
                         .url(HttpConstants.ALIPay)
                         .addParams("body", title)
                         .addParams("out_trade_no", oid)
 //                        .addParams("total_fee", "5")
-                        .addParams("total_fee", "0.01")
+                        .addParams("total_fee", currentPrice)
+//                        .addParams("total_fee", "0.01")
                         .addParams("text_surname", text_surname)   //姓
                         .addParams("text_name", text_name)//名
                         .addParams("text_all_name", text_all_name)//姓名

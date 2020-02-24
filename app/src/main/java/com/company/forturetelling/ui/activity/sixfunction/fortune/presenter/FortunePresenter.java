@@ -38,12 +38,12 @@ public class FortunePresenter {
     }
 
     public void sendNo1Request(String datadate, String username, String gender, String h) {
-        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
-        if ("".equals(userid)) {
-            mView.showToast("请先登入~~  ");
-            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
-            mContext.startActivity(intent);
-        } else {
+//        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
+//        if ("".equals(userid)) {
+//            mView.showToast("请先登入~~  ");
+//            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
+//            mContext.startActivity(intent);
+//        } else {
             mView.showLoadingView();
             OkHttpUtils.get()
                     .url(HttpConstants.EightNumber01)
@@ -79,7 +79,7 @@ public class FortunePresenter {
                         }
                     });
 
-        }
+//        }
 
     }
 

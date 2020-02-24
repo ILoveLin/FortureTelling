@@ -193,12 +193,14 @@ public class MineFragment extends BaseFragment implements MineView {
 
     private void initView() {
         isLogined = (Boolean) SharePreferenceUtil.get(getActivity(), Constants.Is_Logined, false);
-        String USERID = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
+//        String USERID = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
+        Boolean isLogin  = (Boolean) SharePreferenceUtil.get(getActivity(), Constants.Is_Logined, true);
+
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.GONE);
         setTitleName("我的");
         setPageStateView();
-        if ("".equals(USERID)) {
+        if (!isLogin) {
             linear_current_info_unlogin.setVisibility(View.VISIBLE);
             linearCurrentInfo.setVisibility(View.INVISIBLE);
         } else {

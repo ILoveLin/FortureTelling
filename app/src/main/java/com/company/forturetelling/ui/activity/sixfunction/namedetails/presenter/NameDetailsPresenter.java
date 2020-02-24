@@ -43,12 +43,12 @@ public class NameDetailsPresenter {
 
 
     public void sendNo1Request(String datadate, String username, String gender, String h,String xing) {
-        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
-        if ("".equals(userid)) {
-            mView.showToast("请先登入~~  ");
-            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
-            mContext.startActivity(intent);
-        }else{
+//        String userid = (String) SharePreferenceUtil.get(mContext, Constants.USERID, "");
+//        if ("".equals(userid)) {
+//            mView.showToast("请先登入~~  ");
+//            Intent intent = new Intent(mContext, LoginAnimatorActivity.class);
+//            mContext.startActivity(intent);
+//        }else{
             mView.showLoadingView();
             OkHttpUtils.get()
                     .url(HttpConstants.NameDetails01)
@@ -84,7 +84,7 @@ public class NameDetailsPresenter {
 
                         }
                     });
-        }
+//        }
 
 
 

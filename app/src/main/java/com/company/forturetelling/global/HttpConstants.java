@@ -19,6 +19,7 @@ public class HttpConstants {
     public static final String Login = Common + "/api/login/users";
     //    public static final String Register = Common + "/api/login/index";
     public static final String Register = Common + "/api/dx/registered";
+    public static final String GetUserID = Common + "/api/login/onelogin";
     public static final String Register_CheckPhone = Common + "/api/dx/PhoneNumbe";
     public static final String Image = Common + "/api/login/img";      //上传图片   /api/login/img
     public static final String InformationSetting = Common + "/api/login/updateinfo";

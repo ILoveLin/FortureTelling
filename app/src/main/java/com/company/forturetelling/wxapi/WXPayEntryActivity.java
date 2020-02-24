@@ -147,7 +147,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                             //status  = 1 成功   =0 失败  -1没有获取到回调
                             String status = mWXOrderCheckoutBean.getStatus() + "";
                             if ("0".equals(status)) {  //成功
-                                Toast.makeText(getApplicationContext(), "微信订单二次校验SUCCESS", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "微信订单二次校验SUCCESS", Toast.LENGTH_SHORT).show();
                                 String title = mWXOrderCheckoutBean.getData().getBody() + "";
                                 String out_trade_no = mWXOrderCheckoutBean.getData().getOut_trade_no() + "";
                                 Bundle bundle = new Bundle();

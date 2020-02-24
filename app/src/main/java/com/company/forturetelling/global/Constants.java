@@ -10,7 +10,6 @@ public class Constants {
     //引导页
     public static final String SP_IS_FIRST_IN = "sp_is_first_in";
     public static final String Is_Logined = "is_logined";
-    public static final String Logined = "is_logined";
     public static final String Is_Main_To_Login = "Is_Main_To_Login";
 
 

@@ -147,7 +147,6 @@ public class LoginActivity extends BaseActivity {
 //                            String token = mBean.getData().getToken() + "";
                             SharePreferenceUtil.put(LoginActivity.this, Constants.USERID, userid + "");
 //                            SharePreferenceUtil.put(LoginActivity.this, Constants.Token, token + "");
-                            SharePreferenceUtil.put(LoginActivity.this, Constants.Device, "android");
                             SharePreferenceUtil.put(LoginActivity.this, Constants.Is_Logined, true);
                             EventBus.getDefault().post(new ExitEvent("登入"));
                             showToast("登入成功");

@@ -44,6 +44,7 @@ import com.company.forturetelling.bean.information.InforBean;
 import com.company.forturetelling.bean.information.InforSettingBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.activity.SplashActivity;
 import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
 import com.company.forturetelling.ui.activity.information.presenter.InforPresenter;
 import com.company.forturetelling.ui.activity.information.presenter.InforView;
@@ -403,9 +404,8 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 //确定推出---请求数据
+//                SharePreferenceUtil.put(InforSettingActivity.this, Constants.USERID, "");
                 SharePreferenceUtil.put(InforSettingActivity.this, Constants.Is_Logined, false);
-                SharePreferenceUtil.put(InforSettingActivity.this, Constants.Logined, false);
-                SharePreferenceUtil.put(InforSettingActivity.this, Constants.USERID, "");
                 SharePreferenceUtil.get(InforSettingActivity.this, Constants.Is_Main_To_Login, "no");
 
                 try {
