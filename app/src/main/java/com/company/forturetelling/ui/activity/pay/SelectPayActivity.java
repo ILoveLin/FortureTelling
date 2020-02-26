@@ -95,6 +95,8 @@ public class SelectPayActivity extends BaseActivity {
             public void onClick(View v) {
                 showToast("微信支付");
                 if (PAY_TYPE_WECHAT != payType) {
+                    mWeichatSelect.setSelected(true);
+                    mAliPaySelect.setSelected(false);
                     mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
                     mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
                     payType = PAY_TYPE_WECHAT;
@@ -108,6 +110,8 @@ public class SelectPayActivity extends BaseActivity {
             public void onClick(View v) {
                 showToast("支付宝支付");
                 if (PAY_TYPE_ALIPAY != payType) {
+                    mWeichatSelect.setSelected(false);
+                    mAliPaySelect.setSelected(true);
                     mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
                     mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
                     payType = PAY_TYPE_ALIPAY;
@@ -134,8 +138,22 @@ public class SelectPayActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 showToast("取消支付");
+
+                if (payType == PAY_TYPE_WECHAT) {
+                    mWeichatSelect.setSelected(true);
+                    mAliPaySelect.setSelected(false);
+                    payType = PAY_TYPE_WECHAT;
+                    mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
+                    mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
+                } else {
+                    payType = PAY_TYPE_ALIPAY;
+                    mWeichatSelect.setSelected(false);
+                    mAliPaySelect.setSelected(true);
+                    mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
+                    mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
+                }
                 //重置
-                payType = PAY_TYPE_WECHAT;
+
                 finish();
             }
         });
@@ -157,9 +175,11 @@ public class SelectPayActivity extends BaseActivity {
             case 0:         //微信
                 if ("取名".equals(title)) {
                     currentPrice = "8800";
+//                    currentPrice = "1";
 
                 } else {
-                    currentPrice = "6800";
+                    currentPrice = "1";
+//                    currentPrice = "6800";
                 }
                 OkHttpUtils.post()
                         .url(HttpConstants.WXPay)
@@ -205,10 +225,12 @@ public class SelectPayActivity extends BaseActivity {
             case 1:         //支付宝
                 //价格 比如 0.01 = 1分 0.1 = 1毛 1 = 1元
                 if ("取名".equals(title)) {
-                    currentPrice = "88";
+//                    currentPrice = "88";
+                    currentPrice = "0.01";
 
                 } else {
-                    currentPrice = "68";
+//                    currentPrice = "68";
+                    currentPrice = "0.01";
                 }
                 OkHttpUtils.get()
                         .url(HttpConstants.ALIPay)
@@ -254,11 +276,13 @@ public class SelectPayActivity extends BaseActivity {
 
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
+    private static final int SDK_PAY_CANCEL = -2;
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
         public void handleMessage(Message msg) {
+
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
                     /**
@@ -270,11 +294,11 @@ public class SelectPayActivity extends BaseActivity {
                      */
                     String resultInfo = payResult.getResult();// 同步返回需要验证的信息
                     String resultStatus = payResult.getResultStatus();
-                    Log.e("PayUtils----ALI", "response==ALIPay===resultInfo==" + resultInfo);
+                    Log.e("PayUtils----ALI", "response==ALIPay===resultInfo=1111111=" + resultInfo);
                     Log.e("PayUtils----ALI", "response==ALIPay===resultStatus==" + resultStatus);
 
                     // 判断resultStatus 为9000则代表支付成功
-                    if (TextUtils.equals(resultStatus, "9000")) {
+                    if (TextUtils.equals(resultStatus, "9000")) {    //6001  支付宝---取消支付
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Type type = new TypeToken<AliPayInforBean>() {
                         }.getType();
@@ -286,7 +310,14 @@ public class SelectPayActivity extends BaseActivity {
                     }
                     break;
                 }
+
                 case SDK_AUTH_FLAG: {
+                    Log.e("PayUtils----ALI", "response==ALIPay===resultInfo=1111111=" + SDK_AUTH_FLAG);
+
+                    break;
+                }
+                case SDK_PAY_CANCEL: {
+                    Log.e("PayUtils----ALI", "response==ALIPay===resultInfo=1111111=" + SDK_PAY_CANCEL);
 
                     break;
                 }
@@ -347,7 +378,7 @@ public class SelectPayActivity extends BaseActivity {
      **/
     private void toAliPay(String orderInfo) {
         //下面的orderInfo就是咱自己的服务端返回的订单信息，里面除了订单ID等，还有签名等安全信息
-//使用方式基本按照支付宝的DEMO里面就行了
+        //使用方式基本按照支付宝的DEMO里面就行了
 
         final Runnable payRunnable = new Runnable() {
 
@@ -442,9 +473,26 @@ public class SelectPayActivity extends BaseActivity {
         tv_cancel = findViewById(R.id.tv_cancel);
         tv_price = findViewById(R.id.tv_price);
 
+
         shop_name.setText("商品名称:" + title);
         tv_price.setText("￥" + price);
         gson = new Gson();
+
+
+        if (payType == PAY_TYPE_WECHAT) {
+            mWeichatSelect.setSelected(true);
+            mAliPaySelect.setSelected(false);
+            payType = PAY_TYPE_WECHAT;
+            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
+            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
+        } else {
+            payType = PAY_TYPE_ALIPAY;
+            mWeichatSelect.setSelected(false);
+            mAliPaySelect.setSelected(true);
+            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
+            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
+        }
+
 
 //        dialogView = getLayoutInflater().inflate(R.layout.dialog_pay_type, null);
 

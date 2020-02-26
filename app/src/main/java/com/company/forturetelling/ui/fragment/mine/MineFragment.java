@@ -194,7 +194,7 @@ public class MineFragment extends BaseFragment implements MineView {
     private void initView() {
         isLogined = (Boolean) SharePreferenceUtil.get(getActivity(), Constants.Is_Logined, false);
 //        String USERID = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
-        Boolean isLogin  = (Boolean) SharePreferenceUtil.get(getActivity(), Constants.Is_Logined, true);
+        Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), Constants.Is_Logined, true);
 
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.GONE);
@@ -209,6 +209,36 @@ public class MineFragment extends BaseFragment implements MineView {
         }
     }
 
+    private void showPop(RelativeLayout relate_mine_all) {
+
+        final PopupWindowTwoButton twoButton = new PopupWindowTwoButton((Activity) getActivity());
+        twoButton.getTv_content().setText("是否确认退出?");
+        twoButton.getTv_ok().setText("确定");
+        twoButton.getTv_cancel().setText("取消");
+        twoButton.getTv_ok().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //确定推出---请求数据
+//                SharePreferenceUtil.put(InforSettingActivity.this, Constants.USERID, "");
+                SharePreferenceUtil.put(getActivity(), Constants.Is_Logined, false);
+                SharePreferenceUtil.get(getActivity(), Constants.Is_Main_To_Login, "no");
+
+                try {
+                    EventBus.getDefault().post(new ExitEvent("退出"));
+                } catch (Exception ex) {
+                }
+                twoButton.dismiss();
+            }
+        });
+        twoButton.getTv_cancel().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                twoButton.dismiss();
+
+            }
+        });
+        twoButton.showPopupWindow(relate_mine_all, Gravity.CENTER);
+    }
 
     @OnClick({R.id.linear_current_info_unlogin, R.id.bar_payed_order, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
     public void multipleOnclick(View view) {
@@ -244,6 +274,10 @@ public class MineFragment extends BaseFragment implements MineView {
             case R.id.bar_update:  //版本更新
                 requestUpdateVersion();
                 break;
+//            case R.id.linear_mine_exit:  //
+
+//                showPop(relate_mine_all);
+//                break;
             case R.id.bar_about_us: //关于我们
 //                http://jxsccm.com/
                 Bundle bundle = new Bundle();

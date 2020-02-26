@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.company.forturetelling.R;
@@ -31,6 +32,7 @@ import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.information.RegisterActivity;
+import com.company.forturetelling.utils.DeviceIdUtil;
 import com.company.forturetelling.view.CountdownView;
 import com.company.forturetelling.view.PasswordEditText;
 import com.company.forturetelling.view.RegexEditText;
@@ -285,6 +287,8 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
                                 SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.MessageId, bean.getData().getBizId() + "");
                             } else if ("-1".equals(bean.getStatus())) {
                                 register = false;
+//                                showToast(bean.getMsg() + "");
+                                Toast.makeText(RegisterAnimatorActivity.this, "您的手机号已注册", Toast.LENGTH_SHORT).show();
                                 showToast(bean.getMsg() + "");
                             }
                         }
@@ -336,14 +340,17 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
                         + "==" + StatueSex + "==" + currentBirthday + "==" + province + "==" + city);
                 Log.e("Net", "response===时间戳=====secondTimestamp=1==" + secondTimestamp);
                 Log.e("Net", "response===时间戳=====secondTimestamp=1==" + System.currentTimeMillis());
+                String deviceid = DeviceIdUtil.getDeviceId(this);
                 OkHttpUtils.post()
                         .url(HttpConstants.Register)
+                        .addParams("deviceid", deviceid)
+                        .addParams("type", "1")
                         .addParams("PhoneNumbers", phone)
                         .addParams("BizId", messageId)
                         .addParams("vcode", code)      //验证码
                         .addParams("ytime", secondTimestamp + "")   //验证码时间 传时间戳（注意是秒）
                         .addParams("openid", VXopenid)  //微信唯一标识    可传可不传
-                        .addParams("password", password01)  //微信唯一标识    可传可不传
+                        .addParams("password", password01)
                         .addParams("gender", StatueSex + "")
                         .addParams("birthday", currentBirthday)
                         .addParams("province", province)

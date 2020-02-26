@@ -79,6 +79,7 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
     private final int mAnimTime = 300;
     private String username;
     private String password;
+    private String comeFrom02;
 
     @Override
     public int getContentViewId() {
@@ -106,7 +107,7 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
 //        tv_addname_name01.setFilters(new InputFilter[]{new InputFilter.LengthFilter(5)});
 //        tv_addname_name02.setFilters(new InputFilter[]{new InputFilter.LengthFilter(5)});
 
-
+        comeFrom02 = getIntent().getStringExtra("02") + "";
         InputTextHelper.with(this)
                 .addView(mPhoneView)
                 .addView(mPasswordView)
@@ -191,6 +192,7 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
                         LoginBean mBean = mGson.fromJson(response, type);
                         String status = mBean.getStatus() + "";  //0 成功   1失败
                         Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====登录界面=====status====" + status + "");
+                        Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====登录界面=====comeFrom02====" + comeFrom02 + "");
 
                         if ("0".equals(status)) {
 //                            Log.e("Net", "login==response===" + mBean.getData().getToken());
@@ -205,13 +207,13 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
                             String type02 = (String) SharePreferenceUtil.get(LoginAnimatorActivity.this, Constants.Is_Main_To_Login, "no");
 //                            EventBus.getDefault().post(new ExitEvent("登入"));
 //                            EventBus.getDefault().post(new ExitEvent("02"));
-
+                            if (comeFrom02.equals("02")) {
                                 EventBus.getDefault().post(new ExitEvent("登入"));
-//                            Bundle bundle = new Bundle();
-//                            bundle.putString("WeChat", "注册界面");
-//                            openActivity(RegisterActivity.class, bundle);
-//                            startActivityFinish(MainActivity.class);
+                                EventBus.getDefault().post(new ExitEvent("02"));
+                            } else {
+                                EventBus.getDefault().post(new ExitEvent("登入"));
 
+                            }
                             showToast("登入成功");
                             finish();
 

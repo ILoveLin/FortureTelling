@@ -18,10 +18,12 @@ import com.company.forturetelling.bean.bus.ExitEvent;
 import com.company.forturetelling.bean.information.InforBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
+import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.FortuneDetailsActivity;
 import com.company.forturetelling.ui.activity.LifeDetailsActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
+import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.company.forturetelling.ui.fragment.fortune.presenter.FortunePresenter;
 import com.company.forturetelling.ui.fragment.fortune.presenter.FortuneView;
 import com.company.forturetelling.utils.NetworkUtil;
@@ -119,6 +121,12 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     RatingBar tv03Ratingbar04;
     @BindView(R.id.smartRefresh)
     SmartRefreshLayout mSmartRefresh;
+    @BindView(R.id.linear_all_login)
+    LinearLayout linear_all_login;
+    @BindView(R.id.linar_all_data)
+    LinearLayout linear_all_data;
+    @BindView(R.id.tv_02_login_now)
+    TextView tv_02_login_now;
     private FortunePresenter mPresenter;
     private InforBean.DataBean.InfoBean infoBean;
     private InforBean.DataBean.JinriyunsiBean tadayBean;
@@ -164,7 +172,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
         if (userid.equals("")) {
 
         } else {
-            showLoadingView();
+//            showLoadingView();
             OkHttpUtils.post()
                     .url(HttpConstants.Information)
                     .addParams("userid", userid)
@@ -219,13 +227,14 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ExitEvent(ExitEvent messageEvent) {
+        initTitle();
         sendRequest();
 
     }
 
 
     private void refreshData01() {
-        String headimg = infoBean.getHeadimg();
+        String headimg = infoBean.getHeadimg()+"";
         Log.e("mImageUri", "=========sendNo===title01=title01======" + title01);
 
         if (headimg.contains("http://")) {
@@ -241,7 +250,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
         username = infoBean.getUsername();
         String username = infoBean.getName();
         tv01Name.setText(username + "");
-        if ("".equals(infoBean.getJmsht(  ))) {
+        if ("".equals(infoBean.getJmsht())) {
             tv01_name_type.setText("喜神用" + infoBean.getJmsht() + "土");
 
         } else {
@@ -332,24 +341,79 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
     private void initTitle() {
         userid1 = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
+        Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
+        String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
+        linear_all_login.setVisibility(View.INVISIBLE);
+        linear_all_data.setVisibility(View.VISIBLE);
 
-        setTitleBarVisibility(View.VISIBLE);
+        if (isLogin) {   //登入了
+            if ("true".equals(Perfect)) {  //已经完善.
+//                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
+                linear_all_login.setVisibility(View.INVISIBLE);
+                linear_all_data.setVisibility(View.VISIBLE);
+
+
+            } else {  //未完善
+//                Bundle bundle = new Bundle();
+//                bundle.putString("title", "完善信息");
+//                bundle.putString("type", "02");
+//                openActivity(RegisterAnimatorActivity.class, bundle);
+            }
+
+        } else {//未登录
+            linear_all_login.setVisibility(View.VISIBLE);
+            linear_all_data.setVisibility(View.INVISIBLE);
+
+        }
         setTitleName("个人运程");
+        setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.GONE);
         setPageStateView();
 
 
     }
 
-    @OnClick({R.id.part_fortune_01, R.id.part_fortune_02, R.id.part_fortune_03})
+
+    @OnClick({R.id.part_fortune_01, R.id.part_fortune_02, R.id.part_fortune_03, R.id.tv_02_login_now})
     public void multipleOnclick(View view) {
+        Bundle bundle = new Bundle();
         switch (view.getId()) {
+            case R.id.tv_02_login_now:
+
+                Log.e("Wetchat", "login==end===排序==排序==" + "04");
+                SharePreferenceUtil.put(getActivity(), com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
+                bundle.putString("02", "02");
+                openActivity(LoginAnimatorActivity.class, bundle);
+//                openActivity(LoginAnimatorActivity.class);
+
+//                Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
+//                String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
+//                if (isLogin) {   //登入了
+//                    if ("true".equals(Perfect)) {  //已经完善.
+////                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
+//
+//                    } else {  //未完善
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("title", "完善信息");
+//                        bundle.putString("type", "02");
+//                        openActivity(RegisterAnimatorActivity.class, bundle);
+//                    }
+//
+//                } else {//未登录
+//
+//                    Log.e("Wetchat", "login==end===排序==排序==" + "04");
+//                    SharePreferenceUtil.put(getActivity(), com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("02", "02");
+//                    openActivity(LoginAnimatorActivity.class, bundle);
+//                }
+
+                break;
             case R.id.part_fortune_01: //命盘分析
                 if ("".equals(userid)) {
                     showToast("立即登登入,更多体验");
                     openActivity(LoginAnimatorActivity.class);
                 } else {
-                    Bundle bundle = new Bundle();
                     bundle.putString("userid", userid1 + "");
                     bundle.putString("title01", title01 + "");
                     bundle.putString("title02", title02 + "");
@@ -364,7 +428,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                     showToast("立即登登入,更多体验");
                     openActivity(LoginAnimatorActivity.class);
                 } else {
-                    Bundle bundle = new Bundle();
                     bundle.putString("name", infoBean.getUsername() + "");
                     bundle.putString("data", infoBean.getBirthday() + "");
                     openActivity(FortuneDetailsActivity.class, bundle);

@@ -56,11 +56,13 @@
         </provider>
 
 
-        <activity android:name=".ui.MainActivity" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name=".ui.activity.GuideActivity" />
         <activity android:name=".ui.activity.pay.SelectPayActivity" />
         <activity android:name=".ui.activity.information.InforSettingActivity" />
-        <activity android:name=".ui.activity.sixfunction.getname.DetailsCommonActivity" />
+        <!--<activity android:name=".ui.activity.sixfunction.getname.DetailsCommonActivity" />-->
         <activity android:name=".ui.activity.LifeDetailsActivity" />
         <activity android:name=".ui.activity.FortuneDetailsActivity" />
         <activity android:name=".ui.activity.NewsActivity" />

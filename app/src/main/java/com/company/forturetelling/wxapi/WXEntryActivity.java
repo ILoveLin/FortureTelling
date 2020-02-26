@@ -21,6 +21,7 @@ import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.information.RegisterActivity;
 import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
+import com.company.forturetelling.utils.DeviceIdUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -234,8 +235,12 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 
 
     private void requestData(WechatLoginBean mBean) {
+        String deviceid = DeviceIdUtil.getDeviceId(this);
+
         OkHttpUtils.post()
                 .url(HttpConstants.WeChat_Login)
+                .addParams("deviceid", deviceid)
+                .addParams("type", "1")
                 .addParams("openid", mBean.getOpenid())
                 .addParams("nickname", mBean.getNickname())
                 .addParams("sex", mBean.getSex())

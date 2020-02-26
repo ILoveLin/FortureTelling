@@ -124,29 +124,6 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ExitEvent(ExitEvent messageEvent) {
-        String type02 = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Main_To_Login, "no");
-//        Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====messageEvent.getMessage()=====type02====" + type02 + "");
-
-//        if ("02".equals(messageEvent.getMessage())) {
-//            setChoiceItem(Constants.TAB_DRUGS_QUERY);
-//            Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====messageEvent.getMessage()===02==" +messageEvent.getMessage());
-//
-//            isLogin = (Boolean) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Logined, false);
-//            perfect = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
-//
-//        } else {
-            setChoiceItem(Constants.TAB_MINE);
-            Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====messageEvent.getMessage()===03==" +  messageEvent.getMessage());
-
-            isLogin = (Boolean) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Logined, false);
-            perfect = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
-            Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====isLogin=====" + isLogin + "");
-            Log.e("Wetchat", "login==end===数据保持后台完毕==----Main界面接受的Bus信息-====perfect=====" + perfect + "");
-
-//        }
-
-
-
 
 
     }
@@ -178,9 +155,11 @@ public class MainActivity extends BaseActivity {
                 overAnim(tvTabFirstPage);
                 break;
             case Constants.TAB_DRUGS_QUERY://药品查询  //2
+
                 hideFragments(transaction);
                 StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
                 StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
+
                 if (secondFragment == null) {
                     secondFragment = new FortuneFragment();
                     transaction.add(R.id.ll_content, secondFragment);
@@ -192,6 +171,24 @@ public class MainActivity extends BaseActivity {
                 tvTabThirdPage.setSelected(false);
                 tvTabFourthPage.setSelected(false);
                 overAnim(tvTabSecondPage);
+
+
+
+
+//                hideFragments(transaction);
+//                StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
+//                StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
+//                if (secondFragment == null) {
+//                    secondFragment = new FortuneFragment();
+//                    transaction.add(R.id.ll_content, secondFragment);
+//                } else {
+//                    transaction.show(secondFragment);
+//                }
+//                tvTabFirstPage.setSelected(false);
+//                tvTabSecondPage.setSelected(true);
+//                tvTabThirdPage.setSelected(false);
+//                tvTabFourthPage.setSelected(false);
+//                overAnim(tvTabSecondPage);
                 break;
 
             case Constants.TAB_NEWS:   //3
@@ -244,24 +241,28 @@ public class MainActivity extends BaseActivity {
                 setChoiceItem(Constants.TAB_HOME);
                 break;
             case R.id.tv_tab_drug_query:   // 2
-                Boolean isLogin = (Boolean) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Logined, false);
-                String Perfect = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
-                if (isLogin) {   //登入了
-                    if ("true".equals(Perfect)) {  //已经完善.
-                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
+                setChoiceItem(Constants.TAB_DRUGS_QUERY);
 
-                    } else {  //未完善
-                        Bundle bundle = new Bundle();
-                        bundle.putString("title", "完善信息");
-                        bundle.putString("type", "02");
-                        openActivity(RegisterAnimatorActivity.class, bundle);
-                    }
-
-                } else {//未登录
-                    Log.e("Wetchat", "login==end===排序==排序==" + "04");
-                    SharePreferenceUtil.put(MainActivity.this, com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
-                    openActivity(LoginAnimatorActivity.class);
-                }
+//                Boolean isLogin = (Boolean) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Logined, false);
+//                String Perfect = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
+//                if (isLogin) {   //登入了
+//                    if ("true".equals(Perfect)) {  //已经完善.
+//                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
+//
+//                    } else {  //未完善
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("title", "完善信息");
+//                        bundle.putString("type", "02");
+//                        openActivity(RegisterAnimatorActivity.class, bundle);
+//                    }
+//
+//                } else {//未登录
+//                    Log.e("Wetchat", "login==end===排序==排序==" + "04");
+//                    SharePreferenceUtil.put(MainActivity.this, com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("02", "02");
+//                    openActivity(LoginAnimatorActivity.class, bundle);
+//                }
 
 
                 break;

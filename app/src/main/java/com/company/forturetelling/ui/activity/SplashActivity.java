@@ -106,7 +106,6 @@ public class SplashActivity extends BaseActivity {
 
     //判断进入那个activity
     private void switchGoing() {
-
         sendRequestForUserID();
         if (isFirstIn) {
 //            第一次进入-- 走引导页，否则进入MainActivity
