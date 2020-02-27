@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +58,8 @@ public class GetNameActivity extends BaseActivity {
     TextView iv_submit;
     @BindView(R.id.et_phone)
     ClearEditText ClearEditText;
+    @BindView(R.id.linear_brithday)
+    LinearLayout linear_brithday;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
     @BindView(R.id.tv_addname_name)
@@ -113,50 +116,50 @@ public class GetNameActivity extends BaseActivity {
 
 
     private void sendOrderRequest() {
-            showLoading();
-            OkHttpUtils.get()
-                    .url(HttpConstants.AddName)
-                    .addParams("cszt", StatueBorn + "")  // 出生状态
-                    .addParams("name", addName + "")  // 姓氏
-                    .addParams("zibei", addNameZibei + "")  // 字辈
-                    .addParams("gender", StatueSex + "")  // 性别 1 男 0女
-                    .addParams("b_input", 0 + "")  //  默认公历
-                    .addParams("xing", addName + "")  //姓氏 (和name一样的意思)
-                    .addParams("ver", "")  //
-                    .addParams("date", bornData + "")  //时间 比如: 2019-12-9-0-0
-                    .addParams("phone", mPhoneParams + "")  //
-                    .build()
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onError(Call call, Exception e, int id) {
+        showLoading();
+        OkHttpUtils.get()
+                .url(HttpConstants.AddName)
+                .addParams("cszt", StatueBorn + "")  // 出生状态
+                .addParams("name", addName + "")  // 姓氏
+                .addParams("zibei", addNameZibei + "")  // 字辈
+                .addParams("gender", StatueSex + "")  // 性别 1 男 0女
+                .addParams("b_input", 0 + "")  //  默认公历
+                .addParams("xing", addName + "")  //姓氏 (和name一样的意思)
+                .addParams("ver", "")  //
+                .addParams("date", bornData + "")  //时间 比如: 2019-12-9-0-0
+                .addParams("phone", mPhoneParams + "")  //
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        showError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.e("mImageUri", "addName====error=onResponse=====" + response);
+                        Type type = new TypeToken<AddNameBean>() {
+                        }.getType();
+                        AddNameBean mAddBean = gson.fromJson(response, type);
+                        showContent();
+
+                        if (mAddBean.getStatus().equals("0")) {
+                            String orderNo = mAddBean.getData().getOrderNo();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("oid", orderNo);
+                            bundle.putString("title", title);
+                            bundle.putString("text_surname", "");  //姓
+                            bundle.putString("text_name", "");     //名
+                            bundle.putString("price", "86");      //价格
+                            bundle.putString("text_all_name", tvAddnameName.getText().toString().trim() + ""); //姓名
+                            //TODO  获取到订单号 跳转到支付界面
+                            openActivity(SelectPayActivity.class, bundle);
+                        } else {
                             showError();
                         }
 
-                        @Override
-                        public void onResponse(String response, int id) {
-                            Log.e("mImageUri", "addName====error=onResponse=====" + response);
-                            Type type = new TypeToken<AddNameBean>() {
-                            }.getType();
-                            AddNameBean mAddBean = gson.fromJson(response, type);
-                            showContent();
-
-                            if (mAddBean.getStatus().equals("0")) {
-                                String orderNo = mAddBean.getData().getOrderNo();
-                                Bundle bundle = new Bundle();
-                                bundle.putString("oid", orderNo);
-                                bundle.putString("title", title);
-                                bundle.putString("text_surname", "");  //姓
-                                bundle.putString("text_name", "");     //名
-                                bundle.putString("price", "86");      //价格
-                                bundle.putString("text_all_name", tvAddnameName.getText().toString().trim() + ""); //姓名
-                                //TODO  获取到订单号 跳转到支付界面
-                                openActivity(SelectPayActivity.class, bundle);
-                            } else {
-                                showError();
-                            }
-
-                        }
-                    });
+                    }
+                });
 
 
     }

@@ -44,6 +44,8 @@ public class LifeDetailsActivity extends BaseActivity {
     TextView tvTitle02;
     @BindView(R.id.tv_title_03)
     TextView tvTitle03;
+    @BindView(R.id.tv_current_birthday)
+    TextView tv_current_birthday;
     @BindView(R.id.tv_title_04)
     TextView tvTitle04;
     @BindView(R.id.tv_current_name_life)
@@ -57,6 +59,7 @@ public class LifeDetailsActivity extends BaseActivity {
     private String title02;
     private String title03;
     private String title04;
+    private String birthday;
 
     @Override
     public int getContentViewId() {
@@ -126,12 +129,12 @@ public class LifeDetailsActivity extends BaseActivity {
         setTitleLeftBtnVisibility(View.VISIBLE);
         setTitleName("命盘分析");
         setPageStateView();
-
         userid = getIntent().getStringExtra("userid");
-        title01 = getIntent().getStringExtra("title01");
+        birthday = getIntent().getStringExtra("birthday");
         title02 = getIntent().getStringExtra("title02");
         title03 = getIntent().getStringExtra("title03");
         title04 = getIntent().getStringExtra("title04");
+        tv_current_birthday.setText("" + birthday);
     }
 
     @Override

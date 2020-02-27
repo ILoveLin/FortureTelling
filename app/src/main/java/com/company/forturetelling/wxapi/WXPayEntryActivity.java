@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.company.forturetelling.R;
 import com.company.forturetelling.bean.bus.ExitEvent;
+import com.company.forturetelling.bean.bus.RefreshPayTypeEvent;
 import com.company.forturetelling.bean.paybean.AliPaySecondResultBean;
 import com.company.forturetelling.bean.paybean.WXOrderCheckoutBean;
 import com.company.forturetelling.global.Constants;
@@ -29,6 +30,8 @@ import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Type;
 
@@ -96,6 +99,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 
             } else if (errCode == -2) {/*取消支付*/
                 Toast.makeText(this, "取消支付", Toast.LENGTH_LONG).show();
+                EventBus.getDefault().post(new RefreshPayTypeEvent("微信"));
             }
             finish();
 

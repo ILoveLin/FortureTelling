@@ -138,6 +138,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     public static String title03;
     public static String title04;
     public static String username;
+    private String birthday;
 
 
     @Override
@@ -189,8 +190,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                         @Override
                         public void onResponse(String response, int id) {
                             showContentView();
-                            Log.e("mImageUri", "=========file===01111======" + response);
-
                             Type type = new TypeToken<InforBean>() {
                             }.getType();
                             Gson gson = new Gson();
@@ -234,9 +233,8 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
 
     private void refreshData01() {
-        String headimg = infoBean.getHeadimg()+"";
-        Log.e("mImageUri", "=========sendNo===title01=title01======" + title01);
-
+        String headimg = infoBean.getHeadimg() + "";
+        birthday = infoBean.getBirthday()+"";
         if (headimg.contains("http://")) {
             Picasso.with(getActivity()).load(infoBean.getHeadimg())
                     .placeholder(R.drawable.icon_mine_pic).error(R.drawable.icon_mine_pic).into(tv01Pic);
@@ -262,7 +260,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                 case 0:
                     title01 = infoBean.getZhongheids().get(i);
                     tv01Point01.setText(title01 + "");
-                    Log.e("mImageUri", "=========sendNo===title01=title01======" + title01);
                     break;
                 case 1:
                     title02 = infoBean.getZhongheids().get(i);
@@ -275,8 +272,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                 case 3:
                     title04 = infoBean.getZhongheids().get(i);
                     tv01Point04.setText(title04 + "");
-                    Log.e("mImageUri", "=========sendNo===title01=title01======" + title04);
-
                     break;
             }
         }
@@ -345,21 +340,11 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
         String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
         linear_all_login.setVisibility(View.INVISIBLE);
         linear_all_data.setVisibility(View.VISIBLE);
-
         if (isLogin) {   //登入了
             if ("true".equals(Perfect)) {  //已经完善.
-//                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
                 linear_all_login.setVisibility(View.INVISIBLE);
                 linear_all_data.setVisibility(View.VISIBLE);
-
-
-            } else {  //未完善
-//                Bundle bundle = new Bundle();
-//                bundle.putString("title", "完善信息");
-//                bundle.putString("type", "02");
-//                openActivity(RegisterAnimatorActivity.class, bundle);
             }
-
         } else {//未登录
             linear_all_login.setVisibility(View.VISIBLE);
             linear_all_data.setVisibility(View.INVISIBLE);
@@ -379,47 +364,22 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
         Bundle bundle = new Bundle();
         switch (view.getId()) {
             case R.id.tv_02_login_now:
-
-                Log.e("Wetchat", "login==end===排序==排序==" + "04");
                 SharePreferenceUtil.put(getActivity(), com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
                 bundle.putString("02", "02");
                 openActivity(LoginAnimatorActivity.class, bundle);
-//                openActivity(LoginAnimatorActivity.class);
-
-//                Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
-//                String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
-//                if (isLogin) {   //登入了
-//                    if ("true".equals(Perfect)) {  //已经完善.
-////                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
-//
-//                    } else {  //未完善
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("title", "完善信息");
-//                        bundle.putString("type", "02");
-//                        openActivity(RegisterAnimatorActivity.class, bundle);
-//                    }
-//
-//                } else {//未登录
-//
-//                    Log.e("Wetchat", "login==end===排序==排序==" + "04");
-//                    SharePreferenceUtil.put(getActivity(), com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("02", "02");
-//                    openActivity(LoginAnimatorActivity.class, bundle);
-//                }
-
                 break;
             case R.id.part_fortune_01: //命盘分析
                 if ("".equals(userid)) {
                     showToast("立即登登入,更多体验");
                     openActivity(LoginAnimatorActivity.class);
                 } else {
+                    bundle.putString("birthday", birthday + "");
                     bundle.putString("userid", userid1 + "");
                     bundle.putString("title01", title01 + "");
                     bundle.putString("title02", title02 + "");
                     bundle.putString("title03", title03 + "");
                     bundle.putString("title04", title04 + "");
-                    openActivity(LifeDetailsActivity.class);
+                    openActivity(LifeDetailsActivity.class,bundle);
                 }
                 break;
             case R.id.part_fortune_02: //今日运势

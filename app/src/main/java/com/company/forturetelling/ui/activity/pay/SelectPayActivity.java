@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.alipay.sdk.app.PayTask;
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
+import com.company.forturetelling.bean.bus.ExitEvent;
+import com.company.forturetelling.bean.bus.RefreshPayTypeEvent;
 import com.company.forturetelling.bean.paybean.AliPayInforBean;
 import com.company.forturetelling.bean.paybean.AliPayOrderBean;
 import com.company.forturetelling.bean.paybean.AliPaySecondResultBean;
@@ -39,6 +41,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -61,7 +65,6 @@ public class SelectPayActivity extends BaseActivity {
     LinearLayout ll_pay_weichat;
     @BindView(R.id.ll_pay_ali)
     LinearLayout ll_pay_ali;
-
     private String title;
     private String oid;
     private TextView tv_price;
@@ -86,6 +89,31 @@ public class SelectPayActivity extends BaseActivity {
     public void init() {
         initView();
         responseListener();
+    }
+
+    private void initView() {
+        setTitleBarVisibility(View.VISIBLE);
+        setTitleLeftBtnVisibility(View.VISIBLE);
+        setTitleName("订单界面");
+        title = getIntent().getStringExtra("title");
+        oid = getIntent().getStringExtra("oid");
+        price = getIntent().getStringExtra("price");
+        total_fee = getIntent().getStringExtra("total_fee");
+        text_surname = getIntent().getStringExtra("text_surname");
+        text_name = getIntent().getStringExtra("text_name");
+        text_all_name = getIntent().getStringExtra("text_all_name");
+        //微信支付的选择
+        mWeichatSelect = findViewById(R.id.iv_buy_weichat_select);
+        tv_price = findViewById(R.id.tv_price);
+        //支付宝的选择
+        mAliPaySelect = findViewById(R.id.iv_buy_alipay_select);
+        tv_confirm = findViewById(R.id.tv_confirm);
+        tv_cancel = findViewById(R.id.tv_cancel);
+        tv_price = findViewById(R.id.tv_price);
+        shop_name.setText("商品名称:" + title);
+        tv_price.setText("￥" + price);
+        gson = new Gson();
+
     }
 
     private void responseListener() {
@@ -123,37 +151,21 @@ public class SelectPayActivity extends BaseActivity {
             public void onClick(View v) {
                 showToast("确认支付");
                 //重置
-//                        payBean = PayUtils.GetParamsFromBackground(payType);
-
                 if (0 == payType) {
                     GetParamsFromBackground(payType);
                 } else {
                     GetParamsFromBackground(payType);
 
                 }
-                payType = PAY_TYPE_WECHAT;
+//                payType = PAY_TYPE_WECHAT;
             }
         });
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showToast("取消支付");
-
-                if (payType == PAY_TYPE_WECHAT) {
-                    mWeichatSelect.setSelected(true);
-                    mAliPaySelect.setSelected(false);
-                    payType = PAY_TYPE_WECHAT;
-                    mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
-                    mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
-                } else {
-                    payType = PAY_TYPE_ALIPAY;
-                    mWeichatSelect.setSelected(false);
-                    mAliPaySelect.setSelected(true);
-                    mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
-                    mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
-                }
+                refreshPayTypeStatue(5);
                 //重置
-
                 finish();
             }
         });
@@ -174,8 +186,8 @@ public class SelectPayActivity extends BaseActivity {
             //金额 （分） 比如 1 = 1分 10 = 1毛 100=1元
             case 0:         //微信
                 if ("取名".equals(title)) {
-                    currentPrice = "8800";
-//                    currentPrice = "1";
+//                    currentPrice = "8800";
+                    currentPrice = "1";
 
                 } else {
                     currentPrice = "1";
@@ -274,6 +286,67 @@ public class SelectPayActivity extends BaseActivity {
 
     }
 
+    private IWXAPI iwxapi; //微信支付api
+
+    /**
+     * 调起微信支付的方法
+     * 需要后台返回7个参数
+     **/
+    public static PayBean payWXBean = new PayBean();
+
+    private void toWXPay() {
+        iwxapi = WXAPIFactory.createWXAPI(this, null); //初始化微信api
+        iwxapi.registerApp(Constants.APP_ID_WECHART); //注册appid
+        //一定注意要放在子线程
+        Runnable payRunnable = new Runnable() {
+            @Override
+            public void run() {
+                PayReq request = new PayReq(); //调起微信的对象
+                //这几个参数的值，正是上面我们说的统一下单接口后返回来的字段，我们对应填上去即可
+                request.appId = payWXBean.getAppid();
+                request.partnerId = payWXBean.getPartnerid();
+                request.prepayId = payWXBean.getPrepayid();
+                request.packageValue = "Sign=WXPay";
+                request.nonceStr = payWXBean.getNoncestr();
+                request.timeStamp = payWXBean.getTimestamp();
+                request.sign = payWXBean.getSign();
+                Log.e("PayUtils----WX", "请求参数===" + "appId=" + request.appId + ",partnerId="
+                        + request.partnerId + ",prepayId=" + request.prepayId + ",packageValue=" +
+                        request.packageValue + ",nonceStr=" + request.nonceStr + ",timeStamp=" +
+                        request.timeStamp + ",sign=" + request.sign);
+
+                SharePreferenceUtil.put(getApplicationContext(), Constants.WECHAT_SECOND_ORDERID, oid);
+                iwxapi.sendReq(request);//发送调起微信的请求
+            }
+        };
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+    }
+
+    //判断是否安装 微信
+    public boolean isWeixinAvilible(Context context) {
+        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName;
+                if (pn.equals("com.tencent.mm")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void ExitEvent(RefreshPayTypeEvent messageEvent) {
+        if (messageEvent.getMessage().equals("微信")) {
+            refreshPayTypeStatue(PAY_TYPE_WECHAT);
+
+        }
+    }
+
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
     private static final int SDK_PAY_CANCEL = -2;
@@ -282,7 +355,6 @@ public class SelectPayActivity extends BaseActivity {
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
         public void handleMessage(Message msg) {
-
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
                     /**
@@ -296,7 +368,11 @@ public class SelectPayActivity extends BaseActivity {
                     String resultStatus = payResult.getResultStatus();
                     Log.e("PayUtils----ALI", "response==ALIPay===resultInfo=1111111=" + resultInfo);
                     Log.e("PayUtils----ALI", "response==ALIPay===resultStatus==" + resultStatus);
-
+//                    9000 订单支付成功
+//                    8000 正在处理中
+//                    4000 订单支付失败
+//                    6001 用户中途取消
+//                    6002 网络连接出错
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {    //6001  支付宝---取消支付
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
@@ -306,12 +382,17 @@ public class SelectPayActivity extends BaseActivity {
                         String out_trade_no = mAliPayInforBean.getAlipay_trade_app_pay_response().getOut_trade_no();
                         checkoutSecondAliPay(out_trade_no);
 
-                    } else {
+                    } else if (TextUtils.equals(resultStatus, "6001")) {
+                        refreshPayTypeStatue(PAY_TYPE_ALIPAY);
+                    } else if (TextUtils.equals(resultStatus, "6002")) {
+                        refreshPayTypeStatue(PAY_TYPE_ALIPAY);
+                        showToast("暂无网络链接");
                     }
                     break;
                 }
 
                 case SDK_AUTH_FLAG: {
+
                     Log.e("PayUtils----ALI", "response==ALIPay===resultInfo=1111111=" + SDK_AUTH_FLAG);
 
                     break;
@@ -328,6 +409,24 @@ public class SelectPayActivity extends BaseActivity {
 
         ;
     };
+
+    //更改取消支付后的支付方式显示bug
+    private void refreshPayTypeStatue(int Type) {
+        payType = Type;
+        if (payType == PAY_TYPE_WECHAT) {
+            mWeichatSelect.setSelected(true);
+            mAliPaySelect.setSelected(false);
+            payType = PAY_TYPE_WECHAT;
+            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
+            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
+        } else if (payType == PAY_TYPE_ALIPAY) {
+            payType = PAY_TYPE_ALIPAY;
+            mWeichatSelect.setSelected(false);
+            mAliPaySelect.setSelected(true);
+            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
+            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
+        }
+    }
 
     //阿里支付二次校验
     private void checkoutSecondAliPay(String out_trade_no) {
@@ -401,107 +500,17 @@ public class SelectPayActivity extends BaseActivity {
 
     }
 
-    private IWXAPI iwxapi; //微信支付api
 
-    /**
-     * 调起微信支付的方法
-     * 需要后台返回7个参数
-     **/
-    public static PayBean payWXBean = new PayBean();
-
-    private void toWXPay() {
-        iwxapi = WXAPIFactory.createWXAPI(this, null); //初始化微信api
-        iwxapi.registerApp(Constants.APP_ID_WECHART); //注册appid
-        //一定注意要放在子线程
-        Runnable payRunnable = new Runnable() {
-            @Override
-            public void run() {
-                PayReq request = new PayReq(); //调起微信的对象
-                //这几个参数的值，正是上面我们说的统一下单接口后返回来的字段，我们对应填上去即可
-                request.appId = payWXBean.getAppid();
-                request.partnerId = payWXBean.getPartnerid();
-                request.prepayId = payWXBean.getPrepayid();
-                request.packageValue = "Sign=WXPay";
-                request.nonceStr = payWXBean.getNoncestr();
-                request.timeStamp = payWXBean.getTimestamp();
-                request.sign = payWXBean.getSign();
-                Log.e("PayUtils----WX", "请求参数===" + "appId=" + request.appId + ",partnerId="
-                        + request.partnerId + ",prepayId=" + request.prepayId + ",packageValue=" +
-                        request.packageValue + ",nonceStr=" + request.nonceStr + ",timeStamp=" +
-                        request.timeStamp + ",sign=" + request.sign);
-
-                SharePreferenceUtil.put(getApplicationContext(), Constants.WECHAT_SECOND_ORDERID, oid);
-                iwxapi.sendReq(request);//发送调起微信的请求
-            }
-        };
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
-    }
-
-    //判断是否安装 微信
-    public boolean isWeixinAvilible(Context context) {
-        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
-        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
-        if (pinfo != null) {
-            for (int i = 0; i < pinfo.size(); i++) {
-                String pn = pinfo.get(i).packageName;
-                if (pn.equals("com.tencent.mm")) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private void initView() {
-        setTitleBarVisibility(View.VISIBLE);
-        setTitleLeftBtnVisibility(View.VISIBLE);
-        setTitleName("订单界面");
-        title = getIntent().getStringExtra("title");
-        oid = getIntent().getStringExtra("oid");
-        price = getIntent().getStringExtra("price");
-        total_fee = getIntent().getStringExtra("total_fee");
-        text_surname = getIntent().getStringExtra("text_surname");
-        text_name = getIntent().getStringExtra("text_name");
-        text_all_name = getIntent().getStringExtra("text_all_name");
-        //微信支付的选择
-        mWeichatSelect = findViewById(R.id.iv_buy_weichat_select);
-        tv_price = findViewById(R.id.tv_price);
-        //支付宝的选择
-        mAliPaySelect = findViewById(R.id.iv_buy_alipay_select);
-        tv_confirm = findViewById(R.id.tv_confirm);
-        tv_cancel = findViewById(R.id.tv_cancel);
-        tv_price = findViewById(R.id.tv_price);
-
-
-        shop_name.setText("商品名称:" + title);
-        tv_price.setText("￥" + price);
-        gson = new Gson();
-
-
-        if (payType == PAY_TYPE_WECHAT) {
-            mWeichatSelect.setSelected(true);
-            mAliPaySelect.setSelected(false);
-            payType = PAY_TYPE_WECHAT;
-            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
-            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
-        } else {
-            payType = PAY_TYPE_ALIPAY;
-            mWeichatSelect.setSelected(false);
-            mAliPaySelect.setSelected(true);
-            mWeichatSelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_unselect));
-            mAliPaySelect.setImageDrawable(getResources().getDrawable(R.mipmap.paytype_select));
-        }
-
-
-//        dialogView = getLayoutInflater().inflate(R.layout.dialog_pay_type, null);
-
-
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }

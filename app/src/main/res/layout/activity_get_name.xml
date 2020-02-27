@@ -258,6 +258,7 @@
                 </LinearLayout>
                 <!--生日-->
                 <LinearLayout
+                    android:id="@+id/linear_brithday"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/padding_45"
                     android:layout_marginLeft="@dimen/padding_10"

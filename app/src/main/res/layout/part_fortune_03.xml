@@ -79,20 +79,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="7">
 
                 <TextView
                     style="@style/Fortune_Part02_last_satart_name_Tips"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="总体运势" />
 
                 <com.company.forturetelling.view.RatingBar
                     android:id="@+id/tv03_ratingbar01"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/padding_20"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/padding_15"
+                    android:layout_weight="4"
                     android:clickable="false"
                     android:gravity="center_horizontal"
                     app:clickable="false"
@@ -101,7 +103,7 @@
                     app:starFill="@mipmap/start_all"
                     app:starHalf="@mipmap/start_hanf"
                     app:starImageSize="@dimen/padding_18"
-                    app:starPadding="10dp"
+                    app:starPadding="5dp"
                     app:starStep="3"
                     app:stepSize="Half" />
 
@@ -111,21 +113,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="7">
 
                 <TextView
                     style="@style/Fortune_Part02_last_satart_name_Tips"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="爱情运势" />
 
                 <com.company.forturetelling.view.RatingBar
                     android:id="@+id/tv03_ratingbar02"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/padding_20"
-
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/padding_15"
+                    android:layout_weight="4"
                     android:gravity="center_horizontal"
                     app:clickable="false"
                     app:starCount="5"
@@ -133,8 +136,8 @@
                     app:starFill="@mipmap/start_all"
                     app:starHalf="@mipmap/start_hanf"
                     app:starImageSize="@dimen/padding_18"
-                    app:starPadding="10dp"
-                    app:starStep="2"
+                    app:starPadding="5dp"
+                    app:starStep="4"
                     app:stepSize="Half" />
 
             </LinearLayout>
@@ -144,21 +147,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_2"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="7">
 
                 <TextView
                     style="@style/Fortune_Part02_last_satart_name_Tips"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="工作状况" />
 
                 <com.company.forturetelling.view.RatingBar
                     android:id="@+id/tv03_ratingbar03"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/padding_20"
-
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/padding_15"
+
+                    android:layout_weight="4"
                     android:gravity="center_horizontal"
                     app:clickable="false"
                     app:starCount="5"
@@ -166,7 +171,7 @@
                     app:starFill="@mipmap/start_all"
                     app:starHalf="@mipmap/start_hanf"
                     app:starImageSize="@dimen/padding_18"
-                    app:starPadding="10dp"
+                    app:starPadding="5dp"
                     app:starStep="2"
                     app:stepSize="Half" />
 
@@ -176,20 +181,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="7">
 
                 <TextView
                     style="@style/Fortune_Part02_last_satart_name_Tips"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="理财指数" />
 
                 <com.company.forturetelling.view.RatingBar
                     android:id="@+id/tv03_ratingbar04"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/padding_20"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/padding_15"
+                    android:layout_weight="4"
                     android:gravity="center_horizontal"
                     app:clickable="false"
                     app:starCount="5"
@@ -197,8 +204,8 @@
                     app:starFill="@mipmap/start_all"
                     app:starHalf="@mipmap/start_hanf"
                     app:starImageSize="@dimen/padding_18"
-                    app:starPadding="10dp"
-                    app:starStep="5"
+                    app:starPadding="5dp"
+                    app:starStep="3"
                     app:stepSize="Half" />
 
             </LinearLayout>

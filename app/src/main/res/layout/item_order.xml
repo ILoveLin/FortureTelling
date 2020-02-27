@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_mine_bar"
             app:bar_leftColor="@color/black80"
-            app:bar_leftText="测试名称"
+            app:bar_leftText="测算项目"
             app:bar_rightColor="@color/black80"
             app:bar_rightText="在线付费_取名" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_mine_bar"
             app:bar_leftColor="@color/black80"
-            app:bar_leftText="测试姓名"
+            app:bar_leftText="测算姓名"
             app:bar_rightColor="@color/black80"
             app:bar_rightText="张三" />
 

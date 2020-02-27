@@ -72,6 +72,7 @@
                             android:textSize="@dimen/padding_20" />
 
                         <TextView
+                            android:id="@+id/tv_current_birthday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1991年12月28日 8点"
