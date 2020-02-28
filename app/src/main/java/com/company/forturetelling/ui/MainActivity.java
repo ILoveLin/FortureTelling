@@ -91,7 +91,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int getContentViewId() {
-        EventBus.getDefault().register(this);
         return R.layout.activity_main;
     }
 
@@ -101,11 +100,7 @@ public class MainActivity extends BaseActivity {
         linearBottom.setVisibility(View.VISIBLE);
         fragmentManager = getSupportFragmentManager();
         valTab = (Integer) SharePreferenceUtil.get(this, SharePreferenceUtil.DYNAMIC_SWITCH_TAB, Constants.TAB_HOME);
-        isLogin = (Boolean) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Logined, false);
-        perfect = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
-
         setChoiceItem(valTab);
-
         requestUpdateVersion("Android");
 
     }
@@ -113,7 +108,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 
     //    private FortuneFragment firstFragment;
@@ -122,18 +116,10 @@ public class MainActivity extends BaseActivity {
     private KnowledgeFragment thirdFragment;
     private MineFragment fourthFragment;
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ExitEvent(ExitEvent messageEvent) {
-
-
-    }
-
-
     private void setChoiceItem(Integer index) {
         if (index < 0) {
             index = Constants.TAB_HOME;
         }
-
         SharePreferenceUtil.put(this, SharePreferenceUtil.DYNAMIC_SWITCH_TAB, index);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragments(transaction);
@@ -172,23 +158,6 @@ public class MainActivity extends BaseActivity {
                 tvTabFourthPage.setSelected(false);
                 overAnim(tvTabSecondPage);
 
-
-
-
-//                hideFragments(transaction);
-//                StatusBarUtils.setColor(this, getResources().getColor(R.color.color_transparent), 0);
-//                StatusBarUtil.darkMode(this, true);  //设置了状态栏文字的颜色
-//                if (secondFragment == null) {
-//                    secondFragment = new FortuneFragment();
-//                    transaction.add(R.id.ll_content, secondFragment);
-//                } else {
-//                    transaction.show(secondFragment);
-//                }
-//                tvTabFirstPage.setSelected(false);
-//                tvTabSecondPage.setSelected(true);
-//                tvTabThirdPage.setSelected(false);
-//                tvTabFourthPage.setSelected(false);
-//                overAnim(tvTabSecondPage);
                 break;
 
             case Constants.TAB_NEWS:   //3
@@ -242,29 +211,6 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tv_tab_drug_query:   // 2
                 setChoiceItem(Constants.TAB_DRUGS_QUERY);
-
-//                Boolean isLogin = (Boolean) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.Is_Logined, false);
-//                String Perfect = (String) SharePreferenceUtil.get(MainActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
-//                if (isLogin) {   //登入了
-//                    if ("true".equals(Perfect)) {  //已经完善.
-//                        setChoiceItem(Constants.TAB_DRUGS_QUERY);
-//
-//                    } else {  //未完善
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("title", "完善信息");
-//                        bundle.putString("type", "02");
-//                        openActivity(RegisterAnimatorActivity.class, bundle);
-//                    }
-//
-//                } else {//未登录
-//                    Log.e("Wetchat", "login==end===排序==排序==" + "04");
-//                    SharePreferenceUtil.put(MainActivity.this, com.company.forturetelling.global.Constants.Is_Main_To_Login, "yes");
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("02", "02");
-//                    openActivity(LoginAnimatorActivity.class, bundle);
-//                }
-
-
                 break;
             case R.id.tv_tab_recomment:    //3
                 setChoiceItem(Constants.TAB_NEWS);
@@ -284,12 +230,8 @@ public class MainActivity extends BaseActivity {
             transaction.hide(firstFragment);
 
         }
-//        if (reimbursementFragment != null) {
-//            transaction.hide(reimbursementFragment);
-//        }
         if (secondFragment != null) {
             transaction.hide(secondFragment);
-
         }
         if (thirdFragment != null) {
             transaction.hide(thirdFragment);
@@ -402,7 +344,7 @@ public class MainActivity extends BaseActivity {
         twoButton.getTv_ok().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("开始下载,请稍后...");
+                showToast("开始下载,请稍后安装~");
                 beforeUpdateWork();
                 twoButton.dismiss();
 

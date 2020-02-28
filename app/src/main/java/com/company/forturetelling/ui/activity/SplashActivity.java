@@ -135,42 +135,46 @@ public class SplashActivity extends BaseActivity {
 
     private void sendRequestForUserID() {
         String deviceid = DeviceIdUtil.getDeviceId(this);
-        OkHttpUtils.post()
-                .url(HttpConstants.GetUserID)
-                .addParams("deviceid", deviceid + "")
-                .addParams("type", "1")   //分类 1 安卓 2 ios
-                .build()
-                .execute(new StringCallback() {
+        String userid = (String) SharePreferenceUtil.get(SplashActivity.this, Constants.USERID, "");
+        if("".equals(userid)) {  //为空的时候去请求
+            OkHttpUtils.post()
+                    .url(HttpConstants.GetUserID)
+                    .addParams("deviceid", deviceid + "")
+                    .addParams("type", "1")   //分类 1 安卓 2 ios
+                    .build()
+                    .execute(new StringCallback() {
 
-                    private String userid;
+                        private String userid;
 
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        showToast("请求错误");
-                        showError();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Type type = new TypeToken<GetUseridBean>() {
-                        }.getType();
-                        GetUseridBean bean = mGson.fromJson(response, type);
-                        Log.e("Net", "login==GetUserID===" + response);
-                        Log.e("Net", "login==deviceid===" + deviceid);
-                        if ("0".equals(bean.getStatus()+"")) {
-                            //sp存token
-                            showContent();
-                            userid = bean.getData().getUserid() + "";
-                            SharePreferenceUtil.put(SplashActivity.this, Constants.USERID, userid + "");
-                            String userid = (String) SharePreferenceUtil.get(SplashActivity.this, Constants.USERID, "");
-                            Log.e("Net", "login==GetUserID====调试头====" + userid + "");
-                            finish();
-                        } else {
-                            showContent();
-
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            showToast("请求错误");
+                            showError();
                         }
-                    }
-                });
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            Type type = new TypeToken<GetUseridBean>() {
+                            }.getType();
+                            GetUseridBean bean = mGson.fromJson(response, type);
+                            Log.e("Net", "login==GetUserID===" + response);
+                            Log.e("Net", "login==deviceid===" + deviceid);
+                            if ("0".equals(bean.getStatus()+"")) {
+                                //sp存token
+                                showContent();
+                                userid = bean.getData().getUserid() + "";
+                                SharePreferenceUtil.put(SplashActivity.this, Constants.USERID, userid + "");
+                                String userid = (String) SharePreferenceUtil.get(SplashActivity.this, Constants.USERID, "");
+                                Log.e("Net", "login==GetUserID====调试头====" + userid + "");
+                                finish();
+                            } else {
+                                showContent();
+
+                            }
+                        }
+                    });
+        }
+
 
     }
 

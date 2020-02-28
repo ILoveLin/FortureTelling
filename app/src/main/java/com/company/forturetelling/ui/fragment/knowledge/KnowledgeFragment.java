@@ -91,7 +91,7 @@ public class KnowledgeFragment extends BaseFragment implements KnowledgeView {
     private void initView() {
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.GONE);
-        setTitleName("命理知识");
+        setTitleName("知识");
         setPageStateView();
         mPresenter = new KnowledgePresenter(this, getActivity().getApplicationContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());

@@ -116,7 +116,7 @@
                         android:layout_width="@dimen/padding_90"
                         android:layout_height="@dimen/padding_90"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/padding_10"
+                        android:layout_marginTop="@dimen/padding_20"
                         android:src="@mipmap/icon_fortune_touxiang"
                         app:border_color="#FF7F24"
                         app:border_width="0dp"

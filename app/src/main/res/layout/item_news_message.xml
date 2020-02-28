@@ -66,8 +66,8 @@
                     android:paddingRight="@dimen/padding_4"
                     android:paddingBottom="@dimen/padding_1"
                     android:text="相术"
-                    android:textSize="@dimen/padding_14"
-                   />
+                    android:textColor="@color/tab_main_pre"
+                    android:textSize="@dimen/padding_12" />
 
                 <View
                     android:layout_width="match_parent"
@@ -80,8 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/padding_20"
                     android:text="2019-12-3"
-                    android:textSize="@dimen/padding_16"
-                     />
+                    android:textSize="@dimen/padding_16" />
 
             </LinearLayout>
 

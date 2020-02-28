@@ -46,7 +46,6 @@ public class InforPresenter {
 
     public void sendTouxiangRequest(File file) {
         if (userid.equals("")) {
-            Log.e("mImageUri", "上传图片测试=======userid==空==" );
             return;
         } else {
             String name = file.getName();
@@ -59,13 +58,11 @@ public class InforPresenter {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             mView.showToast("回调错误404");
-                            Log.e("mImageUri", "上传图片测试=======Exception01====" );
                             mView.showErrorView();
                         }
 
                         @Override
                         public void onResponse(String response, int id) {
-                            Log.e("mImageUri", "上传图片测试=======response====" + response);
                             Type type = new TypeToken<UpdateImg>() {
                             }.getType();
                             UpdateImg updateImageBean = gson.fromJson(response, type);
@@ -97,15 +94,12 @@ public class InforPresenter {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             mView.showToast("回调错误404");
-                            Log.e("mImageUri", "上传图片测试=======Exception02====" );
                             mView.showErrorView();
                         }
 
                         @Override
                         public void onResponse(String response, int id) {
-                            Log.e("mImageUri", "上传图片测试====02===response====" + response);
-                            Log.e("mImageUri", "上传图片测试====02222===imglist====" + HttpConstants.Common + imglist);
-
+                            EventBus.getDefault().post(new ExitEvent("登入"));
                             mView.showContentView();
                             Type type = new TypeToken<InforSettingBean>() {
                             }.getType();
@@ -148,7 +142,6 @@ public class InforPresenter {
 
                         @Override
                         public void onResponse(String response, int id) {
-                            Log.e("mImageUri", "上传图片测试====02===response====" + response);
                             mView.showContentView();
                             Type type = new TypeToken<InforSettingBean>() {
                             }.getType();
@@ -183,15 +176,11 @@ public class InforPresenter {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             mView.showErrorView();
-                            Log.e("mImageUri", "上传图片测试=======Exception==onError==");
-
                         }
 
                         @Override
                         public void onResponse(String response, int id) {
                             mView.showContentView();
-                            Log.e("mImageUri", "上传图片测试====sex===response==response==" + response);
-
                             Type type = new TypeToken<InforSettingBean>() {
                             }.getType();
                             InforSettingBean inforSettingBean = gson.fromJson(response, type);

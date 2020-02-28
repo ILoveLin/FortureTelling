@@ -30,6 +30,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.activity.SplashActivity;
 import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
+import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.company.forturetelling.ui.activity.information.presenter.InforPresenter;
 import com.company.forturetelling.ui.activity.information.presenter.InforView;
 import com.company.forturetelling.view.CircleImageView;
@@ -86,7 +88,8 @@ import okhttp3.Call;
  * Describe:个人你信息界面设置
  */
 public class InforSettingActivity extends BaseActivity implements View.OnClickListener, InforView {
-
+    @BindView(R.id.ib_left)
+    ImageButton mTitleLeftBtn;
     @BindView(R.id.tv_current_name)
     TextView tvCurrentName;
     @BindView(R.id.current_pic)
@@ -217,7 +220,12 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                                 }
                                 barSettingBirthday.setRightText("" + info.getBirthday());
                                 bar_setting_address.setRightText("" + info.getProvince() + "省 " + info.getCity() + "市");
-                                bar_setting_account_phone.setRightText("" + info.getUsername());
+                                String Perfect = (String) SharePreferenceUtil.get(InforSettingActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
+                                if ("true".equals(Perfect)) {  //已经完善
+                                    bar_setting_account_phone.setRightText("" + info.getUsername());
+                                } else {  //未完善
+                                    bar_setting_account_phone.setRightText("" + "立即绑定");
+                                }
                                 int gender = info.getGender();
                                 if (0 == gender) {  //	性别 （0女 1男 ）
                                     barSettingSex.setRightText("女");
@@ -248,7 +256,7 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
     }
 
 
-    @OnClick({R.id.bar_setting_address, R.id.linear_current_info, R.id.bar_setting_birthday,
+    @OnClick({R.id.bar_setting_address, R.id.bar_setting_account_phone, R.id.linear_current_info, R.id.bar_setting_birthday,
             R.id.bar_setting_sex, R.id.bar_setting_maname, R.id.bar_setting_change_password, R.id.linear_exit,
     })
     public void multipleOnclick(View view) {
@@ -258,6 +266,17 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                 break;
             case R.id.bar_setting_birthday:  //我的生日
                 showInDialog();
+                break;
+            case R.id.bar_setting_account_phone:  //我的账号
+                String Perfect = (String) SharePreferenceUtil.get(InforSettingActivity.this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
+                if ("true".equals(Perfect)) {  //已经完善
+                } else {  //未完善
+                    bar_setting_account_phone.setRightText("" + "立即绑定");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", "完善信息");
+                    bundle.putString("type", "");
+                    openActivity(RegisterAnimatorActivity.class, bundle);
+                }
                 break;
             case R.id.bar_setting_maname:  //我的昵称
                 showInputMyNameDialog();
@@ -318,12 +337,10 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
 
     private void sendInputNameRequest(String name) {
         String userid = (String) SharePreferenceUtil.get(this, Constants.USERID, "");
-        Log.e("mImageUri", "上传图片测试====02===response==userid==" + userid);
 
         if (userid.equals("")) {
             return;
         } else {
-
             showLoadingView();
             OkHttpUtils.post()
                     .url(HttpConstants.InformationSetting)
@@ -340,7 +357,6 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
 
                         @Override
                         public void onResponse(String response, int id) {
-                            Log.e("mImageUri", "上传图片测试====02===response====" + response);
                             showContentView();
                             Gson gson = new Gson();
                             Type type = new TypeToken<InforSettingBean>() {
@@ -815,18 +831,9 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                 // 大图切割
                 case REQUEST_BIG_IMAGE_CUTTING:
 //                    Bitmap bitmap = BitmapFactory.decodeFile(mImageUri.getEncodedPath());
-                    Log.e("mImageUri", "=========mImageUri=========" + mImageUri);
                     File file = new File(mImageUri.getPath());
-                    Log.e("mImageUri", "=========file===getPath======" + file.getPath());
-                    Log.e("mImageUri", "=========file===getAbsolutePath======" + file.getAbsolutePath());
-                    Log.e("mImageUri", "=========file===getName======" + file.getName());
-
-
                     //todo  到时候这里去请求(先上传-再获取url数据) 获取头像
                     mPresenter.sendTouxiangRequest(file);
-                    //
-//                    infoSettingPic.setImageBitmap(bitmap);
-
                     break;
                 // 相册选取
                 case REQUEST_IMAGE_GET:

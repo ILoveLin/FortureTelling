@@ -171,10 +171,8 @@ public class CalculateFragment extends BaseFragment implements CalculateView {
     private void initView() {
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.GONE);
-        setTitleName("命理测算");
+        setTitleName("首页");
         setPageStateView();
-
-
         //设置2行 3列
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
         layoutManager.setOrientation(GridLayoutManager.VERTICAL);

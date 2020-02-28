@@ -18,6 +18,7 @@ import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
 import com.company.forturetelling.ui.MainActivity;
+import com.company.forturetelling.ui.activity.SplashActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.information.RegisterActivity;
 import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
@@ -235,12 +236,10 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 
 
     private void requestData(WechatLoginBean mBean) {
-        String deviceid = DeviceIdUtil.getDeviceId(this);
+        Log.e("Wetchat", "login==end===数据保持后台完毕=response=00000=0000000=" );
 
         OkHttpUtils.post()
                 .url(HttpConstants.WeChat_Login)
-                .addParams("deviceid", deviceid)
-                .addParams("type", "1")
                 .addParams("openid", mBean.getOpenid())
                 .addParams("nickname", mBean.getNickname())
                 .addParams("sex", mBean.getSex())
@@ -250,8 +249,10 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        Log.e("Wetchat", "login==end===数据保持后台完毕=response=00000=0000000===onError=" );
 
                         finish();
+
                         mProgressDialog.dismiss();
                     }
 
@@ -264,21 +265,7 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                         Log.e("Wetchat", "login==end===数据保持后台完毕=response=00000==" + response + "");
                         Log.e("Wetchat", "login==end===数据保持后台完毕==mBean.getData().getPerfect()==" + mBean.getData().getPerfect());
 
-//                        1 登录    0 跳转注册完善信息
-                        if ("0".equals(mBean.getStatus() + "")) {
-//                            EventBus.getDefault().post(new WeChartEvent("登入"));
-                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Openid, mWXBean.getOpenid());
-                            SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Perfect, mBean.getData().getPerfect());
-                            Bundle bundle = new Bundle();
-                            bundle.putString("title", openId);
-                            bundle.putString("type", "");
-                            Log.e("Wetchat", "login==end===数据保持后台完毕==00000==" + mBean.getStatus() + "");
-                            EventBus.getDefault().post(new ExitEvent("登入"));
-                            openActivity(RegisterAnimatorActivity.class, bundle);
-                            Toast.makeText(WXEntryActivity.this, "请您完善信息", Toast.LENGTH_SHORT).show();
-
-
-                        } else if ("1".equals(mBean.getStatus() + "")) {
+                        if ("1".equals(mBean.getStatus() + "")) {
                             String userid = mBean.getData().getUserid() + "";
                             SharePreferenceUtil.put(WXEntryActivity.this, Constants.WX_Openid, mWXBean.getOpenid());
                             SharePreferenceUtil.put(WXEntryActivity.this, Constants.USERID, userid + "");

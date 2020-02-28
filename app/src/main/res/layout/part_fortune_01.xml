@@ -55,7 +55,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="张三"
-                        android:textColor="@color/color_2a2a2a"
+                        android:maxEms="6"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textColor="@color/color_666666"
                         android:textSize="@dimen/padding_19"
 
                         />
@@ -188,7 +191,6 @@
         android:layout_marginLeft="@dimen/padding_20"
         android:layout_marginTop="@dimen/padding_10"
         android:layout_marginBottom="@dimen/padding_10"
-
         android:orientation="horizontal">
 
         <TextView
@@ -202,8 +204,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_10"
             android:layout_toRightOf="@+id/tv_part1_logo"
-            android:text="命盘分析"
-            android:textColor="@color/color_b883df"
+            android:text="查看详情"
+            android:textColor="@color/tab_main_pre"
             android:textSize="@dimen/padding_20" />
     </LinearLayout>
 

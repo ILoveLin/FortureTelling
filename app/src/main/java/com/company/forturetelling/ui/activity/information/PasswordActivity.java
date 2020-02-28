@@ -152,6 +152,8 @@ public class PasswordActivity extends BaseActivity {
                             public void onError(Call call, Exception e, int id) {
                                 showToast("请求错误");
                                 showError();
+                                Log.e("Net", "response===bean===  getStatus    0 成功 -1失败=====" );
+
                             }
 
                             @Override
@@ -233,6 +235,7 @@ public class PasswordActivity extends BaseActivity {
 //                                SharePreferenceUtil.put(PasswordActivity.this, Constants.Logined, true);
 //                                SharePreferenceUtil.put(PasswordActivity.this, Constants.USERID,"");
                                 EventBus.getDefault().post(new ExitEvent("登录"));
+                                showToast(passwordBean.getMsg()+"");
                                 finish();
                             } else {
                                 showToast("修改失败");

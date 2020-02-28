@@ -119,6 +119,10 @@ public class MineFragment extends BaseFragment implements MineView {
             initView();
         } else if ("登入".equals(messageEvent.getMessage())) {
             initView();
+
+            responseListener();
+        }else if ("infor".equals(messageEvent.getMessage())) {
+            initView();
             responseListener();
         }
     }
@@ -247,16 +251,17 @@ public class MineFragment extends BaseFragment implements MineView {
                 Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
                 String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
                 if (isLogin) {   //登入了
-                    if ("true".equals(Perfect)) {  //已经完善
-                        openActivity(InforSettingActivity.class);
-
-                    } else {  //未完善
-                        Bundle bundle = new Bundle();
-                        bundle.putString("title", "完善信息");
-                        bundle.putString("type", "");
-//                        EventBus.getDefault().post(new ExitEvent("登入"));
-                        openActivity(RegisterAnimatorActivity.class, bundle);
-                    }
+                    openActivity(InforSettingActivity.class);
+//                    if ("true".equals(Perfect)) {  //已经完善
+//                        openActivity(InforSettingActivity.class);
+//
+//                    } else {  //未完善
+////                        Bundle bundle = new Bundle();
+////                        bundle.putString("title", "完善信息");
+////                        bundle.putString("type", "");
+//////                        EventBus.getDefault().post(new ExitEvent("登入"));
+////                        openActivity(RegisterAnimatorActivity.class, bundle);
+//                    }
                 } else {//未登录
                     openActivity(LoginAnimatorActivity.class);
                 }

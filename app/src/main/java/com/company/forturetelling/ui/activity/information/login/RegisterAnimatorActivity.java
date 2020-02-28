@@ -297,6 +297,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
 
     }
 
+    String requestTypeData = "3";
 
     private String userid;
     private RegisterBean bean;
@@ -340,14 +341,23 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
                         + "==" + StatueSex + "==" + currentBirthday + "==" + province + "==" + city);
                 Log.e("Net", "response===时间戳=====secondTimestamp=1==" + secondTimestamp);
                 Log.e("Net", "response===时间戳=====secondTimestamp=1==" + System.currentTimeMillis());
-                String deviceid = DeviceIdUtil.getDeviceId(this);
+                String textTitle = tv_title_register.getText().toString().trim() + "";
+                if ("注册".equals(textTitle)) {   //新的账号注册   type=3
+                    requestTypeData = "3";
+                } else {                              //微信登入   完善   type=1
+                    requestTypeData = "1";
+                }
+
+                Log.e("Net", "response===时间戳=====requestTypeData=1==" + requestTypeData);
+
                 OkHttpUtils.post()
                         .url(HttpConstants.Register)
-                        .addParams("deviceid", deviceid)
-                        .addParams("type", "1")
+                        .addParams("type", requestTypeData)
                         .addParams("PhoneNumbers", phone)
-                        .addParams("BizId", messageId)
-                        .addParams("vcode", code)      //验证码
+                        .addParams("BizId", "1234")
+                        .addParams("vcode", "1234")      //验证码
+//                        .addParams("BizId", messageId)
+//                        .addParams("vcode", code)      //验证码9
                         .addParams("ytime", secondTimestamp + "")   //验证码时间 传时间戳（注意是秒）
                         .addParams("openid", VXopenid)  //微信唯一标识    可传可不传
                         .addParams("password", password01)
@@ -373,9 +383,7 @@ public class RegisterAnimatorActivity extends BaseActivity implements View.OnCli
                                     //sp存token
                                     showContent();
                                     userid = bean.getData().getUserid() + "";
-                                    //TODO 在这个界面提交 验证码 绑定手机号码,并且关闭微信登入界面,Login界面,直接在Mainfragment,并且保持当前的userid
                                     SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.USERID, userid + "");
-//                                SharePreferenceUtil.put(RegisterActivity.this, Constants.Token, token + "");
                                     SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Device, "android");
                                     SharePreferenceUtil.put(RegisterAnimatorActivity.this, Constants.Is_Logined, true);
                                     Log.e("Net", "login==RegisterBean==进来了吗111111111111111=");

@@ -107,10 +107,9 @@
     <style name="Fortune_Part01_Text_Tips">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/color_caa778</item>
+        <item name="android:textColor">@color/tab_main_pre</item>
         <item name="android:paddingRight">@dimen/padding_2</item>
         <item name="android:paddingLeft">@dimen/padding_2</item>
-
         <item name="android:textSize">@dimen/padding_12</item>
         <item name="android:background">@drawable/shape_bg_fortune_part1_tip</item>
     </style>

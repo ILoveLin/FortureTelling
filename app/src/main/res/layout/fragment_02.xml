@@ -4,7 +4,7 @@
     xmlns:zsr="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_calculate"
+    android:background="@color/tab_main_pre"
     android:orientation="vertical">
 
 
@@ -98,24 +98,24 @@
                 </android.support.v7.widget.RecyclerView>
                 <!--最底下的图片-->
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/padding_10"
                     android:layout_marginTop="@dimen/padding_20"
-                    android:layout_marginRight="@dimen/padding_10">
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:background="@mipmap/bg_calculate01" />
+                        android:background="@mipmap/bg_calculate01"
+                        android:scaleType="centerCrop" />
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:background="@mipmap/bg_calculate02" />
+                        android:background="@mipmap/bg_calculate02"
+                        android:scaleType="centerCrop" />
 
 
                 </LinearLayout>

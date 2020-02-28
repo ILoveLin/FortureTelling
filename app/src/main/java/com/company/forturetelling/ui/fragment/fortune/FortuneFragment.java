@@ -140,7 +140,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     public static String username;
     private String birthday;
 
-
     @Override
     public int getContentViewId() {
         return R.layout.fragment_01;
@@ -169,6 +168,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     }
 
     private void sendRequest() {
+        showLoadingView();
         String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
         if (userid.equals("")) {
 
@@ -194,6 +194,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                             }.getType();
                             Gson gson = new Gson();
                             InforBean mBean = gson.fromJson(response, type);
+                            Log.e("mImageUri", "response======refreshData01========" + response);
                             if (mBean.getStatus().equals("0")) {
                                 infoBean = mBean.getData().getInfo();
                                 tadayBean = mBean.getData().getJinriyunsi();
@@ -234,7 +235,8 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
     private void refreshData01() {
         String headimg = infoBean.getHeadimg() + "";
-        birthday = infoBean.getBirthday()+"";
+        birthday = infoBean.getBirthday() + "";
+
         if (headimg.contains("http://")) {
             Picasso.with(getActivity()).load(infoBean.getHeadimg())
                     .placeholder(R.drawable.icon_mine_pic).error(R.drawable.icon_mine_pic).into(tv01Pic);
@@ -244,7 +246,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                     .placeholder(R.drawable.icon_mine_pic).error(R.drawable.icon_mine_pic).into(tv01Pic);
         }
 
-        GlideUtils.LogadCustomCircleImage(getActivity(), HttpConstants.Common + infoBean.getHeadimg(), tv01Pic);
         username = infoBean.getUsername();
         String username = infoBean.getName();
         tv01Name.setText(username + "");
@@ -310,15 +311,19 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
         for (int i = 0; i < 4; i++) {
             switch (i) {
                 case 0:
+                    tv03Ratingbar01.setStarFillDrawable(getResources().getDrawable(R.drawable.icon_gb_start));
                     tv03Ratingbar01.setStar(Float.parseFloat(starBean.getYs().get(i)));
                     break;
                 case 1:
+                    tv03Ratingbar02.setStarFillDrawable(getResources().getDrawable(R.drawable.icon_gb_start));
                     tv03Ratingbar02.setStar(Float.parseFloat(starBean.getYs().get(i)));
                     break;
                 case 2:
+                    tv03Ratingbar03.setStarFillDrawable(getResources().getDrawable(R.drawable.icon_gb_start));
                     tv03Ratingbar03.setStar(Float.parseFloat(starBean.getYs().get(i)));
                     break;
                 case 3:
+                    tv03Ratingbar04.setStarFillDrawable(getResources().getDrawable(R.drawable.icon_gb_start));
                     tv03Ratingbar04.setStar(Float.parseFloat(starBean.getYs().get(i)));
                     break;
             }
@@ -350,7 +355,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
             linear_all_data.setVisibility(View.INVISIBLE);
 
         }
-        setTitleName("个人运程");
+        setTitleName("分析");
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.GONE);
         setPageStateView();
@@ -379,7 +384,7 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
                     bundle.putString("title02", title02 + "");
                     bundle.putString("title03", title03 + "");
                     bundle.putString("title04", title04 + "");
-                    openActivity(LifeDetailsActivity.class,bundle);
+                    openActivity(LifeDetailsActivity.class, bundle);
                 }
                 break;
             case R.id.part_fortune_02: //今日运势

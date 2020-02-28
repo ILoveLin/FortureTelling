@@ -10,12 +10,12 @@
     <string name="empty_error_net_server">数据加载失败，请返回重试!</string>
 
     <!--<string name="main_tab_homepage">首页 01</string>-->
-    <string name="main_tab_homepage">个人运程</string>
+    <string name="main_tab_homepage">分析</string>
     <string name="main_tab_yidi">报销查询</string>
     <!--<string name="main_tab_drug_search">药品查询 02</string>-->
-    <string name="main_tab_drug_search">命理测算</string>
+    <string name="main_tab_drug_search">首页</string>
     <!--<string name="main_tab_recomment">资讯03</string>-->
-    <string name="main_tab_recomment">命理知识</string>
+    <string name="main_tab_recomment">知识</string>
     <!--<string name="main_tab_mine">我的04</string>-->
     <string name="main_tab_mine">我的</string>
     <string name="main_tab_biyao">比药</string>

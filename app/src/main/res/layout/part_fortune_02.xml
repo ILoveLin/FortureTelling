@@ -37,9 +37,9 @@
                 android:id="@+id/circularprogressview"
                 android:layout_width="@dimen/padding_80"
                 android:layout_height="@dimen/padding_80"
-                app:backColor="@color/color_caa778"
+                app:backColor="@color/tab_main_pre"
                 app:backWidth="2dp"
-                app:progColor="@color/color_caa778"
+                app:progColor="@color/tab_main_pre"
                 app:progWidth="6dp"
                 app:progress="65" />
 
@@ -54,14 +54,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_10"
                     android:text="75"
-                    android:textColor="@color/color_caa778"
+                    android:textColor="@color/tab_main_pre"
                     android:textSize="@dimen/padding_28" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="分"
-                    android:textColor="@color/color_caa778"
+                    android:textColor="@color/tab_main_pre"
                     android:textSize="@dimen/padding_16" />
 
 
@@ -95,7 +95,8 @@
                     android:background="@drawable/shape_page01_zonghe"
                     android:paddingLeft="@dimen/padding_6"
                     android:paddingRight="@dimen/padding_6"
-                    android:text="一针见血 " />
+                    android:text="一针见血 "
+                    android:textColor="@color/white" />
 
                 <View
                     android:layout_width="0dp"
@@ -111,7 +112,9 @@
                     android:background="@drawable/shape_page01_caifu"
                     android:paddingLeft="@dimen/padding_6"
                     android:paddingRight="@dimen/padding_6"
-                    android:text="直觉惊人" />
+
+                    android:text="直觉惊人"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -128,9 +131,11 @@
                     android:layout_marginLeft="@dimen/padding_55"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/shape_page01_aiqing"
+
                     android:paddingLeft="@dimen/padding_6"
                     android:paddingRight="@dimen/padding_6"
-                    android:text="心灵洗礼 " />
+                    android:text="心灵洗礼 "
+                    android:textColor="@color/white" />
 
                 <View
                     android:layout_width="0dp"
@@ -146,7 +151,8 @@
                     android:background="@drawable/shape_page01_shiye"
                     android:paddingLeft="@dimen/padding_6"
                     android:paddingRight="@dimen/padding_6"
-                    android:text="洞察力强" />
+                    android:text="洞察力强"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -252,14 +258,6 @@
 
     </RelativeLayout>
     <!--运势详情-->
-
-    <View
-
-        android:id="@+id/view_line"
-        style="@style/LineStyleD9D9D9"
-        android:layout_marginLeft="@dimen/padding_20"
-        android:layout_marginRight="@dimen/padding_20" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -281,8 +279,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_10"
             android:layout_toRightOf="@+id/tv_part1_logo"
-            android:text="运势详情"
-            android:textColor="@color/color_b883df"
+            android:text="查看详情"
+            android:textColor="@color/tab_main_pre"
             android:textSize="@dimen/padding_20" />
     </LinearLayout>
 

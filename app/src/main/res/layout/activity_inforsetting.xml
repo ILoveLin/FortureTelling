@@ -120,6 +120,7 @@
                     android:background="@drawable/shape_mine_bar"
                     app:bar_leftColor="@color/color_3f3f3f"
                     app:bar_leftText="我的昵称"
+
                     app:bar_rightColor="@color/color_666666"
                     app:bar_rightText="巨思" />
 
@@ -160,6 +161,7 @@
                     app:bar_rightText="男" />
 
                 <com.company.forturetelling.view.SettingBar
+                    android:visibility="gone"
                     android:id="@+id/bar_setting_change_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
