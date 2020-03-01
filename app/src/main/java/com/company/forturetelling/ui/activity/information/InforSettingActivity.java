@@ -325,7 +325,7 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
 
                     @Override
                     public void onCancel(BaseDialog dialog) {
-                        showToast("取消了");
+//                        showToast("取消了");
                     }
                 })
                 .show();

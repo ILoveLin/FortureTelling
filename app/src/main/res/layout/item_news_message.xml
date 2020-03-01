@@ -26,16 +26,17 @@
             <!--android:src="@mipmap/item_new_iv" />-->
         <com.company.forturetelling.view.RoundImageView
             android:id="@+id/new_picc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="@dimen/padding_85"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/padding_10"
             android:clickable="false"
             android:layout_gravity="center"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:src="@mipmap/item_new_iv" />
-
+        <!--android:layout_width="130dp"-->
+        <!--android:layout_height="@dimen/padding_85"-->
 
         <LinearLayout
             android:layout_width="match_parent"
