@@ -72,6 +72,13 @@ public class KnowledgeAdapter extends RecyclerView.Adapter<KnowledgeAdapter.View
         viewHolder.new_title.setText(wencontentBean.getTitle() + "");
         viewHolder.tv_item_type.setText(wencontentBean.getBq() + "");
         viewHolder.tv_item_time.setText(wencontentBean.getData() + "");
+//        if(0==position) {
+//            GlideUtils.LoadUrlImageView(applicationContext,
+//                    wencontentBean.getImg()+"00", viewHolder.new_picc);
+//        }else{
+//            GlideUtils.LoadUrlImageView(applicationContext,
+//                    wencontentBean.getImg(), viewHolder.new_picc);
+//        }
         GlideUtils.LoadUrlImageView(applicationContext,
                 wencontentBean.getImg(), viewHolder.new_picc);
 

@@ -12,7 +12,7 @@
         android:paddingLeft="@dimen/padding_20"
         android:text="星运运势"
         android:textColor="@color/color_3f3f3f"
-        android:textSize="@dimen/padding_22" />
+        android:textSize="@dimen/padding_20" />
 
     <View
         style="@style/LineStyleD9D9D9"

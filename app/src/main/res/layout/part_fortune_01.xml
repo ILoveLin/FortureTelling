@@ -195,7 +195,7 @@
 
         <TextView
             android:id="@+id/tv_part1_logo"
-            android:layout_width="23dp"
+            android:layout_width="17dp"
             android:layout_height="@dimen/padding_17"
             android:background="@drawable/icon_fortune_tip" />
 
@@ -206,7 +206,7 @@
             android:layout_toRightOf="@+id/tv_part1_logo"
             android:text="查看详情"
             android:textColor="@color/tab_main_pre"
-            android:textSize="@dimen/padding_20" />
+            android:textSize="@dimen/padding_16" />
     </LinearLayout>
 
 

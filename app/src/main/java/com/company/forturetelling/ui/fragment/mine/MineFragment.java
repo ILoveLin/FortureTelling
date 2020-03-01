@@ -108,8 +108,6 @@ public class MineFragment extends BaseFragment implements MineView {
         initView();
         initData();
         responseListener();
-//        showLoading();
-
 
     }
 
@@ -119,7 +117,6 @@ public class MineFragment extends BaseFragment implements MineView {
             initView();
         } else if ("登入".equals(messageEvent.getMessage())) {
             initView();
-
             responseListener();
         }else if ("infor".equals(messageEvent.getMessage())) {
             initView();

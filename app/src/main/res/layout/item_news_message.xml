@@ -6,24 +6,34 @@
     <LinearLayout
         android:id="@+id/linear_all_new"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="110dp"
         android:layout_marginLeft="@dimen/padding_10"
-        android:layout_marginTop="@dimen/padding_10"
+        android:layout_marginTop="@dimen/padding_5"
         android:layout_marginRight="@dimen/padding_10"
         android:clickable="true"
         android:orientation="horizontal">
 
+        <!--<com.company.forturetelling.view.RoundImageView-->
+            <!--android:id="@+id/new_picc"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="@dimen/padding_10"-->
+            <!--android:clickable="false"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:src="@mipmap/item_new_iv" />-->
         <com.company.forturetelling.view.RoundImageView
             android:id="@+id/new_picc"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/padding_10"
             android:layout_marginRight="@dimen/padding_10"
-            android:layout_marginBottom="@dimen/padding_10"
             android:clickable="false"
-            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
             android:src="@mipmap/item_new_iv" />
 
 
@@ -53,7 +63,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_10">
+                android:layout_marginBottom="@dimen/padding_5">
 
                 <TextView
                     android:id="@+id/tv_item_type"
@@ -80,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/padding_20"
                     android:text="2019-12-3"
-                    android:textSize="@dimen/padding_16" />
+                    android:textSize="@dimen/padding_14" />
 
             </LinearLayout>
 

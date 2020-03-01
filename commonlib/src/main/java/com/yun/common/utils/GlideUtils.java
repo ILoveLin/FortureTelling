@@ -173,6 +173,10 @@ public class GlideUtils {
                 .placeholder(R.mipmap.item_new_iv)//图片加载出来前，显示的图片
                 .fallback(R.mipmap.item_new_iv) //url为空的时候,显示的图片
                 .error(R.mipmap.item_new_iv);//图片加载失败后，显示的图片
+//        RequestOptions options = new RequestOptions()
+//                .placeholder(R.mipmap.item_new_iv)//图片加载出来前，显示的图片
+//                .fallback(R.mipmap.item_new_iv) //url为空的时候,显示的图片
+//                .error(R.mipmap.item_new_iv);//图片加载失败后，显示的图片
 
         Glide.with(mContext).load(path)
                 .apply(options).into(imageview);
