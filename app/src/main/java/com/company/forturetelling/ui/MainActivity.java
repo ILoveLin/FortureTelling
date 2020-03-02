@@ -316,11 +316,11 @@ public class MainActivity extends BaseActivity {
 //                        // 如果指定的数与参数相等返回0。
 //                        //如果指定的数小于参数返回 -1。
 //                        //如果指定的数大于参数返回 1。
-                        Log.e("mImageUri", "=========update===01======" + response);
+
 
                         if (localVersionCode.compareTo(version_code) < 0) {
-                            Log.e("mImageUri", "=========update===localVersionCode======" + localVersionCode);
-                            Log.e("mImageUri", "=========update===version_code======" + version_code);
+//                            Log.e("mImageUri", "=========update===localVersionCode======" + localVersionCode);
+//                            Log.e("mImageUri", "=========update===version_code======" + version_code);
 
                             downUrl = HttpConstants.Common + mBean.getDownurl();
                             updateVersion(downUrl);
@@ -367,12 +367,8 @@ public class MainActivity extends BaseActivity {
 
         if (!isEnableNotification()) {
             showNotificationAsk();
-            Log.e("mImageUri", "=========update===02======");
-
             return;
         }
-        Log.e("mImageUri", "=========update===03======");
-
         toIntentServiceUpdate();
 
     }

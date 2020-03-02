@@ -52,7 +52,7 @@
                     android:layout_height="@dimen/padding_80">
                     <!--未登陆状态-->
                     <LinearLayout
-
+                        android:background="@drawable/selector_item_ffffff"
                         android:id="@+id/linear_current_info_unlogin"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/padding_80"
@@ -100,7 +100,7 @@
                     </LinearLayout>
                     <!--登陆状态-->
                     <LinearLayout
-
+                        android:background="@drawable/selector_item_ffffff"
                         android:id="@+id/linear_current_info"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/padding_80"
@@ -162,14 +162,28 @@
                 <com.company.forturetelling.view.SettingBar
                     android:id="@+id/bar_clan_data"
                     android:paddingLeft="@dimen/padding_20"
+
                     android:paddingRight="@dimen/padding_20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_mine_bar"
+                    android:background="@drawable/selector_item_ffffff"
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="清除缓存"
                     app:bar_rightColor="@color/viewfinder_mask"
                     app:bar_rightText="0.3M" />
+
+                <!--<com.company.forturetelling.view.SettingBar-->
+                    <!--android:id="@+id/bar_clan_data"-->
+                    <!--android:paddingLeft="@dimen/padding_20"-->
+
+                    <!--android:paddingRight="@dimen/padding_20"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/shape_mine_bar"-->
+                    <!--app:bar_leftColor="@color/viewfinder_mask"-->
+                    <!--app:bar_leftText="清除缓存"-->
+                    <!--app:bar_rightColor="@color/viewfinder_mask"-->
+                    <!--app:bar_rightText="0.3M" />-->
 
                 <com.company.forturetelling.view.SettingBar
                     android:paddingLeft="@dimen/padding_20"
@@ -177,7 +191,7 @@
                     android:id="@+id/bar_payed_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_mine_bar"
+                    android:background="@drawable/selector_item_ffffff"
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="我的订单"
                     app:bar_rightColor="@color/viewfinder_mask"
@@ -189,7 +203,7 @@
                     android:id="@+id/bar_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_mine_bar"
+                    android:background="@drawable/selector_item_ffffff"
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="版本更新"
                     app:bar_rightColor="@color/viewfinder_mask"
@@ -201,7 +215,7 @@
                     android:id="@+id/bar_about_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_mine_bar"
+                    android:background="@drawable/selector_item_ffffff"
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="关于我们"
                     app:bar_rightColor="@color/viewfinder_mask"

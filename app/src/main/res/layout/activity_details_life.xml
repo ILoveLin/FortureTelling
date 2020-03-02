@@ -186,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/padding_10"
                         android:layout_marginTop="@dimen/padding_20"
-                        android:textSize="@dimen/padding_25" />
+                        android:textSize="@dimen/padding_22" />
                 </LinearLayout>
 
                 <!--财富分析-->
@@ -206,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/padding_10"
                         android:layout_marginTop="@dimen/padding_20"
-                        android:textSize="@dimen/padding_25" />
+                        android:textSize="@dimen/padding_22" />
                 </LinearLayout>
                 <!--事业分析-->
                 <LinearLayout
@@ -225,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/padding_10"
                         android:layout_marginTop="@dimen/padding_20"
-                        android:textSize="@dimen/padding_25" />
+                        android:textSize="@dimen/padding_22" />
                 </LinearLayout>
             </LinearLayout>
 

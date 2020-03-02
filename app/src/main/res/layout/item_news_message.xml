@@ -7,9 +7,10 @@
         android:id="@+id/linear_all_new"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:layout_marginLeft="@dimen/padding_10"
-        android:layout_marginTop="@dimen/padding_5"
-        android:layout_marginRight="@dimen/padding_10"
+        android:background="@drawable/selector_item_ffffff"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingTop="@dimen/padding_5"
+        android:paddingRight="@dimen/padding_10"
         android:clickable="true"
         android:orientation="horizontal">
 
@@ -103,5 +104,5 @@
     <View
         style="@style/LineStyleD9D9D9"
         android:layout_below="@+id/linear_all_new"
-        android:layout_marginTop="@dimen/padding_8" />
+        android:paddingTop="@dimen/padding_8" />
 </RelativeLayout>

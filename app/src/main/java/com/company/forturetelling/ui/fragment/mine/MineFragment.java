@@ -33,6 +33,7 @@ import com.company.forturetelling.ui.activity.information.login.RegisterAnimator
 import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
 import com.company.forturetelling.utils.CacheUtil;
+import com.company.forturetelling.utils.DataCleanManager;
 import com.company.forturetelling.view.CircleImageView;
 import com.company.forturetelling.view.SettingBar;
 import com.google.gson.Gson;
@@ -118,7 +119,7 @@ public class MineFragment extends BaseFragment implements MineView {
         } else if ("登入".equals(messageEvent.getMessage())) {
             initView();
             responseListener();
-        }else if ("infor".equals(messageEvent.getMessage())) {
+        } else if ("infor".equals(messageEvent.getMessage())) {
             initView();
             responseListener();
         }
@@ -208,6 +209,13 @@ public class MineFragment extends BaseFragment implements MineView {
             linear_current_info_unlogin.setVisibility(View.INVISIBLE);
             linearCurrentInfo.setVisibility(View.VISIBLE);
         }
+
+        try {
+            String chacheSize = DataCleanManager.getTotalCacheSize(getActivity());
+            barClanData.setRightText(chacheSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void showPop(RelativeLayout relate_mine_all) {
@@ -246,7 +254,7 @@ public class MineFragment extends BaseFragment implements MineView {
         switch (view.getId()) {
             case R.id.linear_current_info: //个人设置
                 Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
-                String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
+//                String Perfect = (String) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.WX_Perfect, "false");
                 if (isLogin) {   //登入了
                     openActivity(InforSettingActivity.class);
 //                    if ("true".equals(Perfect)) {  //已经完善

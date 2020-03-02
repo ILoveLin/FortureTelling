@@ -111,7 +111,7 @@ public class LifeDetailsActivity extends BaseActivity {
 
     private void refreshData(LifeBean mBean01) {
 
-        tv_current_name_life.setText(FortuneFragment.username);
+        tv_current_name_life.setText("账号: "+FortuneFragment.username);
         tvTitle01.setText(FortuneFragment.title01);
         tvTitle02.setText(FortuneFragment.title02);
         tvTitle03.setText(FortuneFragment.title03);
@@ -134,7 +134,7 @@ public class LifeDetailsActivity extends BaseActivity {
         title02 = getIntent().getStringExtra("title02");
         title03 = getIntent().getStringExtra("title03");
         title04 = getIntent().getStringExtra("title04");
-        tv_current_birthday.setText("" + birthday);
+        tv_current_birthday.setText("生辰: "+ birthday);
     }
 
     @Override

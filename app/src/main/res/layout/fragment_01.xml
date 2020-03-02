@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_20"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="请您先登入~~"
+                        android:text="请您先登入"
                         android:textColor="@color/color_333333"
                         android:textSize="@dimen/padding_18" />
 
@@ -125,17 +125,15 @@
                     <TextView
                         android:id="@+id/tv_02_login_now"
                         style="@style/ButtonStyle_Blue"
-                        android:layout_width="@dimen/padding_180"
-                        android:layout_height="45dp"
+                        android:layout_width="@dimen/padding_145"
+                        android:layout_height="40dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/padding_20"
                         android:layout_marginBottom="@dimen/padding_20"
                         android:background="@drawable/shape_six_input_submit"
                         android:clickable="true"
                         android:text="立即登录"
-                        android:textSize="@dimen/padding_20" />
-
-
+                        android:textSize="@dimen/padding_18" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -148,7 +146,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srlAccentColor="@color/gray"
-
             app:srlDrawableProgress="@mipmap/icon_refresh_logo" />
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
