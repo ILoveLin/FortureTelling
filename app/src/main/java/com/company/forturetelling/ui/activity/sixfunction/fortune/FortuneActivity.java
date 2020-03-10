@@ -7,11 +7,7 @@ import android.widget.TextView;
 
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseActivity;
-import com.company.forturetelling.global.Constants;
-import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.pay.SelectPayActivity;
-import com.company.forturetelling.ui.activity.result.ResultCommonActivity;
-import com.company.forturetelling.ui.activity.sixfunction.eightnumber.EightNumberActivity;
 import com.company.forturetelling.ui.activity.sixfunction.fortune.presenter.FortunePresenter;
 import com.company.forturetelling.ui.activity.sixfunction.fortune.presenter.FortuneView;
 import com.company.forturetelling.utils.ClearEditText;
@@ -19,7 +15,6 @@ import com.company.forturetelling.view.calendar.ChineseCalendar;
 import com.company.forturetelling.view.calendar.DialogGLC;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.yun.common.utils.KeyBoardUtils;
-import com.yun.common.utils.SharePreferenceUtil;
 
 import java.util.Calendar;
 
@@ -74,13 +69,14 @@ public class FortuneActivity extends BaseActivity implements FortuneView {
 
 
     @Override
-    public void updateFinish(String oid, String title) {
+    public void updateFinish(String oid, String title, String wechat_price, String ali_price) {
         Bundle bundle = new Bundle();
         bundle.putString("oid", oid);
         bundle.putString("title", title);
         bundle.putString("text_surname", "");  //姓
         bundle.putString("text_name", "");     //名
-        bundle.putString("price", "66");      //价格
+        bundle.putString("price_wechar", wechat_price);      //价格
+        bundle.putString("price_ali", ali_price);      //价格
         bundle.putString("text_all_name", tvThreeInputName.getText().toString().trim() + ""); //姓名
         //TODO  获取到订单号 跳转到支付界面
         openActivity(SelectPayActivity.class, bundle);

@@ -120,11 +120,12 @@ public class FortunePresenter {
                         Type type = new TypeToken<EightNumBean02>() {
                         }.getType();
                         EightNumBean02 mBean02 = mGson.fromJson(response, type);
-
+                        String wechat_price = mBean02.getData().getWechat_price();
+                        String ali_price = mBean02.getData().getAli_price();
                         if ("0".equals(mBean02.getStatus())) {
 //                            sendNo3Request(mBean02.getData().getOid());
                             mView.showContentView();
-                            mView.updateFinish(mBean02.getData().getOid(), "今年运势");
+                            mView.updateFinish(mBean02.getData().getOid(), "今年运势",wechat_price,ali_price);
 
                         }
 

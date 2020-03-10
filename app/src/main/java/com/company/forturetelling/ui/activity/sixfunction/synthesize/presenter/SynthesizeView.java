@@ -12,5 +12,5 @@ public interface SynthesizeView {
     void showErrorView();
     void showToast(String string);
 
-    void updateFinish(String oid, String title);
+    void updateFinish(String oid, String title, String wechat_price, String ali_price);
 }

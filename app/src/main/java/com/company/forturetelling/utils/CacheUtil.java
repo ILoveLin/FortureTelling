@@ -8,7 +8,15 @@ import java.math.BigDecimal;
 
 /**
  * Created by Lovelin on 2019/4/30
- * <p>
+ * <p>  File cacheDir = getActivity().getCacheDir();
+ *                 try {
+ *                     folderSize = CacheUtil.getFolderSize(cacheDir);
+ *                     formatSize = CacheUtil.getFormatSize(folderSize);
+ *
+ *                 } catch (Exception e) {
+ *                     e.printStackTrace();
+ *                 }
+ *                 barClanData.setRightText("" + 0);
  * Describe:
  */
 public class CacheUtil {

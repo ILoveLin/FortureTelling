@@ -97,7 +97,7 @@ public class MarriageTestActivity extends BaseActivity implements MarriageTexstV
 
 
     @Override
-    public void updateFinish( String oid,String title) {
+    public void updateFinish(String oid, String title, String wechat_price, String ali_price) {
             Bundle bundle = new Bundle();
             bundle.putString("oid", oid);
             bundle.putString("title", title);
@@ -105,6 +105,8 @@ public class MarriageTestActivity extends BaseActivity implements MarriageTexstV
         bundle.putString("text_surname", "");  //姓
         bundle.putString("text_name", "");     //名
         bundle.putString("price", "66");      //价格
+        bundle.putString("price_wechar", wechat_price);      //价格
+        bundle.putString("price_ali", ali_price);      //价格
         bundle.putString("text_all_name", tvThreeInputName.getText().toString().trim() + ""); //姓名
             openActivity(SelectPayActivity.class, bundle);
     }

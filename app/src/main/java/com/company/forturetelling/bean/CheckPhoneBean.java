@@ -12,7 +12,6 @@ public class CheckPhoneBean {
      * msg : ok
      * data : {"BizId":"567020782008144923^0"}
      */
-
     private String status;
     private String msg;
     private DataBean data;

@@ -12,6 +12,6 @@ public interface EightNumberView {
     void showErrorView();
     void showToast(String string);
 
-    void updateFinish(String s, String oid);
+    void updateFinish(String oid, String title, String wechat_price, String ali_price);
 
 }

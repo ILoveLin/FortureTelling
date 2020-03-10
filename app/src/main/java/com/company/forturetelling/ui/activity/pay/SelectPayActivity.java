@@ -78,7 +78,8 @@ public class SelectPayActivity extends BaseActivity {
     private String text_all_name;
     private TextView tv_confirm;
     private TextView tv_cancel;
-    private String price;
+    private String price_wechat;
+    private String price_ali;
 
     @Override
     public int getContentViewId() {
@@ -97,11 +98,16 @@ public class SelectPayActivity extends BaseActivity {
         setTitleName("订单界面");
         title = getIntent().getStringExtra("title");
         oid = getIntent().getStringExtra("oid");
-        price = getIntent().getStringExtra("price");
+
+
+        price_wechat = getIntent().getStringExtra("price_wechar") + "";
+        price_ali = getIntent().getStringExtra("price_ali") + "";
         total_fee = getIntent().getStringExtra("total_fee");
         text_surname = getIntent().getStringExtra("text_surname");
         text_name = getIntent().getStringExtra("text_name");
         text_all_name = getIntent().getStringExtra("text_all_name");
+        Log.e("mImageUri", "=========sendNo===02===wechat_price===" + price_wechat+"======ali_price====="+price_ali);
+        currentPrice = price_wechat + "";
         //微信支付的选择
         mWeichatSelect = findViewById(R.id.iv_buy_weichat_select);
         tv_price = findViewById(R.id.tv_price);
@@ -111,7 +117,7 @@ public class SelectPayActivity extends BaseActivity {
         tv_cancel = findViewById(R.id.tv_cancel);
         tv_price = findViewById(R.id.tv_price);
         shop_name.setText("商品名称:" + title);
-        tv_price.setText("￥" + price);
+        tv_price.setText("￥" + price_ali);
         gson = new Gson();
 
     }
@@ -186,12 +192,12 @@ public class SelectPayActivity extends BaseActivity {
             //金额 （分） 比如 1 = 1分 10 = 1毛 100=1元
             case 0:         //微信
                 if ("取名".equals(title)) {
-//                    currentPrice = "8800";
-                    currentPrice = "1";
+                    currentPrice = price_wechat + "";
+//                    currentPrice = "1";
 
                 } else {
-                    currentPrice = "1";
-//                    currentPrice = "6800";
+//                    currentPrice = "1";
+                    currentPrice = price_wechat + "";
                 }
                 OkHttpUtils.post()
                         .url(HttpConstants.WXPay)
@@ -237,12 +243,12 @@ public class SelectPayActivity extends BaseActivity {
             case 1:         //支付宝
                 //价格 比如 0.01 = 1分 0.1 = 1毛 1 = 1元
                 if ("取名".equals(title)) {
-//                    currentPrice = "88";
-                    currentPrice = "0.01";
+                    currentPrice = price_ali;
+//                    currentPrice = "0.01";
 
                 } else {
-//                    currentPrice = "68";
-                    currentPrice = "0.01";
+                    currentPrice = price_ali;
+//                    currentPrice = "0.01";
                 }
                 OkHttpUtils.get()
                         .url(HttpConstants.ALIPay)

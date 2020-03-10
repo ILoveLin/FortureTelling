@@ -134,7 +134,6 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                 break;
             case BaseResp.ErrCode.ERR_USER_CANCEL://用户取消
                 Log.e("Wetchat", "login==03===ok=用户取消");
-
 //                finish();
                 break;
             default:

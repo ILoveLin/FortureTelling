@@ -47,6 +47,25 @@ public class AddNameBean {
          */
 
         private String orderNo;
+        private String wechat_price;
+        private String ali_price;
+
+        public String getWechat_price() {
+            return wechat_price;
+        }
+
+        public void setWechat_price(String wechat_price) {
+            this.wechat_price = wechat_price;
+        }
+
+        public String getAli_price() {
+            return ali_price;
+        }
+
+        public void setAli_price(String ali_price) {
+            this.ali_price = ali_price;
+        }
+
 
         public String getOrderNo() {
             return orderNo;

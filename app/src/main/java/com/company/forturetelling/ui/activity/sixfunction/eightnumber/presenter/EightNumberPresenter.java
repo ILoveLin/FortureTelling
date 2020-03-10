@@ -122,11 +122,14 @@ public class EightNumberPresenter {
                         Type type = new TypeToken<EightNumBean02>() {
                         }.getType();
                         EightNumBean02 mBean02 = mGson.fromJson(response, type);
+                        String wechat_price = mBean02.getData().getWechat_price();
+                        String ali_price = mBean02.getData().getAli_price();
+                        Log.e("mImageUri", "=========sendNo===02===wechat_price===" + wechat_price+"======ali_price====="+ali_price);
 
                         if ("0".equals(mBean02.getStatus())) {
                             //TODO  获取到订单号 跳转到支付界面
                             mView.showContentView();
-                            mView.updateFinish(mBean02.getData().getOid(), "八字精批");
+                            mView.updateFinish(mBean02.getData().getOid(), "八字精批",wechat_price,ali_price);
 
                         }
 
