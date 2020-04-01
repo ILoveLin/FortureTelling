@@ -108,9 +108,11 @@ public class SplashActivity extends BaseActivity {
     private void switchGoing() {
         sendRequestForUserID();
         if (isFirstIn) {
+
+
 //            第一次进入-- 走引导页，否则进入MainActivity
             SharePreferenceUtil.put(SplashActivity.this, Constants.SP_IS_FIRST_IN,
-                    false);
+                    true);
             Intent intent = new Intent();
             intent.setClass(SplashActivity.this, GuideActivity.class);
             startActivity(intent);
@@ -136,7 +138,7 @@ public class SplashActivity extends BaseActivity {
     private void sendRequestForUserID() {
         String deviceid = DeviceIdUtil.getDeviceId(this);
         String userid = (String) SharePreferenceUtil.get(SplashActivity.this, Constants.USERID, "");
-        if("".equals(userid)) {  //为空的时候去请求
+        if ("".equals(userid)) {  //为空的时候去请求
             OkHttpUtils.post()
                     .url(HttpConstants.GetUserID)
                     .addParams("deviceid", deviceid + "")
@@ -159,7 +161,7 @@ public class SplashActivity extends BaseActivity {
                             GetUseridBean bean = mGson.fromJson(response, type);
                             Log.e("Net", "login==GetUserID===" + response);
                             Log.e("Net", "login==deviceid===" + deviceid);
-                            if ("0".equals(bean.getStatus()+"")) {
+                            if ("0".equals(bean.getStatus() + "")) {
                                 //sp存token
                                 showContent();
                                 userid = bean.getData().getUserid() + "";

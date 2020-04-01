@@ -89,8 +89,6 @@ public class MainActivity extends BaseActivity {
     private String version_code;
     private String downUrl;
     private Gson gson;
-    private Boolean isLogin;
-    private String perfect;
 
     @Override
     public int getContentViewId() {
@@ -108,6 +106,7 @@ public class MainActivity extends BaseActivity {
         requestUpdateVersion("Android");
 
     }
+
     private void requestPermission() {
         FanPermissionUtils.with(MainActivity.this)
                 //添加所有你需要申请的权限
@@ -121,7 +120,7 @@ public class MainActivity extends BaseActivity {
                     public void permissionRequestSuccess() {
                         //所有权限授权成功才会回调这里
 //                        ((TextView) findViewById(R.id.tv_result)).setText("授权结果\n\n所有权限都授权成功\n");
-                        Toast.makeText(MainActivity.this, "所有权限都授权成功", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "所有权限都授权成功", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -224,6 +223,7 @@ public class MainActivity extends BaseActivity {
                 }
                 tvTabFirstPage.setSelected(false);
                 tvTabSecondPage.setSelected(false);
+
                 tvTabThirdPage.setSelected(true);
                 tvTabFourthPage.setSelected(false);
                 overAnim(tvTabThirdPage);
