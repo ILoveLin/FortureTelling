@@ -32,6 +32,7 @@ import com.company.forturetelling.ui.activity.information.login.LoginAnimatorAct
 import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
+import com.company.forturetelling.ui.webview.SomeRequestActivity;
 import com.company.forturetelling.utils.CacheUtil;
 import com.company.forturetelling.utils.DataCleanManager;
 import com.company.forturetelling.view.CircleImageView;
@@ -86,6 +87,10 @@ public class MineFragment extends BaseFragment implements MineView {
     SettingBar barAboutUs;
     @BindView(R.id.bar_payed_order)
     SettingBar bar_payed_order;
+    @BindView(R.id.bar_about_user)
+    SettingBar bar_about_user;
+    @BindView(R.id.bar_about_private)
+    SettingBar bar_about_private;
     @BindView(R.id.smartRefresh)
     SmartRefreshLayout smartRefresh;
     @BindView(R.id.tv_current_name_unlogin)
@@ -249,8 +254,9 @@ public class MineFragment extends BaseFragment implements MineView {
         twoButton.showPopupWindow(relate_mine_all, Gravity.CENTER);
     }
 
-    @OnClick({R.id.linear_current_info_unlogin, R.id.bar_payed_order, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
+    @OnClick({R.id.linear_current_info_unlogin, R.id.bar_payed_order, R.id.bar_about_user, R.id.bar_about_private, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
     public void multipleOnclick(View view) {
+        Bundle bundle = new Bundle();
         switch (view.getId()) {
             case R.id.linear_current_info: //个人设置
                 Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
@@ -284,13 +290,17 @@ public class MineFragment extends BaseFragment implements MineView {
             case R.id.bar_update:  //版本更新
                 requestUpdateVersion();
                 break;
-//            case R.id.linear_mine_exit:  //
+            case R.id.bar_about_user:  //用户协议
 
-//                showPop(relate_mine_all);
-//                break;
+                bundle.putString("typeUrl", "1");
+                openActivity(SomeRequestActivity.class, bundle);
+                break;
+            case R.id.bar_about_private:  //隐私条款
+                bundle.putString("typeUrl", "2");
+                openActivity(SomeRequestActivity.class, bundle);
+                break;
             case R.id.bar_about_us: //关于我们
 //                http://jxsccm.com/
-                Bundle bundle = new Bundle();
 //                bundle.putString("url", "http://jxsccm.com/");
                 bundle.putString("url", "http://testbazi.zgszfy.com/gwdemo/index.html");
                 bundle.putString("title", "关于我们");

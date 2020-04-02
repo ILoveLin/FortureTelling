@@ -221,7 +221,30 @@
                     app:bar_rightColor="@color/viewfinder_mask"
 
                     app:bar_rightText="" />
+                <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
+                    android:id="@+id/bar_about_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_item_ffffff"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="用户协议"
+                    app:bar_rightColor="@color/viewfinder_mask"
 
+                    app:bar_rightText="" />
+                <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
+                    android:id="@+id/bar_about_private"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_item_ffffff"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="隐私条款"
+                    app:bar_rightColor="@color/viewfinder_mask"
+
+                    app:bar_rightText="" />
                 <TextView
                     android:visibility="gone"
                     android:id="@+id/linear_mine_exit"

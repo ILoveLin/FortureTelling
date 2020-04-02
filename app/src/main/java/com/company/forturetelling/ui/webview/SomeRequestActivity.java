@@ -16,6 +16,7 @@ import com.just.agentweb.AgentWeb;
 import com.just.agentweb.DefaultWebClient;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
+import com.yun.common.utils.LogUtils;
 
 /**
  * Created by Lovelin on 2020/4/2
@@ -43,13 +44,15 @@ public class SomeRequestActivity extends BaseActivity {
     private void initView() {
         setTitleBarVisibility(View.VISIBLE);
         setTitleLeftBtnVisibility(View.VISIBLE);
+        typeUrl = getIntent().getStringExtra("typeUrl");
+
+        LogUtils.e("typeUrl====================="+typeUrl);
         if("1".equalsIgnoreCase(typeUrl)) {
             title ="用户协议";
         }else{
             title ="隐私条款";
         }
         setTitleName(title + "");
-        typeUrl = getIntent().getStringExtra("typeUrl");
         linear_all_some = findViewById(R.id.linear_all_some);
         goRead(typeUrl);
     }
