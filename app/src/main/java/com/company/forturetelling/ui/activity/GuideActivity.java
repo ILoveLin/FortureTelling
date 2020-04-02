@@ -1,7 +1,9 @@
 package com.company.forturetelling.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -10,10 +12,15 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -22,7 +29,13 @@ import com.company.forturetelling.base.BaseActivity;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.information.LoginActivity;
+import com.company.forturetelling.ui.webview.SomeRequestActivity;
+import com.company.forturetelling.ui.webview.WebLayout;
 import com.company.forturetelling.utils.NetworkUtil;
+import com.just.agentweb.AgentWeb;
+import com.just.agentweb.DefaultWebClient;
+import com.just.agentweb.WebChromeClient;
+import com.just.agentweb.WebViewClient;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.yun.common.utils.StatusBarUtil;
 import com.yun.common.utils.StatusBarUtils;
@@ -48,6 +61,7 @@ public class GuideActivity extends BaseActivity {
             R.mipmap.guide44};
     private Boolean isLogined;
     private RelativeLayout relative_guide;
+    protected AgentWeb mAgentWeb;
 
     @Override
     public int getContentViewId() {
@@ -148,13 +162,17 @@ public class GuideActivity extends BaseActivity {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(GuideActivity.this, "Hello clickableSpan1", Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString("typeUrl", "1");
+                openActivity(SomeRequestActivity.class, bundle);
             }
         };
         ClickableSpan clickableSpan2 = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(GuideActivity.this, "Hello clickableSpan2", Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString("typeUrl", "2");
+                openActivity(SomeRequestActivity.class, bundle);
             }
         };
         textSpanned1.setSpan(clickableSpan,
@@ -209,6 +227,5 @@ public class GuideActivity extends BaseActivity {
     public void initData() {
 
     }
-
 
 }
