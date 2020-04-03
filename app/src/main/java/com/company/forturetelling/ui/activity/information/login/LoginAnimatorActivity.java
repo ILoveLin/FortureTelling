@@ -187,6 +187,7 @@ public class LoginAnimatorActivity extends BaseActivity implements KeyboardWatch
                     @Override
                     public void onResponse(String response, int id) {
                         Log.e("Net", "login==mBean===" + response);
+                        Log.e("Net", "login==comeFrom02===" + comeFrom02);
                         Type type = new TypeToken<LoginBean>() {
                         }.getType();
                         LoginBean mBean = mGson.fromJson(response, type);

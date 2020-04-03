@@ -168,7 +168,6 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
     }
 
     private void sendRequest() {
-        showLoadingView();
         String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
         if (userid.equals("")) {
 
@@ -189,12 +188,12 @@ public class FortuneFragment extends BaseFragment implements FortuneView {
 
                         @Override
                         public void onResponse(String response, int id) {
-                            showContentView();
+                            showContent();
                             Type type = new TypeToken<InforBean>() {
                             }.getType();
                             Gson gson = new Gson();
                             InforBean mBean = gson.fromJson(response, type);
-                            Log.e("mImageUri", "response======refreshData01========" + response);
+                            Log.e("mImageUri", "response======refreshData01====dsate===" + response);
                             if (mBean.getStatus().equals("0")) {
                                 infoBean = mBean.getData().getInfo();
                                 tadayBean = mBean.getData().getJinriyunsi();

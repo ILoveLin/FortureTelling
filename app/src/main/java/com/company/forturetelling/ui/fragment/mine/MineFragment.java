@@ -312,7 +312,6 @@ public class MineFragment extends BaseFragment implements MineView {
     }
 
     private void showPop() {
-
         final PopupWindowTwoButton twoButton = new PopupWindowTwoButton((Activity) getActivity());
         twoButton.getTv_content().setText("是否清除缓存?");
         twoButton.getTv_ok().setText("确定");
