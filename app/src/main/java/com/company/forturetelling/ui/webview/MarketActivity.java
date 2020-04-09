@@ -2,6 +2,8 @@ package com.company.forturetelling.ui.webview;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -93,8 +95,14 @@ public class MarketActivity extends BaseActivity {
 
 
     private WebViewClient mWebViewClient = new WebViewClient() {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            LogUtils.e("typeUrl================userid==商城===" + request.getUrl().toString());
+            if (request.getUrl().toString().contains("http://shop.jxjusi.com/pop")) {
+                finish();
+                return false;
+            }
             return super.shouldOverrideUrlLoading(view, request);
         }
 
