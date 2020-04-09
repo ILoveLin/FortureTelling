@@ -70,5 +70,6 @@ public class HttpConstants {
 
     //我的订单
     public static final String Order = Common + "/api/quming/lists";
-
+    //商城
+    public static final String Market = "http://shop.jxjusi.com?id=";
 }

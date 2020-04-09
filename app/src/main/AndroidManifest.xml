@@ -51,6 +51,7 @@
         <activity android:name=".ui.activity.information.login.RegisterAnimatorActivity" />
         <!--<activity android:name=".ui.activity.result.ResultNameDetalisActivity" />-->
         <activity android:name=".ui.webview.SomeRequestActivity" />
+        <activity android:name=".ui.webview.MarketActivity" />
 
         <activity
             android:name=".wxapi.WXPayEntryActivity"
@@ -62,6 +63,7 @@
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
             android:label="@string/app_name" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.company.forturetelling.fileProvider"
@@ -81,6 +83,7 @@
             android:required="false" />
 
     </application>
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS"

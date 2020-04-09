@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linear_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear_all_login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="@dimen/padding_50"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:text="请您先登入"-->
+<!--            android:textColor="@color/color_333333"-->
+<!--            android:textSize="@dimen/padding_18" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_02_login_now"-->
+<!--            style="@style/ButtonStyle_Blue"-->
+<!--            android:layout_width="@dimen/padding_145"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="@dimen/padding_20"-->
+<!--            android:layout_marginBottom="@dimen/padding_20"-->
+<!--            android:background="@drawable/shape_six_input_submit"-->
+<!--            android:clickable="true"-->
+<!--            android:text="立即登录"-->
+<!--            android:textSize="@dimen/padding_18" />-->
+
+<!--        <com.company.forturetelling.view.CircleImageView-->
+<!--            android:id="@+id/tv01_pic"-->
+<!--            android:layout_width="@dimen/padding_90"-->
+<!--            android:layout_height="@dimen/padding_90"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="@dimen/padding_20"-->
+<!--            android:src="@mipmap/icon_fortune_touxiang"-->
+<!--            app:border_color="#FF7F24"-->
+<!--            app:border_width="0dp"-->
+<!--            app:is_circle="true" />-->
+
+<!--    </LinearLayout>-->
+</RelativeLayout>

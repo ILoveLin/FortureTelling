@@ -32,6 +32,7 @@ import com.company.forturetelling.ui.activity.information.login.LoginAnimatorAct
 import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
+import com.company.forturetelling.ui.webview.MarketActivity;
 import com.company.forturetelling.ui.webview.SomeRequestActivity;
 import com.company.forturetelling.utils.CacheUtil;
 import com.company.forturetelling.utils.DataCleanManager;
@@ -43,6 +44,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yun.common.utils.CommonUtils;
 import com.yun.common.utils.CustomToast;
 import com.yun.common.utils.GlideUtils;
+import com.yun.common.utils.LogUtils;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.yun.common.utils.popupwindow.PopupWindowTwoButton;
 import com.yun.common.utils.updateutils.UpdateIntentService;
@@ -254,7 +256,7 @@ public class MineFragment extends BaseFragment implements MineView {
         twoButton.showPopupWindow(relate_mine_all, Gravity.CENTER);
     }
 
-    @OnClick({R.id.linear_current_info_unlogin, R.id.bar_payed_order, R.id.bar_about_user, R.id.bar_about_private, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
+    @OnClick({R.id.linear_current_info_unlogin, R.id.bar_about_market, R.id.bar_payed_order, R.id.bar_about_user, R.id.bar_about_private, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
     public void multipleOnclick(View view) {
         Bundle bundle = new Bundle();
         switch (view.getId()) {
@@ -283,6 +285,18 @@ public class MineFragment extends BaseFragment implements MineView {
                 break;
             case R.id.bar_clan_data: //清理缓存
                 showPop();
+                break;
+            case R.id.bar_about_market: //在线商城
+                String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
+                Boolean isLogined = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
+                LogUtils.e("typeUrl================userid=====" +userid);
+
+
+                if (isLogined && "" != userid) {
+                    openActivity(MarketActivity.class);
+                } else {
+                    showToast("请您先登入!");
+                }
                 break;
             case R.id.bar_payed_order: //我的订单
                 openActivity(OrderActivity.class);

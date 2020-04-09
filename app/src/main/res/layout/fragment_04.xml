@@ -243,7 +243,18 @@
                     app:bar_leftColor="@color/viewfinder_mask"
                     app:bar_leftText="隐私条款"
                     app:bar_rightColor="@color/viewfinder_mask"
-
+                    app:bar_rightText="" />
+                <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
+                    android:id="@+id/bar_about_market"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_item_ffffff"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="在线商城"
+                    app:bar_rightIcon="@mipmap/ico_go_black"
+                    app:bar_rightColor="@color/viewfinder_mask"
                     app:bar_rightText="" />
                 <TextView
                     android:visibility="gone"
