@@ -99,7 +99,7 @@ public class MarketActivity extends BaseActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             LogUtils.e("typeUrl================userid==商城===" + request.getUrl().toString());
-            if (request.getUrl().toString().contains("http://shop.jxjusi.com/pop")) {
+            if (request.getUrl().toString().contains("http://testbazi.zgszfy.com//konbai/")) {
                 finish();
                 return false;
             }
