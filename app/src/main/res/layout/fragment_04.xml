@@ -256,6 +256,18 @@
                     app:bar_rightIcon="@mipmap/ico_go_black"
                     app:bar_rightColor="@color/viewfinder_mask"
                     app:bar_rightText="" />
+                <com.company.forturetelling.view.SettingBar
+                    android:paddingLeft="@dimen/padding_20"
+                    android:paddingRight="@dimen/padding_20"
+                    android:id="@+id/bar_really_life"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_item_ffffff"
+                    app:bar_leftColor="@color/viewfinder_mask"
+                    app:bar_leftText="真人算命"
+                    app:bar_rightIcon="@mipmap/ico_go_black"
+                    app:bar_rightColor="@color/viewfinder_mask"
+                    app:bar_rightText="" />
                 <TextView
                     android:visibility="gone"
                     android:id="@+id/linear_mine_exit"

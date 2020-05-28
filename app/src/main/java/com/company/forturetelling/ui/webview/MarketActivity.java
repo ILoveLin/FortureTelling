@@ -97,7 +97,7 @@ public class MarketActivity extends BaseActivity {
     private WebViewClient mWebViewClient = new WebViewClient() {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+      public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             LogUtils.e("typeUrl================userid==商城===" + request.getUrl().toString());
             if (request.getUrl().toString().contains("http://testbazi.zgszfy.com//konbai/")) {
                 finish();

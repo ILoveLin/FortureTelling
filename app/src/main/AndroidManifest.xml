@@ -52,6 +52,7 @@
         <!--<activity android:name=".ui.activity.result.ResultNameDetalisActivity" />-->
         <activity android:name=".ui.webview.SomeRequestActivity" />
         <activity android:name=".ui.webview.MarketActivity" />
+        <activity android:name=".ui.webview.ReallyLifeActivity" />
 
         <activity
             android:name=".wxapi.WXPayEntryActivity"
