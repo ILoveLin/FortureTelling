@@ -11,6 +11,8 @@ import com.company.forturetelling.R;
 import com.just.agentweb.IWebLayout;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 
+import java.util.TreeMap;
+
 /**
  * Created by cenxiaozhong on 2017/7/1.
  * source code  https://github.com/Justson/AgentWeb
@@ -25,7 +27,14 @@ public class WebLayout implements IWebLayout {
     public WebLayout(Activity activity) {
         this.mActivity = activity;
         mTwinklingRefreshLayout = (TwinklingRefreshLayout) LayoutInflater.from(activity).inflate(R.layout.fragment_twk_web, null);
-        mTwinklingRefreshLayout.setPureScrollModeOn();
+//        mTwinklingRefreshLayout.setPureScrollModeOn();
+//        mTwinklingRefreshLayout.setEnableOverScroll(false);
+//        mTwinklingRefreshLayout.setEnableRefresh(true);
+//        mTwinklingRefreshLayout.setEnableLoadmore(true);
+//        mTwinklingRefreshLayout.setOverScrollHeight(0);
+        mTwinklingRefreshLayout.setOverScrollHeight(1);
+        mTwinklingRefreshLayout.setMaxHeadHeight(1);
+        mTwinklingRefreshLayout.setMaxBottomHeight(1);
         mWebView = (WebView) mTwinklingRefreshLayout.findViewById(R.id.webView);
     }
 
@@ -40,7 +49,6 @@ public class WebLayout implements IWebLayout {
     public WebView getWebView() {
         return mWebView;
     }
-
 
 
 }

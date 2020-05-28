@@ -50,27 +50,11 @@ public class ReallyLifeActivity extends BaseActivity {
 
     private void initView() {
         userid = (String) SharePreferenceUtil.get(this, Constants.USERID, "");
-//        Boolean isLogin = (Boolean) SharePreferenceUtil.get(this, com.company.forturetelling.global.Constants.Is_Logined, false);
-//        String Perfect = (String) SharePreferenceUtil.get(this, com.company.forturetelling.global.Constants.WX_Perfect, "false");
-//        linear_all_login.setVisibility(View.INVISIBLE);
-//        linear_all.setVisibility(View.VISIBLE);
-//        if (isLogin) {   //登入了
-//            if ("true".equals(Perfect)) {  //已经完善.
-//                linear_all_login.setVisibility(View.INVISIBLE);
-//                linear_all.setVisibility(View.VISIBLE);
-//            }
-//        } else {//未登录
-//            linear_all_login.setVisibility(View.VISIBLE);
-//            linear_all.setVisibility(View.INVISIBLE);
-//
-//        }
+        setTitleBarVisibility(View.VISIBLE);
+        setTitleLeftBtnVisibility(View.VISIBLE);
         setTitleName("真人算命");
-        setTitleBarVisibility(View.GONE);
-        setTitleLeftBtnVisibility(View.GONE);
         setPageStateView();
-
         LogUtils.e("typeUrl================userid==商城===" + userid);
-
         gotoMarket(HttpConstants.ReallyLife + userid);
         LogUtils.e("typeUrl=====================" + HttpConstants.ReallyLife + userid);
 
