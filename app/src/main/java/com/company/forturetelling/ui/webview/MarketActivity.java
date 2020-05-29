@@ -34,7 +34,7 @@ public class MarketActivity extends BaseActivity {
 
 
     @BindView(R.id.linear_all)
-    RelativeLayout linear_all;
+    LinearLayout linear_all;
     protected AgentWeb mAgentWeb;
     private String userid;
 

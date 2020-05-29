@@ -6,12 +6,13 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="typeUrl" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b124e4-a140-48dc-9cea-c14777764eae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_life_ing.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/LifeingFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -19,11 +20,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/fragment/mine/MineFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/fragment/mine/MineFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/MarketActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/MarketActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/ReallyLifeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/ReallyLifeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/WebLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview/WebLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_market.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_market.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_twk_web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_twk_web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonlib/commonlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonlib/commonlib.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +97,7 @@
     <property name="android.sdk.path" value="F:/Sdk" />
     <property name="device.picker.selection" value="420c90d6e0bf3447" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/company/forturetelling/ui/webview" />
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1579330898671" />
   </component>
@@ -107,11 +114,11 @@
       <recent name="com.company.forturetelling.base" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\FortureTelling\app\src\main\java\com\company\forturetelling\ui\webview" />
       <recent name="C:\Users\Administrator\Desktop\FortureTelling\app\src\main\res\layout" />
       <recent name="C:\Users\Administrator\Desktop\FortureTelling\app\src\main\res\mipmap-xhdpi" />
       <recent name="C:\Users\Administrator\Desktop\FortureTelling\app\src\main\java\com\company\forturetelling\ui\fragment\market" />
       <recent name="C:\Users\Administrator\Desktop\FortureTelling\app\src\main\java\com\company\forturetelling\utils" />
-      <recent name="C:\Users\Administrator\Desktop\FortureTelling\commonlib\src\main\res\mipmap-xxhdpi" />
     </key>
   </component>
   <component name="RunDashboard">

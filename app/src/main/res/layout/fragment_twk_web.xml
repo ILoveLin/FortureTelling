@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
@@ -14,4 +14,28 @@
         android:background="#fff"
         android:overScrollMode="never"
         android:visibility="visible" />
-</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+</LinearLayout>
+
+
+
+
+
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--android:id="@+id/refreshLayout"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:background="@android:color/transparent"-->
+<!--app:tr_pureScrollMode_on="true">-->
+
+<!--<WebView-->
+<!--    android:id="@+id/webView"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#fff"-->
+<!--    android:overScrollMode="never"-->
+<!--    android:visibility="visible" />-->
+<!--</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>-->

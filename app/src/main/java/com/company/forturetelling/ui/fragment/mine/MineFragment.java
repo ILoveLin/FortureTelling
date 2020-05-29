@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -105,6 +108,7 @@ public class MineFragment extends BaseFragment implements MineView {
     private Boolean isLogined;
     private String localVersionCode;
     private Gson gson;
+    private FragmentManager fragmentManager;
 
     @Override
     public int getContentViewId() {
@@ -288,6 +292,7 @@ public class MineFragment extends BaseFragment implements MineView {
                 showPop();
                 break;
             case R.id.bar_really_life: //真人算命
+
                 String lifeuserid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
                 Boolean lifeisLogined = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
                 LogUtils.e("typeUrl================lifeuserid=====" + lifeuserid);

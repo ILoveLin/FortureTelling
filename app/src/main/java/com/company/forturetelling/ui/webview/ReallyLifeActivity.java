@@ -34,7 +34,7 @@ public class ReallyLifeActivity extends BaseActivity {
 
 
     @BindView(R.id.linear_all)
-    RelativeLayout linear_all;
+    LinearLayout linear_all;
     protected AgentWeb mAgentWeb;
     private String userid;
 
@@ -50,8 +50,8 @@ public class ReallyLifeActivity extends BaseActivity {
 
     private void initView() {
         userid = (String) SharePreferenceUtil.get(this, Constants.USERID, "");
-        setTitleBarVisibility(View.VISIBLE);
-        setTitleLeftBtnVisibility(View.VISIBLE);
+        setTitleBarVisibility(View.GONE);
+        setTitleLeftBtnVisibility(View.GONE);
         setTitleName("真人算命");
         setPageStateView();
         LogUtils.e("typeUrl================userid==商城===" + userid);
