@@ -5,9 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -21,18 +19,15 @@ import android.widget.TextView;
 
 import com.company.forturetelling.R;
 import com.company.forturetelling.base.BaseFragment;
+import com.company.forturetelling.bean.OnlineMarketReallyLifeBarBean;
 import com.company.forturetelling.bean.UpdateBean;
 import com.company.forturetelling.bean.bus.ExitEvent;
-import com.company.forturetelling.bean.bus.WeChartEvent;
 import com.company.forturetelling.bean.information.InforBean;
 import com.company.forturetelling.global.Constants;
 import com.company.forturetelling.global.HttpConstants;
-import com.company.forturetelling.ui.MainActivity;
 import com.company.forturetelling.ui.activity.NewsActivity;
 import com.company.forturetelling.ui.activity.information.InforSettingActivity;
-import com.company.forturetelling.ui.activity.information.LoginActivity;
 import com.company.forturetelling.ui.activity.information.login.LoginAnimatorActivity;
-import com.company.forturetelling.ui.activity.information.login.RegisterAnimatorActivity;
 import com.company.forturetelling.ui.activity.pay.order.OrderActivity;
 import com.company.forturetelling.ui.fragment.mine.presenter.MineView;
 import com.company.forturetelling.ui.webview.MarketActivity;
@@ -97,6 +92,10 @@ public class MineFragment extends BaseFragment implements MineView {
     SettingBar bar_about_user;
     @BindView(R.id.bar_about_private)
     SettingBar bar_about_private;
+    @BindView(R.id.bar_really_life)
+    SettingBar bar_really_life;
+    @BindView(R.id.bar_about_market)
+    SettingBar bar_about_market;
     @BindView(R.id.smartRefresh)
     SmartRefreshLayout smartRefresh;
     @BindView(R.id.tv_current_name_unlogin)
@@ -109,6 +108,7 @@ public class MineFragment extends BaseFragment implements MineView {
     private String localVersionCode;
     private Gson gson;
     private FragmentManager fragmentManager;
+    private String flag_gone;
 
     @Override
     public int getContentViewId() {
@@ -228,7 +228,11 @@ public class MineFragment extends BaseFragment implements MineView {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        getRequestOnlineMarketReallyLifeBar();
+
+
     }
+
 
     private void showPop(RelativeLayout relate_mine_all) {
 
@@ -264,6 +268,7 @@ public class MineFragment extends BaseFragment implements MineView {
     @OnClick({R.id.linear_current_info_unlogin, R.id.bar_about_market, R.id.bar_really_life, R.id.bar_payed_order, R.id.bar_about_user, R.id.bar_about_private, R.id.bar_clan_data, R.id.linear_current_info, R.id.bar_update, R.id.bar_about_us})
     public void multipleOnclick(View view) {
         Bundle bundle = new Bundle();
+
         switch (view.getId()) {
             case R.id.linear_current_info: //个人设置
                 Boolean isLogin = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
@@ -291,28 +296,7 @@ public class MineFragment extends BaseFragment implements MineView {
             case R.id.bar_clan_data: //清理缓存
                 showPop();
                 break;
-            case R.id.bar_really_life: //真人算命
 
-                String lifeuserid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
-                Boolean lifeisLogined = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
-                LogUtils.e("typeUrl================lifeuserid=====" + lifeuserid);
-
-                if (lifeisLogined && "" != lifeuserid) {
-                    openActivity(ReallyLifeActivity.class);
-                } else {
-                    showToast("请您先登入!");
-                }
-                break;
-            case R.id.bar_about_market: //在线商城
-                String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
-                Boolean isLogined = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
-                LogUtils.e("typeUrl================userid=====" + userid);
-                if (isLogined && "" != userid) {
-                    openActivity(MarketActivity.class);
-                } else {
-                    showToast("请您先登入!");
-                }
-                break;
             case R.id.bar_payed_order: //我的订单
                 openActivity(OrderActivity.class);
                 break;
@@ -334,6 +318,29 @@ public class MineFragment extends BaseFragment implements MineView {
                 bundle.putString("url", "http://testbazi.zgszfy.com/gwdemo/index.html");
                 bundle.putString("title", "关于我们");
                 openActivity(NewsActivity.class, bundle);
+                break;
+            case R.id.bar_really_life: //真人算命
+
+                String lifeuserid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
+                Boolean lifeisLogined = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
+                LogUtils.e("typeUrl================lifeuserid=====" + lifeuserid);
+                if (lifeisLogined && "" != lifeuserid) {
+                    openActivity(ReallyLifeActivity.class);
+                } else {
+                    showToast("请您先登入!");
+                }
+                break;
+            case R.id.bar_about_market: //在线商城
+
+                String userid = (String) SharePreferenceUtil.get(getActivity(), Constants.USERID, "");
+                Boolean isLogined = (Boolean) SharePreferenceUtil.get(getActivity(), com.company.forturetelling.global.Constants.Is_Logined, false);
+                LogUtils.e("typeUrl================userid=====" + userid);
+                if (isLogined && "" != userid) {
+                    openActivity(MarketActivity.class);
+                } else {
+                    showToast("请您先登入!");
+                }
+
                 break;
 
         }
@@ -372,6 +379,34 @@ public class MineFragment extends BaseFragment implements MineView {
         twoButton.showPopupWindow(relate_mine_all, Gravity.CENTER);
     }
 
+    //功能开关
+    private void getRequestOnlineMarketReallyLifeBar() {
+        OkHttpUtils.get()
+                .url(HttpConstants.OnlineMarketReallyLifeBar)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Type updateType = new TypeToken<OnlineMarketReallyLifeBarBean>() {
+                        }.getType();
+                        gson = new Gson();
+                        OnlineMarketReallyLifeBarBean mBean = gson.fromJson(response, updateType);
+                        String FlagGone = mBean.getStatus() + "";
+                        SharePreferenceUtil.put(getActivity(), Constants.Flag_Gone, FlagGone + "");
+                        if (FlagGone.equals("0")) {
+                            bar_really_life.setVisibility(View.GONE);
+                            bar_about_market.setVisibility(View.GONE);
+                        } else {
+                            bar_really_life.setVisibility(View.VISIBLE);
+                            bar_about_market.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+    }
 
     /**
      * 版本更新

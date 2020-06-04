@@ -72,5 +72,8 @@ public class HttpConstants {
     public static final String Order = Common + "/api/quming/lists";
     //商城
     public static final String Market = "http://shop.jxjusi.com?id=";
-    public static final String ReallyLife= "http://suanming.jxjusi.com?id=";
+    public static final String ReallyLife = "http://suanming.jxjusi.com?id=";
+
+    //移动端功能开关接口
+    public static final String OnlineMarketReallyLifeBar =Common+ "/api/Wxpay/statys";
 }

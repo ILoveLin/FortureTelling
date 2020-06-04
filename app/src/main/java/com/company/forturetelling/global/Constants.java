@@ -22,6 +22,8 @@ public class Constants {
     public static final String USERID = "USERID";
     public static final String Name = "Name";   //昵称
 
+    public static final String Flag_Gone="flag_gone";
+
 
 //    个人信息回写
 
