@@ -424,7 +424,6 @@ public class MineFragment extends BaseFragment implements MineView {
                     public void onError(Call call, Exception e, int id) {
                         CustomToast.showToast(getActivity(), "版本更新-网络请求错误");
                         showError();
-
                     }
 
                     @Override

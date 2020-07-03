@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.yun.common.utils.KeyBoardUtils;
+import com.yun.common.utils.LogUtils;
 import com.yun.common.utils.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -261,7 +262,13 @@ public class GetNameActivity extends BaseActivity {
                             + calendar.get(Calendar.HOUR_OF_DAY) + "-"
                             + calendar.get(Calendar.MINUTE);
                     int intyear = calendar.get(Calendar.YEAR);
-                    if (intyear > 2019) {
+                    LogUtils.e("intyear==="+intyear);
+                    LogUtils.e("intyear==="+(intyear-1));
+                    LogUtils.e("intyear==="+(intyear+1));
+                    Calendar instance = Calendar.getInstance();
+                    int i = instance.get(Calendar.YEAR);
+//                    String year = String.valueOf();
+                    if (intyear > i) {
                         showToast("年份超出范围");
                         tv_addname_data.setText("");
                         return;

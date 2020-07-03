@@ -172,7 +172,9 @@ public class EightNumberActivity extends BaseActivity implements EightNumberView
                             + (calendar.get(Calendar.MONTH) + 1) + "-"
                             + calendar.get(Calendar.DAY_OF_MONTH);
                     int intyear = calendar.get(Calendar.YEAR);
-                    if (intyear > 2019) {
+                    Calendar instance = Calendar.getInstance();
+                    int i = instance.get(Calendar.YEAR);
+                    if (intyear > i) {
                         showToast("年份超出范围");
                         tvThreeInputDate.setText("");
                         return;

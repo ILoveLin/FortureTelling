@@ -461,8 +461,10 @@ public class InforSettingActivity extends BaseActivity implements View.OnClickLi
                     String birthday = calendar.get(Calendar.YEAR) + "-"
                             + (calendar.get(Calendar.MONTH) + 1) + "-"
                             + calendar.get(Calendar.DAY_OF_MONTH);
+                    Calendar instance = Calendar.getInstance();
+                    int i = instance.get(Calendar.YEAR);
                     int intyear = calendar.get(Calendar.YEAR);
-                    if (intyear > 2019) {
+                    if (intyear > i) {
                         showToast("年份超出范围");
                         barSettingBirthday.setRightText("");
                         return;

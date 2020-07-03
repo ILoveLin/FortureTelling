@@ -183,7 +183,9 @@ public class MarriageTestActivity extends BaseActivity implements MarriageTexstV
                             + calendar.get(Calendar.HOUR_OF_DAY) + "-"
                             + calendar.get(Calendar.MINUTE);
                     int intyear = calendar.get(Calendar.YEAR);
-                    if (intyear > 2019) {
+                    Calendar instance = Calendar.getInstance();
+                    int i = instance.get(Calendar.YEAR);
+                    if (intyear > i) {
                         showToast("年份超出范围");
                         tvThreeInputDate.setText("");
                         return;
