@@ -3,8 +3,11 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f087d6caa8732e7749f8dfccbd07b9/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f087d6caa8732e7749f8dfccbd07b9/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f087d6caa8732e7749f8dfccbd07b9/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.weyye.ColorTrackTabLayout/library/1.0.1/44f7ac123d36c922f1269094d5ff74c7577cb309/library-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.weyye.ColorTrackTabLayout/library/1.0.1/6a9096ad90b5494b16339a6c576d925bd2b70d82/library-1.0.1-sources.jar!/" />
     </SOURCES>

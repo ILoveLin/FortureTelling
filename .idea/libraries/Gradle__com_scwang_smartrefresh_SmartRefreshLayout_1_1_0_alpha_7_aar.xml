@@ -3,8 +3,11 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/60f404e67bf36c0156cc7d5291b21bba/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/60f404e67bf36c0156cc7d5291b21bba/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/60f404e67bf36c0156cc7d5291b21bba/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0-alpha-7/7030d07ec8da2f5ad1eb0764f694694aee11e8b5/SmartRefreshLayout-1.1.0-alpha-7-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0-alpha-7/d7a822d86befcdc6c9ddf3d09f0864b4e1be46ff/SmartRefreshLayout-1.1.0-alpha-7-sources.jar!/" />
     </SOURCES>

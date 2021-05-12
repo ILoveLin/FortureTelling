@@ -3,8 +3,11 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a7a1a55d9c014c608ae8d9b2df2f23d3/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a7a1a55d9c014c608ae8d9b2df2f23d3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a7a1a55d9c014c608ae8d9b2df2f23d3/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.flyco.tablayout/FlycoTabLayout_Lib/1.3.4/72aa95e086ef250114e1298133d2c177e280f3f3/FlycoTabLayout_Lib-1.3.4-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.flyco.tablayout/FlycoTabLayout_Lib/1.3.4/9e9f1847f0445d5ed0d193cd2738bdbf9131cef1/FlycoTabLayout_Lib-1.3.4-sources.jar!/" />
     </SOURCES>
